@@ -50,6 +50,9 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
                     </ul>
+                    <div class="d-flex justify-content-end">
+                        <ul class ="navbar-nav flex-grow-1"><li class="nav-item "><a class="nav-link" runat="server" href="~/Management/Login">Login</a></li></ul>
+                    </div>
                 </div>
             </div>
         </nav>
