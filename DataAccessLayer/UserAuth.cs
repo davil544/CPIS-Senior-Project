@@ -7,6 +7,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Collections;
+using CPIS_Senior_Project.DataModels;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -20,14 +22,103 @@ namespace CPIS_Senior_Project.DataAccessLayer
         public UserAuth()
         {
             //Instantiate creds here and scrub them for SQL command
+            connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        
-
-        public bool login()
+        public bool Registration(Credentials auth)
         {
-            //Create login function here that uses the SQL server
-            return true;
+            bool success = false;
+            int rows;
+            string query = "INSERT INTO Users (Username, Password, " +
+                "Role) VALUES (@Uname, @PW, @Role);";
+            SqlConnection conn;
+            SqlCommand cmd;
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.Add("@Uname", SqlDbType.VarChar, 50).Value = auth.username;
+            cmd.Parameters.Add("@PW", SqlDbType.VarChar, 50).Value = auth.password;
+            cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.role;
+
+            //add the rest of the necessary info here
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+                //conn.Close();
+                //return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return success;
+        }
+
+        //Either get this working or change it to show the data instead!
+        public String output()
+        {
+            return "";
+        }
+
+        public bool login(Credentials auth)
+        {
+            bool success = false;
+            int rows;
+            string query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
+            SqlConnection conn;
+            SqlCommand cmd;
+            //"SELECT Count(*) FROM Users where Username = @Uname AND Password = @PW;"
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            //This is causing issues showing the row results, works without the @ vars
+            cmd.Parameters.Add("@Uname", SqlDbType.VarChar, 50).Value = auth.username;
+            cmd.Parameters.Add("@PW", SqlDbType.VarChar, 50).Value = auth.password;
+
+            //add the rest of the necessary info here
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+                //conn.Close();
+                //return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return success;
         }
         
         //Will eventually use this for password hashing

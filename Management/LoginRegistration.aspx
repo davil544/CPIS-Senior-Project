@@ -26,10 +26,12 @@
             <tr>
                 <td />
                 <td>
-                    <asp:Button ID="mgmt_login" runat="server" OnClick="mgmt_Login_Click" Text="Log In"/>
+                    <asp:Button ID="mgmt_login" runat="server" OnClick="btnRegister_Click" Text="Log In"/>
                 </td>
             </tr>
         </table>
+        
+        <!-- TODO:  Maybe make panes to combine theater and customer registration into 1 form -->
         
         <br />
         <asp:Label ID="mgmt_status_message" runat="server"></asp:Label>
