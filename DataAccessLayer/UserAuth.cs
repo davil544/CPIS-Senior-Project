@@ -17,9 +17,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
     {
 
         private SqlConnection conn; private SqlCommand cmd;
-        private SqlDataAdapter da; private SqlDataReader reader;
-        private DataSet ds; private string query;
-        private string connectionString; private bool success;
+        private String connectionString, query;
+        private SqlDataReader reader;
+
         public UserAuth()
         {
             //Instantiate creds here and scrub them for SQL command
@@ -28,20 +28,18 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public String Login(Credentials auth)
         {
-            String status = "false", query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand(query, conn);
+            String status = "false";
+            query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
             
             //New method of inserting parameters
             cmd.Parameters.AddWithValue("@Uname", auth.username);
             cmd.Parameters.AddWithValue("@PW", auth.password);
 
-            //add the rest of the necessary info here
-
             try
             {
                 conn.Open();
-                //rows = cmd.ExecuteNonQuery();
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -78,14 +76,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public string Registration(Credentials auth)
+        public String Registration(Credentials auth)
         {
-            
-            String status = "false", query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
-            SqlConnection conn;
-            SqlCommand cmd;
             int rows;
-
+            String status = "false";
+            query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
@@ -133,9 +128,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
             return status;
         }
-
-        
-
         
         //Will eventually use this for password hashing
         public void Password_Hash()
