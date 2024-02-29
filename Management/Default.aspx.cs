@@ -13,11 +13,12 @@ namespace CPIS_Senior_Project.Management
         protected void Page_Load(object sender, EventArgs e)
         {
             portalStatus.Text = null;
-            Credentials login = (Credentials)Session["Login"];
+            //Credentials login = (Credentials)Session["Login"];
 
-            if (Session["Login"] != null && login.confirmed == true) {
+            if (Session["Login"] != null && (bool)Session["login"] == true) {
                 //Populate Theater Owner Dashboard Here
                 portalStatus.Text = "You have successfully logged in to the theater owner portal!  More features coming soon...";
+                //Todo:  Add a logout button!
             }
             else
             {

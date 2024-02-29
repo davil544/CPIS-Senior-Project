@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
 
 namespace CPIS_Senior_Project.Management
@@ -12,25 +13,41 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Registered"] != null && (bool)Session["Registered"])
+            {
+                mgmt_status_message.Text = "Your account has successfully been created!  Go ahead and try logging in!";
+                Session["Registered"] = null;
+            }
             Session["Login"] = null;
         }
 
         protected void mgmt_Login_Click(object sender, EventArgs e)
         {
-            Credentials login = new Credentials();
-            login.username = mgmt_Username.Text; login.password = mgmt_Password.Text;
+            //This creates the object used to connect to the SQL server for authentication
+            UserAuth loginManager = new UserAuth();
 
-            //This will eventually be tied to the SQL server instead of hard coded in!
-            if (login.username.Equals("movie") && login.password.Equals("theater"))
+            //This creates the object that stores the login credentials
+            Credentials auth = new Credentials();
+            auth.username = mgmt_Username.Text; auth.password = mgmt_Password.Text;
+
+            String authenticated = loginManager.Login(auth);
+
+            if (authenticated.Equals("true"))
             {
-                //login to management portal
-                login.confirmed = true;
-                Session["Login"] = login;
+                Session["Login"] = true;
                 Response.Redirect("~/Management/");
+            }
+            else if (authenticated.Equals("false"))
+            {
+                mgmt_status_message.Text = "Username or Password is incorrect, please try again!";
+            }
+            else if (authenticated.Equals("404"))
+            {
+                mgmt_status_message.Text = "SQL Server unavailable, contact DB admin for assistance!";
             }
             else
             {
-                mgmt_status_message.Text = "Username or Password is incorrect, please try again!";
+                mgmt_status_message.Text = "An unknown error has occured.  Please try again later.";
             }
         }
     }

@@ -9,6 +9,7 @@ using System.Web;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Collections;
 using CPIS_Senior_Project.DataModels;
+using System.Web.UI;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -25,20 +26,72 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        public bool Registration(Credentials auth)
+        public String Login(Credentials auth)
         {
-            bool success = false;
-            int rows;
-            string query = "INSERT INTO Users (Username, Password, " +
-                "Role) VALUES (@Uname, @PW, @Role);";
+            String status = "false", query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            
+            //New method of inserting parameters
+            cmd.Parameters.AddWithValue("@Uname", auth.username);
+            cmd.Parameters.AddWithValue("@PW", auth.password);
+
+            //add the rest of the necessary info here
+
+            try
+            {
+                conn.Open();
+                //rows = cmd.ExecuteNonQuery();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["Username"].ToString() == auth.username && reader["password"].ToString() == auth.password)
+                        {
+                            status = "true";
+                        }
+                    }
+                }
+                else
+                {
+                    status = "false";
+                }
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 11001)
+                {
+                    //This runs when the web server is unable to connect to the SQL Server
+                    status = "404";
+                }
+                else
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return status;
+        }
+
+        public string Registration(Credentials auth)
+        {
+            
+            String status = "false", query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             SqlConnection conn;
             SqlCommand cmd;
+            int rows;
 
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
-            cmd.Parameters.Add("@Uname", SqlDbType.VarChar, 50).Value = auth.username;
-            cmd.Parameters.Add("@PW", SqlDbType.VarChar, 50).Value = auth.password;
+            //Old method of inserting parameters
+            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.username;
+            cmd.Parameters.Add("@PW", SqlDbType.NVarChar, 50).Value = auth.password;
             cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.role;
 
             //add the rest of the necessary info here
@@ -49,77 +102,40 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
-                    success = true;
+                    status = "success";
                 }
                 else
                 {
-                    success = false;
+                    status = "fail";
                 }
             }
             catch (SqlException ex)
             {
-                throw new Exception(ex.Message);
-                //conn.Close();
-                //return false;
+                if (ex.Number == 2627)
+                {
+                    //This runs if the account already exists in the database
+                    status = "exists";
+                }
+                else if (ex.Number == 11001)
+                {
+                    //This runs when the web server is unable to connect to the SQL Server
+                    status = "404";
+                }
+                else
+                {
+                    throw new Exception(ex.Message);
+                }
             }
             finally
             {
                 conn.Close();
             }
 
-            return success;
+            return status;
         }
 
-        //Either get this working or change it to show the data instead!
-        public String output()
-        {
-            return "";
-        }
+        
 
-        public bool login(Credentials auth)
-        {
-            bool success = false;
-            int rows;
-            string query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
-            SqlConnection conn;
-            SqlCommand cmd;
-            //"SELECT Count(*) FROM Users where Username = @Uname AND Password = @PW;"
-
-            conn = new SqlConnection(connectionString);
-            cmd = new SqlCommand(query, conn);
-
-            //This is causing issues showing the row results, works without the @ vars
-            cmd.Parameters.Add("@Uname", SqlDbType.VarChar, 50).Value = auth.username;
-            cmd.Parameters.Add("@PW", SqlDbType.VarChar, 50).Value = auth.password;
-
-            //add the rest of the necessary info here
-
-            try
-            {
-                conn.Open();
-                rows = cmd.ExecuteNonQuery();
-                if (rows > 0)
-                {
-                    success = true;
-                }
-                else
-                {
-                    success = false;
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-                //conn.Close();
-                //return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return success;
-        }
         
         //Will eventually use this for password hashing
         public void Password_Hash()

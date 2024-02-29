@@ -30,10 +30,12 @@
                 </td>
             </tr>
         </table>
+
         
-        <br />
+        <br /> 
         <asp:Label ID="mgmt_status_message" runat="server"></asp:Label>
-        <br />
+        <br /><br />
+        <a href="LoginRegistration.aspx">Click here to sign up for an account!</a>
     </main>
 </asp:Content>
 
