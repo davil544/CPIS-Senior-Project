@@ -27,7 +27,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
-            
+
             //New method of inserting parameters
             cmd.Parameters.AddWithValue("@Uname", auth.username);
             cmd.Parameters.AddWithValue("@PW", auth.password);
@@ -74,11 +74,19 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public String Registration(Credentials auth)
         {
+            //Checks if fields contain data, prevents blank usernames or passwords
+            if (auth.username.Equals("") || auth.password.Equals(""))
+            {
+                return "emptyField";
+            }
+
             int rows;
             String status = "false";
             query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
+
+            
 
             //Old method of inserting parameters
             cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.username;
