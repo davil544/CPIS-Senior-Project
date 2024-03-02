@@ -7,7 +7,11 @@ namespace CPIS_Senior_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Login"] != null && (bool)Session["login"] == true)
+            {
+                loginButton.InnerText = "Logout";
+            }
+            //Populate Theater Owner Dashboard Here
         }
     }
 }

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Web;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System.Collections;
 using CPIS_Senior_Project.DataModels;
-using System.Web.UI;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -47,6 +42,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     {
                         if (reader["Username"].ToString() == auth.username && reader["password"].ToString() == auth.password)
                         {
+                            //This runs when a valid match is found in the database
                             status = "true";
                         }
                     }
@@ -58,7 +54,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 11001)
+                if (ex.Number == 11001 || ex.Number == 40613)
                 {
                     //This runs when the web server is unable to connect to the SQL Server
                     status = "404";
@@ -89,8 +85,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
             cmd.Parameters.Add("@PW", SqlDbType.NVarChar, 50).Value = auth.password;
             cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.role;
 
-            //add the rest of the necessary info here
-
             try
             {
                 conn.Open();
@@ -111,7 +105,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     //This runs if the account already exists in the database
                     status = "exists";
                 }
-                else if (ex.Number == 11001)
+                else if (ex.Number == 11001 || ex.Number == 40613)
                 {
                     //This runs when the web server is unable to connect to the SQL Server
                     status = "404";
