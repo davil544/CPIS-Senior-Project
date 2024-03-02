@@ -13,6 +13,10 @@ namespace CPIS_Senior_Project.Management
                 mgmt_status_message.Text = "Your account has successfully been created!  Go ahead and try logging in!";
                 Session["Registered"] = null;
             }
+            else if (Session["Login"] != null && (bool)Session["login"] == true)
+            {
+                mgmt_status_message.Text = "You have successfully been logged out!";
+            }
             Session["Login"] = null;
         }
 
