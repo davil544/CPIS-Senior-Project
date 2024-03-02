@@ -11,7 +11,6 @@ namespace CPIS_Senior_Project
             {
                 loginButton.InnerText = "Logout";
             }
-            //Populate Theater Owner Dashboard Here
         }
     }
 }
