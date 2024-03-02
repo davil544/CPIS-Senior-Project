@@ -41,6 +41,10 @@ namespace CPIS_Senior_Project.Management
             {
                 mgmt_status_message.Text = "SQL Server unavailable, contact DB admin for assistance!";
             }
+            else if (registered == "emptyField")
+            {
+                mgmt_status_message.Text = "Reqired field is empty, try again!";
+            }
             else
             {
                 mgmt_status_message.Text = "Registration Failed!";
