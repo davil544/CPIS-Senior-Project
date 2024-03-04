@@ -43,7 +43,8 @@ namespace CPIS_Senior_Project.Management
                 {
                     try
                     {
-                        auth.CC.CardNumber = Int32.Parse(cc_number.Text);
+                        //TODO:  Put in regex to strip out all characters except numbers and ensure the format is correct
+                        auth.CC.CardNumber = cc_number.Text;
                         auth.CC.ExpirationDate = cc_expiration.Text;
                         auth.CC.CVV = Int16.Parse(cc_cvv.Text);
                     }
