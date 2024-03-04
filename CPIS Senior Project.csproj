@@ -202,7 +202,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessLayer\UserAuth.cs" />
+    <Compile Include="DataAccessLayer\Authentication.cs" />
     <Compile Include="DataModels\Account.cs" />
     <Compile Include="DataModels\CreditCard.cs" />
     <Compile Include="Default.aspx.cs">

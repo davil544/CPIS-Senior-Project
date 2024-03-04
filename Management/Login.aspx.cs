@@ -23,7 +23,7 @@ namespace CPIS_Senior_Project.Management
         protected void mgmt_Login_Click(object sender, EventArgs e)
         {
             //This creates the object used to connect to the SQL server for authentication
-            UserAuth loginManager = new UserAuth();
+            Authentication loginManager = new Authentication();
 
             //This creates the object that stores the login credentials
             Account auth = new Account();

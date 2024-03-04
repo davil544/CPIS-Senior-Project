@@ -8,7 +8,7 @@ using CPIS_Senior_Project.DataModels;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
-    public class UserAuth
+    public class Authentication
     {
 
         private SqlConnection conn; private SqlCommand cmd;
@@ -21,7 +21,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             wrongPass = "Username or Password is incorrect, please try again!",
             failed = "Registration Failed! An unknown error has occured!";
 
-        public UserAuth()
+        public Authentication()
         {
             //Instantiate creds here and scrub them for SQL command
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
