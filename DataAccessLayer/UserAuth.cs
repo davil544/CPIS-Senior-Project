@@ -94,7 +94,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
-
+            //TODO:  Create DB and foreign key setups to make account with necessary info
             
 
             //Old method of inserting parameters

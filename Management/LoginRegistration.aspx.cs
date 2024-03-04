@@ -8,8 +8,6 @@ namespace CPIS_Senior_Project.Management
 {
     public partial class LoginRegistration : System.Web.UI.Page
     {
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["Login"] = null;
@@ -45,19 +43,18 @@ namespace CPIS_Senior_Project.Management
                 {
                     try
                     {
-                        CreditCard cc = new CreditCard();
-                        cc.CardNumber = Int16.Parse(cc_number.Text);
-                        cc.ExpirationDate = cc_expiration.Text;
-                        cc.CVV = Int16.Parse(cc_cvv.Text);
+                        auth.CC.CardNumber = Int32.Parse(cc_number.Text);
+                        auth.CC.ExpirationDate = cc_expiration.Text;
+                        auth.CC.CVV = Int16.Parse(cc_cvv.Text);
                     }
                     catch (FormatException)
                     {
                         status = "Please only use numbers when filling out credit card info!";
                         valid = false;
                     }
+                    auth.FullName = name.Text;
                 }
             }
-            
 
             if (valid)
             {
