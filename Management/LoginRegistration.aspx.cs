@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.SqlClient;
 using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
+using Microsoft.Ajax.Utilities;
 
 namespace CPIS_Senior_Project.Management
 {
@@ -19,35 +21,70 @@ namespace CPIS_Senior_Project.Management
             UserAuth loginManager = new UserAuth();
 
             //This creates the object that stores the login credentials
-            Credentials auth = new Credentials();
-            auth.username = mgmt_Username.Text;
-            auth.password = mgmt_Password.Text;
+            Account auth = new Account();
+            auth.Username = mgmt_Username.Text;
+            auth.Password = mgmt_Password.Text;
+
+            bool valid = true;  String status = "";
             
-            //This is hard coded in until the registration form is finished
-            //Will eventually be able to choose between Theater & Customer
-            auth.role = "Theater";
-
-            String registered = loginManager.Registration(auth);
-
-            if (registered == "success") {
-                Session["Registered"] = true;
-                Response.Redirect("~/Management/Login");
-            }
-            else if (registered == "exists")
+            //Make new table for CC #s in SQL server, link cards to user via private key
+            if (theaterRole.Checked)
             {
-                mgmt_status_message.Text = "Account Already Exists!";
-            }
-            else if (registered == "404")
-            {
-                mgmt_status_message.Text = "SQL Server unavailable, contact DB admin for assistance!";
-            }
-            else if (registered == "emptyField")
-            {
-                mgmt_status_message.Text = "Reqired field is empty, try again!";
+                auth.Role = "Theater";
             }
             else
             {
-                mgmt_status_message.Text = "Registration Failed!";
+                auth.Role = "Customer";
+                //check if null here, show error code if so, maybe use try catch for multiple error codes! (Input Validation too?)
+                if (name.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
+                {
+                    status = "Reqired field is empty, try again!";
+                    valid = false;
+                }
+                else
+                {
+                    try
+                    {
+                        CreditCard cc = new CreditCard();
+                        cc.CardNumber = Int16.Parse(cc_number.Text);
+                        cc.ExpirationDate = cc_expiration.Text;
+                        cc.CVV = Int16.Parse(cc_cvv.Text);
+                    }
+                    catch (FormatException)
+                    {
+                        status = "Please only use numbers when filling out credit card info!";
+                        valid = false;
+                    }
+                }
+            }
+            
+
+            if (valid)
+            {
+                status = loginManager.Registration(auth);
+            }
+
+            if (status == "success") {
+                Session["Registered"] = true;
+                Response.Redirect("~/Management/Login");
+            }
+            else
+            {
+                mgmt_status_message.Text = status;
+            }
+        }
+
+        public void btnRole_Click(object sender, EventArgs e)
+        {
+            if (theaterRole.Checked)
+            {
+                theaterForm.Visible = true;
+                customerForm.Visible = false;
+            }
+            else
+            {
+                theaterForm.Visible = false;
+                customerForm.Visible = true;
             }
         }
     }

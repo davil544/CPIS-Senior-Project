@@ -26,8 +26,8 @@ namespace CPIS_Senior_Project.Management
             UserAuth loginManager = new UserAuth();
 
             //This creates the object that stores the login credentials
-            Credentials auth = new Credentials();
-            auth.username = mgmt_Username.Text; auth.password = mgmt_Password.Text;
+            Account auth = new Account();
+            auth.Username = mgmt_Username.Text; auth.Password = mgmt_Password.Text;
 
             String authenticated = loginManager.Login(auth);
 
@@ -43,6 +43,10 @@ namespace CPIS_Senior_Project.Management
             else if (authenticated.Equals("404"))
             {
                 mgmt_status_message.Text = "SQL Server unavailable, contact DB admin for assistance!";
+            }
+            else if (authenticated.Equals("empty"))
+            {
+                mgmt_status_message.Text = "Reqired field is empty, try again!";
             }
             else
             {

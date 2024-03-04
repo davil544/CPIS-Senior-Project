@@ -21,16 +21,21 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        public String Login(Credentials auth)
+        public String Login(Account auth)
         {
+            if (auth.Username.Equals("") || auth.Password.Equals(""))
+            {
+                return "empty";
+            }
+
             String status = "false";
             query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
             //New method of inserting parameters
-            cmd.Parameters.AddWithValue("@Uname", auth.username);
-            cmd.Parameters.AddWithValue("@PW", auth.password);
+            cmd.Parameters.AddWithValue("@Uname", auth.Username);
+            cmd.Parameters.AddWithValue("@PW", auth.Password);
 
             try
             {
@@ -40,7 +45,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 {
                     while (reader.Read())
                     {
-                        if (reader["Username"].ToString() == auth.username && reader["password"].ToString() == auth.password)
+                        if (reader["Username"].ToString() == auth.Username && reader["password"].ToString() == auth.Password)
                         {
                             //This runs when a valid match is found in the database
                             status = "true";
@@ -59,6 +64,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     //This runs when the web server is unable to connect to the SQL Server
                     status = "404";
                 }
+                else if(ex.Number == 40615)
+                {
+                    status = "notAuthorized";  //put in exception handling to tell user to get whitelisted
+                }
                 else
                 {
                     throw new Exception(ex.Message);
@@ -72,12 +81,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public String Registration(Credentials auth)
+        public String Registration(Account auth)
         {
             //Checks if fields contain data, prevents blank usernames or passwords
-            if (auth.username.Equals("") || auth.password.Equals(""))
+            if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
-                return "emptyField";
+                return "Reqired field is empty, try again!";
             }
 
             int rows;
@@ -89,9 +98,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
             
 
             //Old method of inserting parameters
-            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.username;
-            cmd.Parameters.Add("@PW", SqlDbType.NVarChar, 50).Value = auth.password;
-            cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.role;
+            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
+            cmd.Parameters.Add("@PW", SqlDbType.NVarChar, 50).Value = auth.Password;
+            cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.Role;
 
             try
             {
@@ -103,7 +112,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else
                 {
-                    status = "fail";
+                    status = "Registration Failed!";
                 }
             }
             catch (SqlException ex)
@@ -111,12 +120,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 if (ex.Number == 2627)
                 {
                     //This runs if the account already exists in the database
-                    status = "exists";
+                    status = "Account Already Exists!";
                 }
                 else if (ex.Number == 11001 || ex.Number == 40613)
                 {
                     //This runs when the web server is unable to connect to the SQL Server
-                    status = "404";
+                    status = "SQL Server unavailable, contact DB admin for assistance!";
                 }
                 else
                 {
