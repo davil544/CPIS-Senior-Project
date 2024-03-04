@@ -12,23 +12,29 @@ namespace CPIS_Senior_Project.DataAccessLayer
     {
 
         private SqlConnection conn; private SqlCommand cmd;
-        private String connectionString, query;
+        private string connectionString, query;
         private SqlDataReader reader;
+        private const string sql404 = "SQL Server unavailable, contact DB admin for assistance!", 
+            unauthorized = "You do not have permission to access the database!  Contact the DB admin for assistance!",
+            empty = "Reqired field is empty, try again!", exists = "Account Already Exists!",
+            wakingUp = "SQL Server is still starting up, try again in a few seconds!",
+            wrongPass = "Username or Password is incorrect, please try again!",
+            failed = "Registration Failed! An unknown error has occured!";
 
         public UserAuth()
         {
             //Instantiate creds here and scrub them for SQL command
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
-
-        public String Login(Account auth)
+        //TODO:  Change if else statements for errors to switch case statements in Login and Registration functions
+        public string Login(Account auth)
         {
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
-                return "empty";
+                return empty;
             }
 
-            String status = "false";
+            string status = "false";
             query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
@@ -54,19 +60,25 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else
                 {
-                    status = "false";
+                    status = wrongPass;
                 }
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 11001 || ex.Number == 40613)
+                if (ex.Number == 11001)
                 {
                     //This runs when the web server is unable to connect to the SQL Server
-                    status = "404";
+                    status = sql404;
+                }
+                else if (ex.Number == 40613)
+                {
+                    //This runs if the query has timed out before the SQL server could start
+                    status = wakingUp;
                 }
                 else if(ex.Number == 40615)
                 {
-                    status = "notAuthorized";  //put in exception handling to tell user to get whitelisted
+                    //This runs when the user has not been whitelisted on the SQL Server
+                    status = unauthorized;
                 }
                 else
                 {
@@ -81,16 +93,16 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public String Registration(Account auth)
+        public string Registration(Account auth)
         {
             //Checks if fields contain data, prevents blank usernames or passwords
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
-                return "Reqired field is empty, try again!";
+                return empty;
             }
 
             int rows;
-            String status = "false";
+            string status = failed;
             query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
@@ -112,7 +124,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else
                 {
-                    status = "Registration Failed!";
+                    status = failed;
                 }
             }
             catch (SqlException ex)
@@ -120,12 +132,22 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 if (ex.Number == 2627)
                 {
                     //This runs if the account already exists in the database
-                    status = "Account Already Exists!";
+                    status = exists;
                 }
-                else if (ex.Number == 11001 || ex.Number == 40613)
+                else if (ex.Number == 11001)
                 {
                     //This runs when the web server is unable to connect to the SQL Server
-                    status = "SQL Server unavailable, contact DB admin for assistance!";
+                    status = sql404;
+                }
+                else if (ex.Number == 40613)
+                {
+                    //This runs if the query has timed out before the SQL server could start
+                    status = wakingUp;
+                }
+                else if (ex.Number == 40615)
+                {
+                    //This runs when the user has not been whitelisted on the SQL Server
+                    status = unauthorized;
                 }
                 else
                 {

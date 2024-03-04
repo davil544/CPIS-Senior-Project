@@ -29,28 +29,17 @@ namespace CPIS_Senior_Project.Management
             Account auth = new Account();
             auth.Username = mgmt_Username.Text; auth.Password = mgmt_Password.Text;
 
-            String authenticated = loginManager.Login(auth);
+            string authenticated = loginManager.Login(auth);
 
             if (authenticated.Equals("true"))
             {
                 Session["Login"] = true;
                 Response.Redirect("~/Management/");
             }
-            else if (authenticated.Equals("false"))
-            {
-                mgmt_status_message.Text = "Username or Password is incorrect, please try again!";
-            }
-            else if (authenticated.Equals("404"))
-            {
-                mgmt_status_message.Text = "SQL Server unavailable, contact DB admin for assistance!";
-            }
-            else if (authenticated.Equals("empty"))
-            {
-                mgmt_status_message.Text = "Reqired field is empty, try again!";
-            }
             else
             {
-                mgmt_status_message.Text = "An unknown error has occured.  Please try again later.";
+                //This will show an error message if authentication fails
+                mgmt_status_message.Text = authenticated;
             }
         }
     }

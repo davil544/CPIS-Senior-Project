@@ -23,7 +23,7 @@ namespace CPIS_Senior_Project.Management
             auth.Username = mgmt_Username.Text;
             auth.Password = mgmt_Password.Text;
 
-            bool valid = true;  String status = "";
+            bool valid = true;  string status = "";
             
             //Make new table for CC #s in SQL server, link cards to user via private key
             if (theaterRole.Checked)
@@ -75,6 +75,7 @@ namespace CPIS_Senior_Project.Management
 
         public void btnRole_Click(object sender, EventArgs e)
         {
+            //Maybe reinitialize all text boxes when radio button is changed
             if (theaterRole.Checked)
             {
                 theaterForm.Visible = true;
