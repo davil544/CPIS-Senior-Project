@@ -34,7 +34,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 return empty;
             }
 
-            string status = "false";
+            string status = wrongPass;
             query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
@@ -60,6 +60,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else
                 {
+                    //Not sure if this is necessary, redundant code?
                     status = wrongPass;
                 }
             }
@@ -124,6 +125,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else
                 {
+                    //Not sure if this is necessary, redundant code?
                     status = failed;
                 }
             }
