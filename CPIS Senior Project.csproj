@@ -205,6 +205,7 @@
     <Compile Include="DataAccessLayer\Authentication.cs" />
     <Compile Include="DataModels\Account.cs" />
     <Compile Include="DataModels\CreditCard.cs" />
+    <Compile Include="DataModels\Movie.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,6 +222,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\MoviePoster.ashx.cs">
+      <DependentUpon>MoviePoster.ashx</DependentUpon>
     </Compile>
     <Compile Include="Management\LoginRegistration.aspx.cs">
       <DependentUpon>LoginRegistration.aspx</DependentUpon>
@@ -268,6 +272,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Handlers\MoviePoster.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -12,7 +12,7 @@ namespace CPIS_Senior_Project.Management
             if (Session["Login"] != null && (bool)Session["login"] == true) {
                 //Populate Theater Owner Dashboard Here
                 portalStatus.Text = "You have successfully logged in to the theater owner portal!  More features coming soon...";
-                //Todo:  Add a logout button!
+                greeting.Text += "Theater Name Here!";
             }
             else
             {
