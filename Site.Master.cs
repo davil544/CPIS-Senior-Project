@@ -10,6 +10,7 @@ namespace CPIS_Senior_Project
             if (Session["Login"] != null && (bool)Session["login"] == true)
             {
                 loginButton.InnerText = "Logout";
+                LoggedInItems.Text = "<li class=\"nav-item\"><a class=\"nav-link\" runat=\"server\" href=\"/Management\">Movie Management</a></li>";
             }
         }
     }

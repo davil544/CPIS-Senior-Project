@@ -15,6 +15,15 @@ namespace CPIS_Senior_Project
     {
 
         /// <summary>
+        /// LoggedInItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LoggedInItems;
+
+        /// <summary>
         /// loginButton control.
         /// </summary>
         /// <remarks>
