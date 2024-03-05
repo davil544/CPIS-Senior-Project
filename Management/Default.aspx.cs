@@ -6,17 +6,17 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            portalStatus.Text = null;
-            //Credentials login = (Credentials)Session["Login"];
+            //greeting.Text = null;
 
             if (Session["Login"] != null && (bool)Session["login"] == true) {
                 //Populate Theater Owner Dashboard Here
-                portalStatus.Text = "You have successfully logged in to the theater owner portal!  More features coming soon...";
-                greeting.Text += "Theater Name Here!";
+                greeting.Text = "Welcome, Theater Name Here!";
+                //Create a for loop that populates the movies from the database
+                //after page design is complete, store statically until then
             }
             else
             {
-                portalStatus.Text = "Something went wrong, redirecting back to the login page...";
+                greeting.Text = "Something went wrong, redirecting back to the login page...";
                 Response.Redirect("~/Management/Login.aspx");
             }
         }
