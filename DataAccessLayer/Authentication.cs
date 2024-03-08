@@ -14,6 +14,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         private SqlConnection conn; private SqlCommand cmd;
         private string connectionString, query;
         private SqlDataReader reader;
+        //TODO:  Add these strings into its own object that can be called from any function!
         private const string sql404 = "SQL Server unavailable, contact DB admin for assistance!", 
             unauthorized = "You do not have permission to access the database!  Contact the DB admin for assistance!",
             empty = "Reqired field is empty, try again!", exists = "Account Already Exists!",
