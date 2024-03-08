@@ -10,5 +10,6 @@
         public string postalCode { get; set; }
         public string country { get; set; }
         public string hours { get; set; }
+        public Movie[] movies { get; set; }
     }
 }
