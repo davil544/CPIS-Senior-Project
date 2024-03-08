@@ -3,40 +3,39 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main>
-        <section class="row" aria-labelledby="aspnetTitle">
+        <section class="row" aria-labelledby="MoviesTitle">
             <div class="p-4 mb-4 bg-light rounded-3">
                 <div class="container-fluid py-5">
-                    <h1 id="aspnetTitle" class="display-5 fw-bold">ASP.NET</h1>
-                    <p class="col-md-8 fs-4">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+                    <h1 id="MoviesTitle" class="display-5 fw-bold">Movies.net</h1>
+                    <p class="col-md-8 fs-4">The Movie theater website is something that allows movie theater customers, employees, and owners to achive everthing they need within the movie theater </p>
                     <a href="http://www.asp.net" class="btn btn-primary btn-md" type="button">Learn More &raquo;</a>
                 </div>
            </div>
         </section>
 
         <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
+            <section class="col-md-4" aria-labelledby="OwnersTitle">
+                <h2 id="OwnersTitle">Owners</h2>
                 <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
+                 Movies.net allows movie owners to view ticket sales. As well as list or delist movies that came out to make sure that popular titles are shown and nonpopular ones are delisted. 
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
                 </p>
             </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
+            <section class="col-md-4" aria-labelledby="EmployeesTitle">
+                <h2 id="EmployeesTitle">Employees</h2>
                 <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+                   Allows employees to check hours of work and avliable hours to work. So that they can book hours to work at there convience 
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
                 </p>
             </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
+            <section class="col-md-4" aria-labelledby="CustimersTitle">
+                <h2 id="CustimersTitle">Customers</h2>
                 <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                    Customers can buy review movies, write reviewsa for movies they watched, and buy tickets for movies they want to watch.
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
