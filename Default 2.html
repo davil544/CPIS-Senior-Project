@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjusted Circles Layout with Text</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            min-height: 100vh;
+            position: relative; /* Needed for absolute positioning */
+        }
+
+        .content-wrapper {
+            transform-origin: top center;
+            position: relative; /* Ensures that scaling is relative to the wrapper's position */
+            width: fit-content; /* Ensures the wrapper only takes up as much space as its content */
+        }
+
+        .rectangle {
+            width: 1100px;
+            height: 500px;
+            background-color: white;
+            margin-top: 20px; /* 20px from the top */
+            position: relative; /* Center in document flow */
+            z-index: 2; /* Ensure it's above other shapes */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60pt; /* Font size for the text */
+            color: black; /* Text color */
+        }
+
+        .red-rectangle {
+            width: 50px; /* Updated width */
+            height: 500px;
+            background-color: red;
+            position: absolute;
+            top: 20px;
+        }
+
+        .red-1 { left: calc(50% - 550px - 50px - 50px); }
+        .red-2 { left: calc(50% - 550px - 50px - 150px); }
+        .red-3 { left: calc(50% - 550px - 50px - 250px); }
+        .red-4 { right: calc(50% - 550px - 50px - 50px); }
+        .red-5 { right: calc(50% - 550px - 50px - 150px); }
+        .red-6 { right: calc(50% - 550px - 50px - 250px); }
+
+        .circle {
+            width: 100px;
+            height: 50px;
+            background-color: yellow;
+            border-radius: 50px / 25px;
+            position: absolute;
+            top: calc(20px + 500px + 50px); /* Below the rectangle */
+        }
+
+        .circle-1 { left: calc(50% - 350px); transform: rotate(-20deg);}
+        .circle-2 { right: calc(50% - 350px); transform: rotate(20deg);}
+
+        .red-rectangle-center {
+            width: 900px;
+            height: 6px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .red-rectangle-center-2 {
+            width: 1100px;
+            height: 7px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .red-rectangle-center-3 {
+            width: 1300px;
+            height: 8px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .white-rectangle-curved {
+            width: 300px;
+            height: 100px;
+            background-color: white;
+            border-radius: 12px;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px);
+            left: -200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 30pt;
+        }
+
+        .image-slider {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px + 100px + 100px);
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1200px) {
+            .content-wrapper { transform: scale(0.8); }
+        }
+
+        @media (max-width: 992px) {
+            .content-wrapper { transform: scale(0.6); }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper { transform: scale(0.4); }
+        }
+
+        @media (max-width: 576px) {
+            .content-wrapper { transform: scale(0.2); }
+        }
+    </style>
+    </head>
+
+
+  
+<body>
+    <div class="content-wrapper">
+        <div class="rectangle">Group 1 Project</div>
+        <div class="red-rectangle red-1"></div>
+        <div class="red-rectangle red-2"></div>
+        <div class="red-rectangle red-3"></div>
+        <div class="red-rectangle red-4"></div>
+        <div class="red-rectangle red-5"></div>
+        <div class="red-rectangle red-6"></div>
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="red-rectangle-center"></div>
+        <div class="red-rectangle-center-2"></div>
+        <div class="red-rectangle-center-3"></div>
+        <div class="white-rectangle-curved">For You</div>
+        <!-- Image Slider -->
+        <div class="image-slider">
+            <img src="image1.jpg" alt="Image 1" class="slider-image">
+            <img src="image1.jpg" alt="Image 2" class="slider-image">
+            <img src="image1.jpg" alt="Image 3" class="slider-image">
+            <img src="image1.jpg" alt="Image 4" class="slider-image">
+            <img src="image1.jpg" alt="Image 5" class="slider-image">
+            <img src="image1.jpg" alt="Image 6" class="slider-image">
+            <img src="image1.jpg" alt="Image 7" class="slider-image">
+            <div class="slider-control control-left">&#10094;</div>
+            <div class="slider-control control-right">&#10095;</div>
+        </div>
+    </div>
+</body>
+</html>
