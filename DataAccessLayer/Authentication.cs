@@ -56,7 +56,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                         if (reader["Username"].ToString() == auth.Username && reader["password"].ToString() == auth.Password)
                         {
                             //This runs when a valid match is found in the database
-                            status = "true";
+                            status = "valid";
 
                             //This will run to retrieve the user's relevant data
                             auth.Role = reader["Role"].ToString();

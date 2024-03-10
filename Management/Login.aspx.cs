@@ -31,7 +31,7 @@ namespace CPIS_Senior_Project.Management
 
             auth = loginManager.Login(auth);
 
-            if (auth.status.Equals("true"))
+            if (auth.status.Equals("valid"))
             {
                 Session["Login"] = true;
                 Session["Account"] = auth;
