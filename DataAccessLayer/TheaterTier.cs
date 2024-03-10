@@ -1,6 +1,7 @@
 ﻿using CPIS_Senior_Project.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace CPIS_Senior_Project.DataAccessLayer
@@ -10,6 +11,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
         private SqlConnection conn; private SqlCommand cmd;
         private string connectionString, query;
         private SqlDataReader reader;
+
+        public TheaterTier()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
+        }
 
         public List<Movie> getMoviesList()
         {
@@ -106,7 +112,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else if (ex.Number == 40615)
                 {
-                    //This runs when the user has not been whitelisted on the SQL Server
+                    //This runs when the user's IP has not been whitelisted on the SQL Server
                     status = unauthorized;
                 } */
                 throw new Exception(ex.Message);

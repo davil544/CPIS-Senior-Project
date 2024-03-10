@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPIS_Senior_Project.DataModels;
+using System;
 
 namespace CPIS_Senior_Project.Management
 {
@@ -6,11 +7,17 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //greeting.Text = null;
-
-            if (Session["Login"] != null && (bool)Session["login"] == true) {
+            if (Session["Login"] != null && (bool)Session["Login"] == true) {
+                Account user = (Account)Session["Account"];
                 //Populate Theater Owner Dashboard Here
-                greeting.Text = "Welcome, Theater Name Here!";
+                if (user.FullName == null || user.FullName.Equals("")) {
+                    greeting.Text = "Welcome, Theater Name Here!"; //May not be necessary once user field is marked as required in DB
+                }
+                else
+                {
+                    greeting.Text = "Welcome, " + user.FullName + "!";
+                }
+                
                 //Create a for loop that populates the movies from the database
                 //after page design is complete, store statically until then
             }

@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.Management
             {
                 mgmt_status_message.Text = "You have successfully been logged out!";
             }
-            Session["Login"] = null;
+            Session["Login"] = null; Session["Account"] = null;
         }
 
         protected void mgmt_Login_Click(object sender, EventArgs e)
@@ -34,6 +34,7 @@ namespace CPIS_Senior_Project.Management
             if (authenticated.Equals("true"))
             {
                 Session["Login"] = true;
+                Session["Account"] = auth;
                 Response.Redirect("~/Management/");
             }
             else
