@@ -150,13 +150,13 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Panel customerForm;
 
         /// <summary>
-        /// name control.
+        /// customerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox name;
+        protected global::System.Web.UI.WebControls.TextBox customerName;
 
         /// <summary>
         /// cc_number control.

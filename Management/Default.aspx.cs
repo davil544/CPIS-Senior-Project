@@ -10,14 +10,9 @@ namespace CPIS_Senior_Project.Management
             if (Session["Login"] != null && (bool)Session["Login"] == true) {
                 Account user = (Account)Session["Account"];
                 //Populate Theater Owner Dashboard Here
-                if (user.FullName == null || user.FullName.Equals("")) {
-                    greeting.Text = "Welcome, Theater Name Here!"; //May not be necessary once user field is marked as required in DB
-                }
-                else
-                {
-                    greeting.Text = "Welcome, " + user.FullName + "!";
-                }
-                
+
+                greeting.Text = "Welcome, " + user.FullName + "!";
+
                 //Create a for loop that populates the movies from the database
                 //after page design is complete, store statically until then
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
 using Microsoft.Ajax.Utilities;
@@ -11,6 +12,7 @@ namespace CPIS_Senior_Project.Management
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["Login"] = null;
+            State.Attributes.Add("maxlength", "2");
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -22,6 +24,7 @@ namespace CPIS_Senior_Project.Management
             Account auth = new Account();
             auth.Username = mgmt_Username.Text;
             auth.Password = mgmt_Password.Text;
+            
 
             bool valid = true;  string status = "";
             
@@ -29,12 +32,16 @@ namespace CPIS_Senior_Project.Management
             if (theaterRole.Checked)
             {
                 auth.Role = "Theater";
+                auth.FullName = theaterName.Text;
+                auth.MyTheater = new Theater();
             }
             else
             {
                 auth.Role = "Customer";
                 //check if null here, show error code if so, maybe use try catch for multiple error codes! (Input Validation too?)
-                if (name.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
+                //TODO:  Move this if statement to the Authentication class to clean up redundant code
+                //Already working there for the Theater role so may as well
+                if (customerName.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
                 {
                     status = "Reqired field is empty, try again!";
                     valid = false;
@@ -54,7 +61,7 @@ namespace CPIS_Senior_Project.Management
                         status = "Please only use numbers when filling out credit card info!";
                         valid = false;
                     }
-                    auth.FullName = name.Text;
+                    auth.FullName = customerName.Text;
                 }
             }
 

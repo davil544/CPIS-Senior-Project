@@ -104,7 +104,7 @@
                             <asp:Label runat="server">Name:</asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="name" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="customerName" runat="server"></asp:TextBox>
                         </td>
                         </tr>
                     <tr>
@@ -142,5 +142,5 @@
         <asp:Label ID="mgmt_status_message" runat="server"></asp:Label>
         <br />
     </main>
+    <!-- TODO: Make better IDs for these text boxes -->
 </asp:Content>
-

@@ -2,14 +2,26 @@
 {
     public class Theater
     {
-        public string name {  get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string postalCode { get; set; }
-        public string country { get; set; }
-        public string hours { get; set; }
-        public Movie[] movies { get; set; }
+        public string ID {  get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Hours { get; set; }
+        public Movie[] Movies { get; set; }  //Maybe change this to a list to make it dynamic?
+
+        public Theater()
+        {
+            ID = "";
+            Address1 = "";
+            Address2 = "";
+            City = "";
+            State = "";
+            PostalCode = "";
+            Country = "";
+            Hours = "";
+        }
     }
 }

@@ -29,18 +29,30 @@ namespace CPIS_Senior_Project.Management
             Account auth = new Account();
             auth.Username = mgmt_Username.Text; auth.Password = mgmt_Password.Text;
 
-            string authenticated = loginManager.Login(auth);
+            auth = loginManager.Login(auth);
 
-            if (authenticated.Equals("true"))
+            if (auth.status.Equals("true"))
             {
                 Session["Login"] = true;
                 Session["Account"] = auth;
-                Response.Redirect("~/Management/");
+                if (auth.Role.Equals("Theater"))
+                {
+                    Response.Redirect("~/Management/");
+                }
+                else if (auth.Role.Equals("Customer"))
+                {
+                    Response.Redirect("~/");
+                }
+                else
+                {
+                    mgmt_status_message.Text = "There is an issue with your account, contact sitemaster for assistance!";
+                    Session["Login"] = null; Session["Account"] = null;
+                }
             }
             else
             {
                 //This will show an error message if authentication fails
-                mgmt_status_message.Text = authenticated;
+                mgmt_status_message.Text = auth.status;
             }
         }
     }
