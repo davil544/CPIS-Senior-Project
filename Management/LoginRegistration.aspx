@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Theater Owner Management Portal - Theater Registration" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="LoginRegistration.aspx.cs" Inherits="CPIS_Senior_Project.Management.LoginRegistration" %>
+﻿<%@ Page Title="Theater Owner Management Portal - User Registration" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="LoginRegistration.aspx.cs" Inherits="CPIS_Senior_Project.Management.LoginRegistration" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
