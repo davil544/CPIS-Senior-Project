@@ -1,157 +1,136 @@
 ﻿#home-body {
     margin: 0;
-    padding: 0;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    min-height: 100vh;
-    position: relative; /* Needed for absolute positioning */
-}
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            min-height: 100vh;
+            position: relative; /* Needed for absolute positioning */
+        }
 
-.rectangle {
-    width: 1100px;
-    height: 500px;
-    background-color: white;
-    margin-top: 20px; /* 20px from the top */
-    position: relative; /* Center in document flow */
-    z-index: 2; /* Ensure it's above other shapes */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 60pt; /* Font size for the text */
-    color: black; /* Text color */
-}
+        .content-wrapper {
+            transform-origin: top center;
+            position: relative; /* Ensures that scaling is relative to the wrapper's position */
+            width: fit-content; /* Ensures the wrapper only takes up as much space as its content */
+        }
 
-.red-rectangle {
-    width: 50px; /* Updated width */
-    height: 500px;
-    background-color: red;
-    position: absolute;
-    top: 20px;
-}
+        .rectangle {
+            width: 1100px;
+            height: 500px;
+            background-color: white;
+            margin-top: 20px; /* 20px from the top */
+            position: relative; /* Center in document flow */
+            z-index: 2; /* Ensure it's above other shapes */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60pt; /* Font size for the text */
+            color: black; /* Text color */
+        }
 
-/* Updated positioning for red rectangles */
-.red-1 {
-    left: calc(50% - 550px - 50px - 50px);
-}
-/* 50px from the centered rectangle */
-.red-2 {
-    left: calc(50% - 550px - 50px - 150px);
-}
+        .red-rectangle {
+            width: 50px; /* Updated width */
+            height: 500px;
+            background-color: red;
+            position: absolute;
+            top: 20px;
+        }
 
-.red-3 {
-    left: calc(50% - 550px - 50px - 250px);
-}
+        .red-1 { left: calc(50% - 550px - 50px - 50px); }
+        .red-2 { left: calc(50% - 550px - 50px - 150px); }
+        .red-3 { left: calc(50% - 550px - 50px - 250px); }
+        .red-4 { right: calc(50% - 550px - 50px - 50px); }
+        .red-5 { right: calc(50% - 550px - 50px - 150px); }
+        .red-6 { right: calc(50% - 550px - 50px - 250px); }
 
-.red-4 {
-    right: calc(50% - 550px - 50px - 50px);
-}
+        .circle {
+            width: 100px;
+            height: 50px;
+            background-color: yellow;
+            border-radius: 50px / 25px;
+            position: absolute;
+            top: calc(20px + 500px + 50px); /* Below the rectangle */
+        }
 
-.red-5 {
-    right: calc(50% - 550px - 50px - 150px);
-}
+        .circle-1 { left: calc(50% - 350px); transform: rotate(-20deg);}
+        .circle-2 { right: calc(50% - 350px); transform: rotate(20deg);}
 
-.red-6 {
-    right: calc(50% - 550px - 50px - 250px);
-}
+        .red-rectangle-center {
+            width: 900px;
+            height: 6px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-.circle {
-    width: 100px; /* Width as specified */
-    height: 50px; /* Height as specified */
-    background-color: yellow;
-    border-radius: 50px / 25px; /* Adjusted to make an oval */
-    position: absolute;
-    top: calc(20px + 500px + 50px); /* Below the rectangle */
-}
+        .red-rectangle-center-2 {
+            width: 1100px;
+            height: 7px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-/* Positioning circles */
-.circle-1 {
-    left: calc(50% - 350px);
-    transform: rotate(-20deg);
-}
-/* 700px from center, to the left, rotated 60 degrees */
-.circle-2 {
-    right: calc(50% - 350px);
-    transform: rotate(20deg);
-}
-/* 700px from center, to the right */
+        .red-rectangle-center-3 {
+            width: 1300px;
+            height: 8px;
+            background-color: red;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-.red-rectangle-center {
-    width: 1300px;
-    height: 6px;
-    background-color: red;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px); /* 80px underneath the circles */
-    left: 50%; /* Center the rectangle */
-    transform: translateX(-50%); /* Adjust position to truly center based on its width */
-}
+        .white-rectangle-curved {
+            width: 300px;
+            height: 100px;
+            background-color: white;
+            border-radius: 12px;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px);
+            left: -200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 30pt;
+        }
 
-.red-rectangle-center {
-    width: 900px; /* Updated width to 900px */
-    height: 6px; /* Height remains 6px */
-    background-color: red;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px); /* Position adjusted as before */
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .image-slider {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            position: absolute;
+            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px + 100px + 100px);
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.red-rectangle-center-2 {
-    width: 1100px; /* Width set to 1100px */
-    height: 7px; /* Height set to 7px */
-    background-color: red;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px + 6px + 50px); /* 50px under the first rectangle */
-    left: 50%;
-    transform: translateX(-50%);
-}
+        /* Responsive scaling */
+        @media (max-width: 1200px) {
+            .content-wrapper { transform: scale(0.8); }
+        }
 
-.red-rectangle-center-3 {
-    width: 1300px; /* Width set to 1300px */
-    height: 8px; /* Height set to 8px */
-    background-color: red;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px); /* 50px under the second rectangle */
-    left: 50%;
-    transform: translateX(-50%);
-}
+        @media (max-width: 992px) {
+            .content-wrapper { transform: scale(0.6); }
+        }
 
-.white-rectangle-curved {
-    width: 300px;
-    height: 100px;
-    background-color: white;
-    border-radius: 12px;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px);
-    left: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    font-size: 30pt;
-}
+        @media (max-width: 768px) {
+            .content-wrapper { transform: scale(0.4); }
+        }
 
-/* New Styles for Image Slider */
-.image-slider {
-    width: 80%;
-    max-width: 500px;
-    height: 300px;
-    position: absolute;
-    top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px + 100px + 100px); /* 100px underneath .white-rectangle-curved */
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        @media (max-width: 576px) {
+            .content-wrapper { transform: scale(0.2); }
+        }
 
 .slider-control {
     position: absolute;
