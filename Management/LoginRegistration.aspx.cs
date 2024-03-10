@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Xml.Linq;
 using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
-using Microsoft.Ajax.Utilities;
 
 namespace CPIS_Senior_Project.Management
 {
