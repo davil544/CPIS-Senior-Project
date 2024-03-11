@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.EnterpriseServices.Internal;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
