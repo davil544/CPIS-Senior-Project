@@ -127,6 +127,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Management\AddMovie.aspx" />
+    <Content Include="Management\EditProfile.aspx" />
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
@@ -236,6 +237,13 @@
     </Compile>
     <Compile Include="Management\AddMovie.aspx.designer.cs">
       <DependentUpon>AddMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\LoginRegistration.aspx.cs">
       <DependentUpon>LoginRegistration.aspx</DependentUpon>
