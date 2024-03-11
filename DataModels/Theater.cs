@@ -1,4 +1,6 @@
-﻿namespace CPIS_Senior_Project.DataModels
+﻿using System.Collections.Generic;
+
+namespace CPIS_Senior_Project.DataModels
 {
     public class Theater
     {
@@ -10,7 +12,7 @@
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Hours { get; set; }
-        public Movie[] Movies { get; set; }  //Maybe change this to a list to make it dynamic?
+        public List<Movie> Movies { get; set; }
 
         public Theater()
         {

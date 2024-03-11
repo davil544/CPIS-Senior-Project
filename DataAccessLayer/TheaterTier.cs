@@ -123,5 +123,29 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             return movieList;
         }
+
+        public int GetMovieCount()
+        {
+            query = "SELECT COUNT(*) FROM Movies;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            int count;
+
+            try
+            {
+                conn.Open();
+                count = (int)cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                //TODO:  Implement this in a separate function for reuse between classes
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close ();
+            }
+            return count;
+        }
     }
 }
