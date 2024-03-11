@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.Management
             {
                 mgmt_status_message.Text = "You have successfully been logged out!";
             }
-            Session["Login"] = null;
+            Session["Login"] = null; Session["Account"] = null;
         }
 
         protected void mgmt_Login_Click(object sender, EventArgs e)
@@ -29,17 +29,30 @@ namespace CPIS_Senior_Project.Management
             Account auth = new Account();
             auth.Username = mgmt_Username.Text; auth.Password = mgmt_Password.Text;
 
-            string authenticated = loginManager.Login(auth);
+            auth = loginManager.Login(auth);
 
-            if (authenticated.Equals("true"))
+            if (auth.status.Equals("valid"))
             {
                 Session["Login"] = true;
-                Response.Redirect("~/Management/");
+                Session["Account"] = auth;
+                if (auth.Role.Equals("Theater"))
+                {
+                    Response.Redirect("~/Management/");
+                }
+                else if (auth.Role.Equals("Customer"))
+                {
+                    Response.Redirect("~/");
+                }
+                else
+                {
+                    mgmt_status_message.Text = "There is an issue with your account, contact sitemaster for assistance!";
+                    Session["Login"] = null; Session["Account"] = null;
+                }
             }
             else
             {
                 //This will show an error message if authentication fails
-                mgmt_status_message.Text = authenticated;
+                mgmt_status_message.Text = auth.status;
             }
         }
     }

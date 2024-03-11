@@ -1,6 +1,7 @@
 ﻿using CPIS_Senior_Project.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace CPIS_Senior_Project.DataAccessLayer
@@ -10,6 +11,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
         private SqlConnection conn; private SqlCommand cmd;
         private string connectionString, query;
         private SqlDataReader reader;
+
+        public TheaterTier()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
+        }
 
         public List<Movie> getMoviesList()
         {
@@ -39,40 +45,40 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                     if (reader["Title"] != DBNull.Value)
                     {
-                        movie.title = reader["Title"].ToString();
+                        movie.Title = reader["Title"].ToString();
                     }
                     else
                     {
                         //This code probably won't run ever, DB
                         //doesn't allow null data in this field
-                        movie.title = "No Title Entered";
+                        movie.Title = "No Title Entered";
                     }
 
                     if (reader["Summary"] != DBNull.Value)
                     {
-                        movie.summary = reader["Summary"].ToString();
+                        movie.Summary = reader["Summary"].ToString();
                     }
                     else
                     {
-                        movie.summary = "Summary goes here";
+                        movie.Summary = "Summary goes here";
                     }
 
                     if (reader["ReleaseYear"] != DBNull.Value)
                     {
-                        movie.releaseYear = reader["ReleaseYear"].ToString();
+                        movie.ReleaseYear = reader["ReleaseYear"].ToString();
                     }
                     else
                     {
-                        movie.releaseYear = "2024";
+                        movie.ReleaseYear = "2024";
                     }
 
                     if (reader["Genre"] != DBNull.Value)
                     {
-                        movie.genre = reader["Genre"].ToString();
+                        movie.Genre = reader["Genre"].ToString();
                     }
                     else
                     {
-                        movie.genre = "No Genre Selected";
+                        movie.Genre = "No Genre Selected";
                     }
 
                     if (reader["MPA_Rating"] != DBNull.Value)
@@ -86,7 +92,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                     if (reader["Poster"]  != DBNull.Value)
                     {
-                        movie.poster = (byte[])reader["Poster"];
+                        movie.Poster = (byte[])reader["Poster"];
                     }
 
                     movieList.Add(movie);
@@ -106,7 +112,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 }
                 else if (ex.Number == 40615)
                 {
-                    //This runs when the user has not been whitelisted on the SQL Server
+                    //This runs when the user's IP has not been whitelisted on the SQL Server
                     status = unauthorized;
                 } */
                 throw new Exception(ex.Message);
@@ -116,6 +122,36 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn.Close();
             }
             return movieList;
+        }
+
+        public bool AddMovie (Movie movie)
+        {
+            //TODO: Write code to make this upload data to SQL server
+            return true;
+        }
+
+        public int GetMovieCount()
+        {
+            query = "SELECT COUNT(*) FROM Movies;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            int count;
+
+            try
+            {
+                conn.Open();
+                count = (int)cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                //TODO:  Implement this in a separate function for reuse between classes
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close ();
+            }
+            return count;
         }
     }
 }

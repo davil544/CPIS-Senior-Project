@@ -4,10 +4,12 @@
    <main>
        <h1><asp:Label ID="greeting" runat="server"></asp:Label></h1>
        <p>More features coming soon...</p>
+       <asp:Label ID ="lblMovieCount" runat="server">Number of movies in database: </asp:Label>
         <!-- TODO:  Create Master file for the backend to cater navbar to theater owners -->
        <!-- ALSO TODO:  Make backend system for theater owners to add or remove movies to / from the SQL server or something -->
        <!-- Will likely be a variant of the home page with management features -->
        <div id="movieCatalog">
+           <asp:Button runat="server" Text="Add Movie Listing" OnClick="AddMovie_Click"/>
            <div class="row" style="padding-top: 50px;">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Theater Owner Management Portal - Theater Registration" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="LoginRegistration.aspx.cs" Inherits="CPIS_Senior_Project.Management.LoginRegistration" %>
+﻿<%@ Page Title="Theater Owner Management Portal - User Registration" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="LoginRegistration.aspx.cs" Inherits="CPIS_Senior_Project.Management.LoginRegistration" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
@@ -104,7 +104,7 @@
                             <asp:Label runat="server">Name:</asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="name" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="customerName" runat="server"></asp:TextBox>
                         </td>
                         </tr>
                     <tr>
@@ -142,5 +142,5 @@
         <asp:Label ID="mgmt_status_message" runat="server"></asp:Label>
         <br />
     </main>
+    <!-- TODO: Make better IDs for these text boxes -->
 </asp:Content>
-

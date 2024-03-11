@@ -28,15 +28,16 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
         //TODO:  Change if else statements for errors to switch case statements in Login and Registration functions
-        public string Login(Account auth)
+        public Account Login(Account auth)
         {
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
-                return empty;
+                auth.status = empty;
+                return auth;
             }
 
             string status = wrongPass;
-            query = "SELECT Username, Password FROM Users where Username = @Uname AND Password = @PW;";
+            query = "SELECT Username, Password, Role, Name FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
@@ -55,7 +56,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
                         if (reader["Username"].ToString() == auth.Username && reader["password"].ToString() == auth.Password)
                         {
                             //This runs when a valid match is found in the database
-                            status = "true";
+                            status = "valid";
+
+                            //This will run to retrieve the user's relevant data
+                            auth.Role = reader["Role"].ToString();
+                            auth.FullName = reader["Name"].ToString();
                         }
                     }
                 }
@@ -92,29 +97,61 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn.Close();
             }
 
-            return status;
+            auth.status = status;   
+            return auth;
         }
 
         public string Registration(Account auth)
         {
             //Checks if fields contain data, prevents blank usernames or passwords
-            if (auth.Username.Equals("") || auth.Password.Equals(""))
+            if (auth.Username.Equals("") || auth.Password.Equals("") || auth.FullName.Equals(""))
             {
                 return empty;
             }
 
-            int rows;
-            string status = failed;
-            query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
+            if (auth.Role.Equals("Customer"))
+            {
+                query = "INSERT INTO Users (Username, Password, Role, Name) VALUES (@Uname, @PW, @Role, @Name);";
+            }
+            else if (auth.Role.Equals("Theater"))
+            {
+                query = "INSERT INTO Users (Username, Password, Role, Name, Address1, Address2, City, State, Zip, Country, Hours) " +
+                    "VALUES (@Uname, @PW, @Role, @Name, @Add1, @Add2, @City, @State, @Zip, @Country, @Hours);";
+            }
+            else
+            {
+                return "Role Mismatch, Registration Failed!";
+            }
+
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
+            string status = failed;
+            int rows;
+
+            if (auth.Role.Equals("Customer"))
+            {
+                //insert customer data here
+            }
+            else
+            {
+                cmd.Parameters.Add("@Add1", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address1;
+                cmd.Parameters.Add("@Add2", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address2;
+                cmd.Parameters.Add("@City", SqlDbType.NVarChar, 50).Value = auth.MyTheater.City;
+                cmd.Parameters.Add("@State", SqlDbType.NChar, 2).Value = auth.MyTheater.State;
+                cmd.Parameters.Add("@Zip", SqlDbType.NVarChar, 10).Value = auth.MyTheater.PostalCode;
+                cmd.Parameters.Add("@Country", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Country;
+                cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
+            }
+            
+            //query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             //TODO:  Create DB and foreign key setups to make account with necessary info
             
 
             //Old method of inserting parameters
             cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
             cmd.Parameters.Add("@PW", SqlDbType.NVarChar, 50).Value = auth.Password;
-            cmd.Parameters.Add("@Role", SqlDbType.NChar, 15).Value = auth.Role;
+            cmd.Parameters.Add("@Role", SqlDbType.NVarChar, 15).Value = auth.Role;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = auth.FullName;
 
             try
             {

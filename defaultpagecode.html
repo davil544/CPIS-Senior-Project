@@ -1,5 +1,12 @@
-﻿#home-body {
-    margin: 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjusted Circles Layout with Text</title>
+    <style>
+        body {
+            margin: 0;
             padding: 0;
             background-color: black;
             display: flex;
@@ -85,37 +92,6 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
-        .white-rectangle-curved {
-            width: 300px;
-            height: 100px;
-            background-color: white;
-            border-radius: 12px;
-            position: absolute;
-            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px);
-            left: -200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            font-size: 30pt;
-        }
-
-        .image-slider {
-            width: 80%;
-            max-width: 500px;
-            height: 300px;
-            position: absolute;
-            top: calc(20px + 500px + 50px + 80px + 6px + 50px + 7px + 50px + 150px + 100px + 100px);
-            left: 50%;
-            transform: translateX(-50%);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Responsive scaling */
         @media (max-width: 1200px) {
             .content-wrapper { transform: scale(0.8); }
         }
@@ -132,20 +108,22 @@
             .content-wrapper { transform: scale(0.2); }
         }
 
-.slider-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 24px;
-    user-select: none;
-    z-index: 2;
-}
-
-.control-left {
-    left: 10px;
-}
-
-.control-right {
-    right: 10px;
-}
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="rectangle">Group 1 Project</div>
+        <div class="red-rectangle red-1"></div>
+        <div class="red-rectangle red-2"></div>
+        <div class="red-rectangle red-3"></div>
+        <div class="red-rectangle red-4"></div>
+        <div class="red-rectangle red-5"></div>
+        <div class="red-rectangle red-6"></div>
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="red-rectangle-center"></div>
+        <div class="red-rectangle-center-2"></div>
+        <div class="red-rectangle-center-3"></div>
+          </div>
+</body>
+</html>
