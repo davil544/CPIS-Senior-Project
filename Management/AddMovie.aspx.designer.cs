@@ -24,13 +24,13 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Label lblMovieTitle;
 
         /// <summary>
-        /// title control.
+        /// movieTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox title;
+        protected global::System.Web.UI.WebControls.TextBox movieTitle;
 
         /// <summary>
         /// lblMovieSummary control.
@@ -42,13 +42,13 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Label lblMovieSummary;
 
         /// <summary>
-        /// summary control.
+        /// movieSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox summary;
+        protected global::System.Web.UI.WebControls.TextBox movieSummary;
 
         /// <summary>
         /// lblYear control.
@@ -78,13 +78,13 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Label lblGenre;
 
         /// <summary>
-        /// genre control.
+        /// movieGenre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox genre;
+        protected global::System.Web.UI.WebControls.TextBox movieGenre;
 
         /// <summary>
         /// lblRating control.
@@ -96,13 +96,13 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Label lblRating;
 
         /// <summary>
-        /// movieSummary control.
+        /// movieRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox movieSummary;
+        protected global::System.Web.UI.WebControls.TextBox movieRating;
 
         /// <summary>
         /// lblTimeSlot control.

@@ -9,6 +9,8 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //This is to prevent everyone from being able to upload movies to this service
+            //TODO:  Add check for Theater role
             if (Session["Login"] != null && (bool)Session["Login"] == true) {
                 Account user = (Account)Session["Account"];
                 //Populate Theater Owner Dashboard Here

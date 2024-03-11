@@ -5,11 +5,11 @@
 <table>
     <tr>
         <td> <asp:Label ID ="lblMovieTitle" runat="server">Movie Title:&nbsp;&nbsp;</asp:Label> </td>
-        <td> <asp:TextBox ID="title" runat="server"></asp:TextBox> </td>
+        <td> <asp:TextBox ID="movieTitle" runat="server"></asp:TextBox> </td>
     </tr>
     <tr>
         <td> <asp:Label ID="lblMovieSummary" runat="server">Summary:</asp:Label> </td>
-        <td> <asp:TextBox ID="summary" runat="server"></asp:TextBox> </td>
+        <td> <asp:TextBox ID="movieSummary" runat="server"></asp:TextBox> </td>
     </tr>
     <tr>
         <td> <asp:Label ID="lblYear" runat="server">Release Year:</asp:Label> </td>
@@ -17,11 +17,11 @@
     </tr>
     <tr>
         <td> <asp:Label ID="lblGenre" runat="server">Genre:</asp:Label> </td>
-        <td> <asp:TextBox ID="genre" runat="server"></asp:TextBox> </td>
+        <td> <asp:TextBox ID="movieGenre" runat="server"></asp:TextBox> </td>
     </tr>
     <tr>
         <td> <asp:Label ID="lblRating" runat="server">MPA Rating:</asp:Label> </td>
-        <td> <asp:TextBox ID="movieSummary" runat="server"></asp:TextBox> </td>
+        <td> <asp:TextBox ID="movieRating" runat="server"></asp:TextBox> </td>
     </tr>
     <tr>
         <td> <asp:Label ID="lblTimeSlot" runat="server">Times Movie is Playing:</asp:Label> </td>
@@ -38,6 +38,6 @@
 </table>
     <br />
     <asp:Label ID="lblStatus" runat="server"></asp:Label>
-    <br /><br /> <asp:Button ID="submitMovie" runat="server" Text="Add Movie" />&nbsp;
-    <asp:Button ID="cancel" runat="server" Text="Return to Management Screen" />
+    <br /><br /> <asp:Button ID="submitMovie" runat="server" OnClick="BtnAddMovie_Click" Text="Add Movie" />&nbsp;
+    <asp:Button ID="cancel" runat="server" OnClick="BtnReturn_Click" Text="Return to Management Screen" />
 </asp:Content>
