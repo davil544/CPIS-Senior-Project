@@ -14,29 +14,22 @@ namespace CPIS_Senior_Project.DataAccessLayer
         private SqlConnection conn; private SqlCommand cmd;
         private string connectionString, query;
         private SqlDataReader reader;
-        //TODO:  Add these strings into its own object that can be called from any function!
-        private const string sql404 = "SQL Server unavailable, contact DB admin for assistance!", 
-            unauthorized = "You do not have permission to access the database!  Contact the DB admin for assistance!",
-            empty = "Reqired field is empty, try again!", exists = "Account Already Exists!",
-            wakingUp = "SQL Server is still starting up, try again in a few seconds!",
-            wrongPass = "Username or Password is incorrect, please try again!",
-            failed = "Registration Failed! An unknown error has occured!";
 
         public Authentication()
         {
             //Instantiate creds here and scrub them for SQL command
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
-        //TODO:  Change if else statements for errors to switch case statements in Login and Registration functions
+        
         public Account Login(Account auth)
         {
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
-                auth.status = empty;
+                auth.status = ErrorHandler.empty;
                 return auth;
             }
 
-            string status = wrongPass;
+            string status = ErrorHandler.wrongPass;
             query = "SELECT Username, Password, Role, Name FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
@@ -64,33 +57,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
                         }
                     }
                 }
-                else
-                {
-                    //Not sure if this is necessary, redundant code?
-                    status = wrongPass;
-                }
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 11001)
-                {
-                    //This runs when the web server is unable to connect to the SQL Server
-                    status = sql404;
-                }
-                else if (ex.Number == 40613)
-                {
-                    //This runs if the query has timed out before the SQL server could start
-                    status = wakingUp;
-                }
-                else if(ex.Number == 40615)
-                {
-                    //This runs when the user has not been whitelisted on the SQL Server
-                    status = unauthorized;
-                }
-                else
-                {
-                    throw new Exception(ex.Message);
-                }
+                status = ErrorHandler.SQL(ex);
             }
             finally
             {
@@ -106,7 +76,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             //Checks if fields contain data, prevents blank usernames or passwords
             if (auth.Username.Equals("") || auth.Password.Equals("") || auth.FullName.Equals(""))
             {
-                return empty;
+                return ErrorHandler.empty;
             }
 
             if (auth.Role.Equals("Customer"))
@@ -120,12 +90,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             else
             {
-                return "Role Mismatch, Registration Failed!";
+                return ErrorHandler.roleMismatch;
             }
 
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
-            string status = failed;
+            string status = ErrorHandler.failed;
             int rows;
 
             if (auth.Role.Equals("Customer"))
@@ -143,9 +113,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
             }
             
-            //query = "INSERT INTO Users (Username, Password, Role) VALUES (@Uname, @PW, @Role);";
             //TODO:  Create DB and foreign key setups to make account with necessary info
-            
 
             //Old method of inserting parameters
             cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
@@ -161,38 +129,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 {
                     status = "success";
                 }
-                else
-                {
-                    //Not sure if this is necessary, redundant code?
-                    status = failed;
-                }
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627)
-                {
-                    //This runs if the account already exists in the database
-                    status = exists;
-                }
-                else if (ex.Number == 11001)
-                {
-                    //This runs when the web server is unable to connect to the SQL Server
-                    status = sql404;
-                }
-                else if (ex.Number == 40613)
-                {
-                    //This runs if the query has timed out before the SQL server could start
-                    status = wakingUp;
-                }
-                else if (ex.Number == 40615)
-                {
-                    //This runs when the user has not been whitelisted on the SQL Server
-                    status = unauthorized;
-                }
-                else
-                {
-                    throw new Exception(ex.Message);
-                }
+                status = ErrorHandler.SQL(ex);
             }
             finally
             {
