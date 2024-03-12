@@ -13,20 +13,24 @@ namespace CPIS_Senior_Project.Management
             //TODO:  Add check for Theater role
             if (Session["Login"] != null && (bool)Session["Login"] == true) {
                 Account user = (Account)Session["Account"];
-                //Populate Theater Owner Dashboard Here
-
                 greeting.Text = "Welcome, " + user.FullName + "!";
 
-                //Create a for loop that populates the movies from the database
+                //Finish the for loop that populates the movies from the database
                 //after page design is complete, store statically until then
                 TheaterTier theaterInfo = new TheaterTier();
-                int count = theaterInfo.GetMovieCount();
-                List<Movie> movies = new List<Movie>();
-                lblMovieCount.Text += count.ToString();
+                List<Movie> movies = theaterInfo.getMoviesList();
                 
+                //int count = theaterInfo.GetMovieCount();  
+                //Not sure if this function is necessary, may remove in a later update
+
+                int count = movies.Count;
+                lblMovieCount.Text = count.ToString();
                 for (int i = 0; i < count; i++)
                 {
-                  movies[i] = new Movie();
+                    lblMovieTitle.Text = movies[i].Title;
+                    lblMovieSummary.Text = movies[i].Summary;
+                    lblMoviePrice.Text = movies[i].Price.ToString();
+                    imgMovie1.ImageUrl = "/Handlers/MoviePoster.ashx?ID=" + (i + 1);
                 }
 
                 //Check if i is a multiple of 3 using modulus, if it is add a br tag after inserting poster

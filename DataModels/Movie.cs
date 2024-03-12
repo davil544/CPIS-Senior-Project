@@ -11,5 +11,15 @@
         public string TimeSlot { get; set; } //Move this to Theater class
         public byte[] Poster { get; set; }
         public float Price { get; set; } //Will also be moved to Theater class
+        public Movie()
+        {
+            ID = 0;
+            Title = "";
+            Summary = "";
+            ReleaseYear = "";
+            Genre = "";
+            MPA_rating = "";
+            TimeSlot = "";
+        }
     }
 }

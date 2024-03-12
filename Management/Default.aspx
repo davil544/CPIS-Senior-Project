@@ -4,7 +4,7 @@
    <main>
        <h1><asp:Label ID="greeting" runat="server"></asp:Label></h1>
        <p>More features coming soon...</p>
-       <asp:Label ID ="lblMovieCount" runat="server">Number of movies in database: </asp:Label>
+       Number of movies in database: <asp:Label ID ="lblMovieCount" runat="server"></asp:Label>
         <!-- TODO:  Create Master file for the backend to cater navbar to theater owners -->
        <!-- ALSO TODO:  Make backend system for theater owners to add or remove movies to / from the SQL server or something -->
        <!-- Will likely be a variant of the home page with management features -->
@@ -14,7 +14,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                     <!-- <img src="/Assets/Inventory/poster.jpg" alt="Movie Poster"> -->
-                    <asp:Image ID="imgMovie1" runat="server" alt="Movie Poster Goes Here"/>
+                    <asp:Image ID="imgMovie1" runat="server" alt="Movie Poster Goes Here" style="height : 320px;  width : 240px;" />
                         <div class="caption">
                             <h3><asp:Label ID="lblMovieTitle" runat="server" Text="">Title</asp:Label></h3>
                             <p><asp:Label ID="lblMovieSummary" runat="server" Text="">Summary</asp:Label></p>

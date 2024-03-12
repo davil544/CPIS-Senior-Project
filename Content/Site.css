@@ -19,3 +19,8 @@ textarea {
         padding: 0;
     }
 }
+
+.poster {
+    height: 320px;
+    width: 240px;
+}
