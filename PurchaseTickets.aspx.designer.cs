@@ -24,14 +24,14 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Panel Creditcard_Info;
 
         /// <summary>
-        /// cc_CC# control.
+        /// cc_number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_CC#;
-        
+        protected global::System.Web.UI.WebControls.TextBox cc_number;
+
         /// <summary>
         /// cc_cvv control.
         /// </summary>

@@ -5,11 +5,13 @@
       <h4> Enter Credit Card # and cc nuumber and expiration date to purchase movie tickets:</h4>
           <asp:Panel runat="server" ID="Creditcard_Info">
                <asp:Label runat="server">Credit Card #:</asp:Label>
-               <asp:TextBox ID="cc_CC#" runat="server"></asp:TextBox>
+               <asp:TextBox ID="cc_number" runat="server"></asp:TextBox>
                
                 <asp:Label runat="server">CVV:</asp:Label>
                   <asp:TextBox ID="cc_cvv" runat="server"></asp:TextBox>
 
                 <asp:Label runat="server">Expiration Date:</asp:Label>
                  <asp:TextBox ID="cc_expiration" runat="server"></asp:TextBox>
+            </asp:Panel>
+         </main>
 </asp:Content>
