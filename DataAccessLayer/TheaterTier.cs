@@ -104,22 +104,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                /* if (ex.Number == 11001)
-                {
-                    //This runs when the web server is unable to connect to the SQL Server
-                    status = sql404;
-                }
-                else if (ex.Number == 40613)
-                {
-                    //This runs if the query has timed out before the SQL server could start
-                    status = wakingUp;
-                }
-                else if (ex.Number == 40615)
-                {
-                    //This runs when the user's IP has not been whitelisted on the SQL Server
-                    status = unauthorized;
-                } */
-                throw new Exception(ex.Message);
+                movie.Title = ErrorHandler.SQL(ex);
+                movieList.Add(movie);
             }
             finally
             {
@@ -128,8 +114,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return movieList;
         }
 
-        public bool AddMovie (Movie movie)
+        public string AddMovie (Movie movie)
         {
+            string status = "Failed!";
             if (movie.Title != "")
             {
                 query = "INSERT INTO Movies (Title, Summary, ReleaseYear, Genre, MPA_Rating, Poster) " +
@@ -139,7 +126,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 //,@TheaterID  , TheaterID
                 conn = new SqlConnection(connectionString);
                 cmd = new SqlCommand(query, conn);
-                bool status = false;
+                
 
                 cmd.Parameters.AddWithValue("@Title", movie.Title);
                 cmd.Parameters.AddWithValue("@Desc", movie.Summary);
@@ -155,11 +142,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                     if (rows >= 1)
                     {
-                        status = true;
+                        status = "Success!";
                     }
                 } catch (SqlException ex)
                 {
-                    throw new Exception (ex.Message);
+                    status = ErrorHandler.SQL(ex);
                 }
                 finally
                 {
@@ -170,11 +157,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             else
             {
-                return false;
+                return status;
             }
-            //TODO: Write code to make this upload data to SQL server
         }
 
+        //May not be necessary, will likely be removed in a future update
         public int GetMovieCount()
         {
             query = "SELECT COUNT(*) FROM Movies;";
@@ -189,12 +176,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                //TODO:  Implement this in a separate function for reuse between classes
                 throw new Exception(ex.Message);
             }
             finally
             {
-                conn.Close ();
+                conn.Close();
             }
             return count;
         }
@@ -245,7 +231,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                throw new Exception(ex.Message);
+                //On the off chance that this runs, it is better not to return a poster than to crash the web application
+                return null;
+                //throw new Exception(ex.Message);
             }
             finally
             {

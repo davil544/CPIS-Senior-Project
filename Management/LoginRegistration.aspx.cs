@@ -40,7 +40,7 @@ namespace CPIS_Senior_Project.Management
                 //Already working there for the Theater role so may as well
                 if (customerName.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
                 {
-                    status = "Reqired field is empty, try again!";
+                    status = ErrorHandler.empty;
                     valid = false;
                 }
                 else
@@ -55,7 +55,7 @@ namespace CPIS_Senior_Project.Management
                     }
                     catch (FormatException)
                     {
-                        status = "Please only use numbers when filling out credit card info!";
+                        status = ErrorHandler.numbersOnly;
                         valid = false;
                     }
                     auth.FullName = customerName.Text;

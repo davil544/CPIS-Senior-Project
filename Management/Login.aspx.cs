@@ -45,7 +45,7 @@ namespace CPIS_Senior_Project.Management
                 }
                 else
                 {
-                    mgmt_status_message.Text = "There is an issue with your account, contact sitemaster for assistance!";
+                    mgmt_status_message.Text = ErrorHandler.acctIssue;
                     Session["Login"] = null; Session["Account"] = null;
                 }
             }

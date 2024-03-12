@@ -37,7 +37,7 @@ namespace CPIS_Senior_Project.Management
             }
             else
             {
-                greeting.Text = "Something went wrong, redirecting back to the login page...";
+                greeting.Text = ErrorHandler.invalidLoginToken;
                 Response.Redirect("~/Management/Login.aspx");
             }
         }

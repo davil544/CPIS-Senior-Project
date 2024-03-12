@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.Management
             }
             else
             {
-                lblStatus.Text = "Something went wrong, redirecting back to the login page...";
+                lblStatus.Text = ErrorHandler.invalidLoginToken;
                 Response.Redirect("~/Management/Login.aspx");
             }
                 
@@ -47,9 +47,9 @@ namespace CPIS_Senior_Project.Management
                 mv.Poster = (byte[])posterUpload.FileBytes;
             }
 
-            bool success = theater.AddMovie(mv);
+            string success = theater.AddMovie(mv);
             //fill in movie data and send it to DB with function in TheaterTier
-            lblStatus.Text = success.ToString();
+            lblStatus.Text = success;
 
             //Either redirect back to management page with success prompt here
             //or to movie details page that will be dynamically generated

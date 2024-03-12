@@ -8,7 +8,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
         public const string empty = "Reqired field is empty, try again!",
             wrongPass = "Username or Password is incorrect, please try again!",
             failed = "Registration Failed! An unknown error has occured!",
-            roleMismatch = "Role Mismatch, Registration Failed!";
+            roleMismatch = "Role Mismatch, Registration Failed!",
+            numbersOnly = "Please only use numbers when filling out credit card info!",
+            acctIssue = "There is an issue with your account, contact sitemaster for assistance!",
+            invalidLoginToken = "Something went wrong, redirecting back to the login page...";
 
         public static string SQL(SqlException ex)
         {
