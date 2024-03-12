@@ -13,17 +13,17 @@ namespace CPIS_Senior_Project.Handlers
         public void ProcessRequest(HttpContext context)
         {
             byte[] theImage = null;
-            TheaterTier theTier = new TheaterTier();
+            TheaterTier movie = new TheaterTier();
             Int32 ImageID = Int32.Parse(context.Request.QueryString["ID"]);
 
             /// if statement goes here to check for null.  If it is, load alternate image.
             if (ImageID <= 2)
             {
-                theImage = theTier.GetPoster(ImageID);
+                theImage = movie.GetPoster(ImageID);
             }
             else
             {
-                theImage = theTier.GetPoster(-1);
+                theImage = movie.GetPoster(-1);
             }
 
             context.Response.BinaryWrite(theImage);
