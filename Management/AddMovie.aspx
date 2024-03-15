@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td> <asp:Label ID="lblPoster" runat="server">Upload a Poster:</asp:Label> </td>
-        <td> <asp:FileUpload ID="posterUpload" runat="server" /> </td>
+        <td> <asp:FileUpload ID="posterUpload" runat="server" /> Please keep poster sizes under 1MB to avoid DB fees </td>
     </tr>
 </table>
     <br />
