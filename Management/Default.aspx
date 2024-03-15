@@ -10,11 +10,12 @@
        <!-- Will likely be a variant of the home page with management features -->
        <div id="movieCatalog">
            <asp:Button runat="server" Text="Add Movie Listing" OnClick="AddMovie_Click"/>
+           <!-- <asp:Label ID ="movieList" runat="server"></asp:Label> -->
            <div class="row" style="padding-top: 50px;">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                    <!-- <img src="/Assets/Inventory/poster.jpg" alt="Movie Poster"> -->
-                    <asp:Image ID="imgMovie1" runat="server" alt="Movie Poster Goes Here" style="height : 320px;  width : 240px;" />
+                    <!-- <img class="" src="/Handlers/MoviePoster.ashx?ID=" alt="Movie Poster Goes Here" height="320px" width="240px";> -->
+                   <asp:Image ID="imgMovie1" runat="server" alt="Movie Poster Goes Here" style="height : 320px;  width : 240px;" />
                         <div class="caption">
                             <h3><asp:Label ID="lblMovieTitle" runat="server" Text="">Title</asp:Label></h3>
                             <p><asp:Label ID="lblMovieSummary" runat="server" Text="">Summary</asp:Label></p>
