@@ -93,10 +93,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             movie.MPA_rating = "Unrated";
                         }
 
-                        //if (reader["Poster"] != DBNull.Value)
-                        //{
-                        //    movie.Poster = (byte[])reader["Poster"];
-                        //}
+                        //TODO:  Figure out way to set ticket price and pull from Users table
 
                         movieList.Add(movie);
                     }
@@ -229,10 +226,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 //On the off chance that this runs, it is better not to return a poster than to crash the web application
-                return null;
+                theImage = null;
                 //throw new Exception(ex.Message);
             }
             finally
@@ -241,6 +238,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             return theImage;
+        }
+
+        public string TruncateString(string str, int maxlength)
+        {
+            return str.Substring(0, Math.Min(str.Length, maxlength)) + "...";
         }
     }
     
