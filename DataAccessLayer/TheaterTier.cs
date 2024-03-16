@@ -33,9 +33,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    movieList = new List<Movie>();
                     while (reader.Read())
                     {
-                        movieList = new List<Movie>();
                         //movie.ID = (int)reader["ID"];
                         if (reader["ID"] != DBNull.Value)
                         {
@@ -158,7 +158,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
         }
 
-        //May not be necessary, will likely be removed in a future update
+        //This is necessary for movie posters to load properly
         public int GetMovieCount()
         {
             query = "SELECT COUNT(*) FROM Movies;";

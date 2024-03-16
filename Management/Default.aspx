@@ -10,7 +10,7 @@
        <!-- Will likely be a variant of the home page with management features -->
        <div id="movieCatalog">
            <asp:Button runat="server" Text="Add Movie Listing" OnClick="AddMovie_Click"/>
-           <!-- <asp:Label ID ="movieList" runat="server"></asp:Label> -->
+           <!--<asp:Label ID ="movieList" runat="server"></asp:Label>-->
            <div class="row" style="padding-top: 50px;">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
