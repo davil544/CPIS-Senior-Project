@@ -18,10 +18,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        public List<Movie> getMoviesList()
+        public Movie[] getMoviesList()
         {
-            List<Movie> movieList = null;
-            Movie movie = new Movie();
+            Movie[] movies = null;
 
             query = "SELECT * FROM Movies;";
             conn = new SqlConnection(connectionString);
@@ -33,13 +32,14 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    movieList = new List<Movie>();
+                    int i = 0;
+                    movies = new Movie[GetMovieCount()];
                     while (reader.Read())
                     {
-                        //movie.ID = (int)reader["ID"];
+                        movies[i] = new Movie();
                         if (reader["ID"] != DBNull.Value)
                         {
-                            movie.ID = (int)reader["ID"];
+                            movies[i].ID = (int)reader["ID"];
                         }
                         else
                         {
@@ -48,67 +48,68 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                         if (reader["Title"] != DBNull.Value)
                         {
-                            movie.Title = reader["Title"].ToString();
+                            movies[i].Title = reader["Title"].ToString();
                         }
                         else
                         {
                             //This code probably won't run ever, DB
                             //doesn't allow null data in this field
-                            movie.Title = "No Title Entered";
+                            movies[i].Title = "No Title Entered";
                         }
 
                         if (reader["Summary"] != DBNull.Value)
                         {
-                            movie.Summary = reader["Summary"].ToString();
+                            movies[i].Summary = reader["Summary"].ToString();
                         }
                         else
                         {
-                            movie.Summary = "Summary goes here";
+                            movies[i].Summary = "Summary goes here";
                         }
 
                         if (reader["ReleaseYear"] != DBNull.Value)
                         {
-                            movie.ReleaseYear = reader["ReleaseYear"].ToString();
+                            movies[i].ReleaseYear = reader["ReleaseYear"].ToString();
                         }
                         else
                         {
-                            movie.ReleaseYear = "2024";
+                            movies[i].ReleaseYear = "2024";
                         }
 
                         if (reader["Genre"] != DBNull.Value)
                         {
-                            movie.Genre = reader["Genre"].ToString();
+                            movies[i].Genre = reader["Genre"].ToString();
                         }
                         else
                         {
-                            movie.Genre = "No Genre Selected";
+                            movies[i].Genre = "No Genre Selected";
                         }
 
                         if (reader["MPA_Rating"] != DBNull.Value)
                         {
-                            movie.MPA_rating = reader["MPA_Rating"].ToString();
+                            movies[i].MPA_rating = reader["MPA_Rating"].ToString();
                         }
                         else
                         {
-                            movie.MPA_rating = "Unrated";
+                            movies[i].MPA_rating = "Unrated";
                         }
+                        i++;
 
                         //TODO:  Figure out way to set ticket price and pull from Users table
 
-                        movieList.Add(movie);
+                        //movieList.Add(movie);
                     }
                 }
             }
             catch (SqlException ex)
             {
-                movie.Title = ErrorHandler.SQL(ex);
-                movieList.Add(movie);
+                movies[0].Title = ErrorHandler.SQL(ex);
+                //movieList.Add(movie);
             }
             finally
             {
                 conn.Close();
             }
-            return movieList;
+            return movies;
         }
 
         public string AddMovie (Movie movie)

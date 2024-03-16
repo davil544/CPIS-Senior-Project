@@ -3,14 +3,15 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    <main>
        <h1><asp:Label ID="greeting" runat="server"></asp:Label></h1>
-       <p>More features coming soon...</p>
+       <!--<p>More features coming soon...</p>-->
        Number of movies in database: <asp:Label ID ="lblMovieCount" runat="server"></asp:Label>
         <!-- TODO:  Create Master file for the backend to cater navbar to theater owners -->
        <!-- ALSO TODO:  Make backend system for theater owners to add or remove movies to / from the SQL server or something -->
        <!-- Will likely be a variant of the home page with management features -->
        <div id="movieCatalog">
            <asp:Button runat="server" Text="Add Movie Listing" OnClick="AddMovie_Click"/>
-           <!--<asp:Label ID ="movieList" runat="server"></asp:Label>-->
+           <asp:Label ID ="movieList" runat="server"></asp:Label>
+           <br /><br /><p>This is what the dynamic loading page is supposed to look like:</p>
            <div class="row" style="padding-top: 50px;">
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
