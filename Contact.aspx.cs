@@ -32,7 +32,7 @@ namespace CPIS_Senior_Project
 
                 SmtpClient smtpClient = new SmtpClient("smtpClient.gmail.com", 587);
                 smtpClient.EnableSsl = true;
-                smtpClient.Credentials = new System.Net.NetworkCredential("blacknationanimation@gmail.com", "joeene2003");
+                smtpClient.Credentials = new System.Net.NetworkCredential();
                 smtpClient.Send(mailMessage);
 
                 Label1.ForeColor = System.Drawing.Color.Blue;

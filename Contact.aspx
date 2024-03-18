@@ -47,12 +47,10 @@
             Display ="Dynamic"
             Text="*"
             ForeColor="DarkRed"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-            ErrorMessage="Please enter a valid email" 
-            ForeColor="Red" 
-            Display ="Dynamic"
-            ControlToValidate="txtEmail"
-            ></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+            ErrorMessage="Please enter a valid email"
+            ForeColor="Red"
+            ControlToValidate="txtEmail"></asp:RegularExpressionValidator>
     </td>
 </tr>
                      <tr>
