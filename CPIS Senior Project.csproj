@@ -127,10 +127,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Management\AddMovie.aspx" />
+    <Content Include="Management\EditMovie.aspx" />
     <Content Include="Management\EditProfile.aspx" />
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
+    <Content Include="Management\MovieDetails.aspx" />
     <Content Include="PurchaseTickets.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -239,6 +241,13 @@
     <Compile Include="Management\AddMovie.aspx.designer.cs">
       <DependentUpon>AddMovie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\EditMovie.aspx.cs">
+      <DependentUpon>EditMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\EditMovie.aspx.designer.cs">
+      <DependentUpon>EditMovie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -266,6 +275,13 @@
     </Compile>
     <Compile Include="Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\MovieDetails.aspx.cs">
+      <DependentUpon>MovieDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\MovieDetails.aspx.designer.cs">
+      <DependentUpon>MovieDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseTickets.aspx.cs">

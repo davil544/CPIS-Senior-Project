@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.Handlers
             Int32 ImageID = Int32.Parse(context.Request.QueryString["ID"]);
 
             /// if statement goes here to check for null.  If it is, load alternate image.
-            if (ImageID <= 2)
+            if (ImageID <= movie.GetMovieCount())
             {
                 theImage = movie.GetPoster(ImageID);
             }
