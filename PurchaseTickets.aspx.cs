@@ -13,10 +13,13 @@ namespace CPIS_Senior_Project
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["Credit Card #"] = null;
-            State.Attributes.Add("maxlength", "16");
+            //State.Attributes.Add("maxlength", "16");
 
 
         }
+    }
+}
+        /*
         protected void btnRegister_Click(object sender, EventArgs e)
         {
 
@@ -56,3 +59,4 @@ namespace CPIS_Senior_Project
                     auth.CC.CVV = cc_cvv.Text;
       }
 }
+*/
