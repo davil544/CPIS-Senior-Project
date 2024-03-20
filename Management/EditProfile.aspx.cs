@@ -13,5 +13,13 @@ namespace CPIS_Senior_Project.Management
         {
 
         }
+
+        protected void mgmt_subchanges_Click(object sender, EventArgs e)
+        {
+            /* Incomplete at this time. This is for adding buttons for submitting */
+            /* the changes made for editting theater information, as well as for  */
+            /* clearing the fields in the edit theater form.                      */
+        }
+        
     }
 }
