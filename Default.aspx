@@ -6,8 +6,8 @@
         <section class="row" aria-labelledby="MoviesTitle">
             <div class="p-4 mb-4 bg-light rounded-3">
                 <div class="container-fluid py-5">
-                    <h1 id="aspnetTitle" class="display-5 fw-bold">ASP.NET</h1>
-                    <p class="col-md-8 fs-4">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+                    <h1 id="aspnetTitle" class="display-5 fw-bold">Movie Ticket Sales Site</h1>
+                    <p class="col-md-8 fs-4">This Movie Ticket Website is a service that allows movie theater customers, employees, and owners to achive everthing they need within the movie theater</p>
                     <a href="http://www.asp.net" class="btn btn-primary btn-md" type="button">Learn More &raquo;</a>
                 </div>
            </div>
