@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        public Movie[] getMoviesList()
+        public Movie[] GetMovies()
         {
             Movie[] movies = null;
 
@@ -109,6 +109,96 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn.Close();
             }
             return movies;
+        }
+
+        public Movie GetMovie(int movieID)
+        {
+            query = "SELECT * FROM Movies WHERE ID=" + movieID + ";";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            Movie movie = new Movie();
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    
+                    while (reader.Read())
+                    {
+                        if (reader["ID"] != DBNull.Value)
+                        {
+                            movie.ID = (int)reader["ID"];
+                        }
+                        else
+                        {
+                            //This will cause a SQL exception, will be handled below
+                        }
+
+                        if (reader["Title"] != DBNull.Value)
+                        {
+                            movie.Title = reader["Title"].ToString();
+                        }
+                        else
+                        {
+                            //This code probably won't run ever, DB
+                            //doesn't allow null data in this field
+                            movie.Title = "No Title Entered";
+                        }
+
+                        if (reader["Summary"] != DBNull.Value)
+                        {
+                            movie.Summary = reader["Summary"].ToString();
+                        }
+                        else
+                        {
+                            movie.Summary = "Summary goes here";
+                        }
+
+                        if (reader["ReleaseYear"] != DBNull.Value)
+                        {
+                            movie.ReleaseYear = reader["ReleaseYear"].ToString();
+                        }
+                        else
+                        {
+                            movie.ReleaseYear = "2024";
+                        }
+
+                        if (reader["Genre"] != DBNull.Value)
+                        {
+                            movie.Genre = reader["Genre"].ToString();
+                        }
+                        else
+                        {
+                            movie.Genre = "No Genre Selected";
+                        }
+
+                        if (reader["MPA_Rating"] != DBNull.Value)
+                        {
+                            movie.MPA_rating = reader["MPA_Rating"].ToString();
+                        }
+                        else
+                        {
+                            movie.MPA_rating = "Unrated";
+                        }
+
+                        //TODO:  Figure out way to set ticket price and pull from Users table
+
+                        //movieList.Add(movie);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                movie.Title = ErrorHandler.SQL(ex);
+                //movieList.Add(movie);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return movie;
         }
 
         public string AddMovie (Movie movie)

@@ -18,7 +18,7 @@ namespace CPIS_Senior_Project.Management
                 //Finish the for loop that populates the movies from the database
                 //after page design is complete, store statically until then
                 TheaterTier theaterInfo = new TheaterTier();
-                Movie[] movies = theaterInfo.getMoviesList();
+                Movie[] movies = theaterInfo.GetMovies();
 
                 int count;
                 if (movies != null)
@@ -47,7 +47,7 @@ namespace CPIS_Senior_Project.Management
                         "<p><asp:Label ID=\"lblMovieSummary" + dbCount + "\" runat=\"server\" Text=\"\">" + theaterInfo.TruncateString(movies[i].Summary, 150) + "</asp:Label></p>" +
                         "<p><asp:Label ID=\"lblMoviePrice" + dbCount + "\" runat=\"server\" Text=\"\">$" + movies[i].Price.ToString() + "</asp:Label></p>" +  // Will work once saving and fetching this is implemented
                         "<p><a href=\"EditMovie.aspx?ID=" + dbCount + "\" class=\"btn btn-primary btn-sm\">Modify</a>&nbsp;" +
-                        "<a href=\"MovieDetails.aspx?ID=" + dbCount + "\" class=\"btn btn-secondary btn-sm\">Details</a></p></div><br /></div></div>";
+                        "<a href=\"/MovieDetails.aspx?ID=" + dbCount + "\" class=\"btn btn-secondary btn-sm\">Details</a></p></div><br /></div></div>";
                     
                 }
                 movieText.Text += "</div>";

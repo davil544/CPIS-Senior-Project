@@ -6,8 +6,16 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //TODO:  Add check for login to ensure customers can't edit movie data
             string movieID = Request.QueryString["ID"];
-            testing.Text = "Movie ID: " + movieID;
+            if (movieID != null)
+            {
+                debug.Text = "Movie ID: " + movieID;
+            }
+            else
+            {
+                debug.Text = "No Movie Found!";
+            }
         }
     }
 }

@@ -132,7 +132,7 @@
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
-    <Content Include="Management\MovieDetails.aspx" />
+    <Content Include="MovieDetails.aspx" />
     <Content Include="PurchaseTickets.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -276,11 +276,11 @@
     <Compile Include="Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Management\MovieDetails.aspx.cs">
+    <Compile Include="MovieDetails.aspx.cs">
       <DependentUpon>MovieDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Management\MovieDetails.aspx.designer.cs">
+    <Compile Include="MovieDetails.aspx.designer.cs">
       <DependentUpon>MovieDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
