@@ -15,6 +15,33 @@ namespace CPIS_Senior_Project
     {
 
         /// <summary>
+        /// PurchaseInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PurchaseInfo;
+
+        /// <summary>
+        /// CustomerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CustomerName;
+
+        /// <summary>
+        /// MovieName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MovieName;
+
+        /// <summary>
         /// Creditcard_Info control.
         /// </summary>
         /// <remarks>

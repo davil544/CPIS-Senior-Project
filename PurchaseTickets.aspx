@@ -3,6 +3,10 @@
      <main aria-labelledby="title">
       <h2 id="title"><%: Title %></h2> 
       <h4> Enter Credit Card # and cc nuumber and expiration date to purchase movie tickets:</h4>
+         <asp:Panel runat="server" ID="PurchaseInfo">
+             <asp:Label runat="server" ID="CustomerName">Customer Name:</asp:Label>
+             <asp:Label runat="server" ID ="MovieName">Movie Name:</asp:Label>
+         </asp:Panel>
           <asp:Panel runat="server" ID="Creditcard_Info">
                <asp:Label runat="server">Credit Card #:</asp:Label>
                <asp:TextBox ID="cc_number" runat="server"></asp:TextBox>

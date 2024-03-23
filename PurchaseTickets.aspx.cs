@@ -1,8 +1,8 @@
-﻿using CPIS_Senior_Project.DataAccessLayer;
+﻿
+using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
-using Microsoft.Ajax.Utilities;
 using System;
-using System.ComponentModel.Design;
+
 
 
 namespace CPIS_Senior_Project
@@ -12,51 +12,63 @@ namespace CPIS_Senior_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Credit Card #"] = null;
-            //State.Attributes.Add("maxlength", "16");
+            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null)
+            {
+                string movieID = Request.QueryString["ID"];
+                Account account = (Account)Session["Account"];
+                CustomerName.Text = "Name: " + account.FullName;
+                if (movieID != null)
+                {
+                    TheaterTier movieManager = new TheaterTier();
+                    
+                    Movie mv = movieManager.GetMovie(int.Parse(movieID));
+                    MovieName.Text = "Movie Name: " + mv.Title;
+                }
+            }
 
 
         }
-    }
-}
-        /*
+
+
+
         protected void btnRegister_Click(object sender, EventArgs e)
         {
 
-            Authentication CreditCardManager = new Authentication();
-
-
-            Account cc = new Account();
-            cc.number = cc_number.Text;
-            cc.cvv = cc_cvv.Text;
-            cc.expiration = cc_cvv.Text;
+            Account customerAccount = new Account();
+            
 
             bool valid = true; string status = "";
-        }
-        if (CreditCard.Checked)
+
+            if (customerAccount.CC != null)
             {
-                cc.number = "Credit Number";
-                cc.creditnumber = theaterName.Text;
-                cc.Mynumber = new number();
-    }
-    else
+                //Code goes here to purchase ticket
+                customerAccount.CC.CardNumber = cc_number.Text;
+                customerAccount.CC.CVV = cc_cvv.Text;
+                //customerAccount.CC.ExpirationDate = cc_cvv.Text;
+            }
+            else
             {
-                cc.Role = "Credit ccv";
-              
-                if (ccv.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
+                Creditcard_Info.Visible = true;
+                //cc.Role = "Credit ccv";
+
+               /* if (ccv.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
                 {
                     status = ErrorHandler.empty;
                     valid = false;
 
-                }
+                } 
 
-                    else
-                   {
-                  try
-                     {
-                     auth.CC = new CreditCard();
-                    auth.CC.CardNumber = cc_number.Text;
-                    auth.CC.CVV = cc_cvv.Text;
-      }
+                else
+                {
+                    try
+                    {
+                        //auth.CC = new CreditCard();
+                        //auth.CC.CardNumber = cc_number.Text;
+                        //auth.CC.CVV = cc_cvv.Text;
+                    }
+                    catch { }
+               }*/
+            }
+        }
+    }
 }
-*/
