@@ -5,6 +5,7 @@ using System.Data;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using CPIS_Senior_Project.DataModels;
+using System.ComponentModel;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -161,6 +162,62 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             return status;
+        }
+
+        public string UpdateAccount(Account auth)
+        {
+            // Checks if fields contain data, prevents blank usernames or full names
+            if (auth.Username.Equals("") || auth.FullName.Equals(""))
+            {
+                return ErrorHandler.empty;
+            }
+
+            if (auth.Role.Equals("Theater"))
+            {
+                query = "UPDATE Users " +
+                     "SET Name = @Name, Address1 = @Add1, Address2 = @Add2, City = @City, State = @State, Zip = @Zip, Country = @Country, Hours = @Hours " +
+                     "WHERE Username = @Uname;";
+            }
+            else
+            {
+                return ErrorHandler.roleMismatch;
+            }
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            auth.status = ErrorHandler.failed;
+            int rows;
+
+            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = auth.FullName;
+            cmd.Parameters.Add("@Add1", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address1;
+            cmd.Parameters.Add("@Add2", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address2;
+            cmd.Parameters.Add("@City", SqlDbType.NVarChar, 50).Value = auth.MyTheater.City;
+            cmd.Parameters.Add("@State", SqlDbType.NChar, 2).Value = auth.MyTheater.State;
+            cmd.Parameters.Add("@Zip", SqlDbType.NVarChar, 10).Value = auth.MyTheater.PostalCode;
+            cmd.Parameters.Add("@Country", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Country;
+            cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
+            
+
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    auth.status = "success";
+                }
+            }
+            catch (SqlException ex)
+            {
+                auth.status = ErrorHandler.SQL(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return auth.status;
         }
 
         //TODO:  Make function to update existing theater profile
