@@ -48,7 +48,18 @@
                        <asp:TextBox ID="hours" runat="server"></asp:TextBox>
                    </td>
                </tr>
-
+               <tr>
+                   <td />
+                   <td>
+                       <asp:Button ID="mgmt_subchanges" runat="server" OnClick="mgmt_subchanges_Click" Text="Submit Changes"/>
+                   </td>
+               </tr>
+               <tr>
+                   <td />
+                   <td>
+                       <asp:Button ID="mgmt_clear" runat="server" OnClick="mgmt_clear_Click" Text="Clear"/>
+                   </td>
+               </tr>
            </table>
        </asp:Panel>
    </main>
