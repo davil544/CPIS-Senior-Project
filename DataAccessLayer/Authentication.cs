@@ -30,7 +30,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             string status = ErrorHandler.wrongPass;
-            query = "SELECT Username, Password, Role, Name FROM Users where Username = @Uname AND Password = @PW;";
+            query = "SELECT Username, Password, Role, Name, Address1, Address2, City, State, Zip, Country, Hours, TicketPrice " +
+                "FROM Users where Username = @Uname AND Password = @PW;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
 
@@ -54,6 +55,22 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             //This will run to retrieve the user's relevant data
                             auth.Role = reader["Role"].ToString();
                             auth.FullName = reader["Name"].ToString();
+                            auth.MyTheater = new Theater();
+                            auth.MyTheater.Address1 = reader["Address1"].ToString();
+                            auth.MyTheater.Address2 = reader["Address2"].ToString();
+                            auth.MyTheater.City = reader["City"].ToString();
+                            auth.MyTheater.State = reader["State"].ToString();
+                            auth.MyTheater.PostalCode = reader["Zip"].ToString();
+                            auth.MyTheater.Country = reader["Country"].ToString();
+                            auth.MyTheater.Hours = reader["Hours"].ToString();
+                            try
+                            {
+                                auth.MyTheater.TicketPrice = float.Parse(reader["TicketPrice"].ToString());
+                            }
+                            catch (FormatException)
+                            {
+                                auth.MyTheater.TicketPrice = 0;
+                            }
                         }
                     }
                 }
@@ -145,6 +162,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
             return status;
         }
+
+        //TODO:  Make function to update existing theater profile
         
         //Will eventually use this for password hashing
         public void Password_Hash()

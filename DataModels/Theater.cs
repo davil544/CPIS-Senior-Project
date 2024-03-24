@@ -12,7 +12,7 @@ namespace CPIS_Senior_Project.DataModels
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Hours { get; set; }
-        public List<Movie> Movies { get; set; }
+        public float TicketPrice { get; set; }
 
         public Theater()
         {
