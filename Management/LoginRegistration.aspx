@@ -58,8 +58,8 @@
                         <asp:Label runat="server">Address: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Address1" runat="server"></asp:TextBox>
-                        <asp:TextBox ID="Address2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAddress1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAddress2" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         <asp:Label runat="server">City: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="City" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -75,15 +75,23 @@
                         <asp:Label runat="server">State: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="State" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtState" runat="server"></asp:TextBox>
                     </td>
+                </tr>
+                <tr>
+                <td>
+                    <asp:Label runat="server">Zip Code: </asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label runat="server">Country: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Country" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -91,7 +99,7 @@
                         <asp:Label runat="server">Operating Hours: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="hours" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtHours" runat="server"></asp:TextBox>
                     </td>
                 </tr>
             </table>

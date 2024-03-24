@@ -9,7 +9,7 @@ namespace CPIS_Senior_Project.Management
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["Login"] = null;
-            State.Attributes.Add("maxlength", "2");
+            txtState.Attributes.Add("maxlength", "2");
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -29,6 +29,14 @@ namespace CPIS_Senior_Project.Management
                 auth.Role = "Theater";
                 auth.FullName = theaterName.Text;
                 auth.MyTheater = new Theater();
+                auth.MyTheater.Address1 = txtAddress1.Text;
+                auth.MyTheater.Address2 = txtAddress2.Text;
+                auth.MyTheater.City = txtCity.Text;
+                auth.MyTheater.State = txtState.Text;
+                auth.MyTheater.PostalCode = txtZipCode.Text;
+                auth.MyTheater.Country = txtCountry.Text;
+                auth.MyTheater.Hours = txtHours.Text;
+                //TODO:  add field for days that are open
             }
             else
             {
