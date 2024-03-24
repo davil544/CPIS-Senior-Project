@@ -11,7 +11,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             roleMismatch = "Role Mismatch, Registration Failed!",
             numbersOnly = "Please only use numbers when filling out credit card info!",
             acctIssue = "There is an issue with your account, contact sitemaster for assistance!",
-            invalidLoginToken = "Something went wrong, redirecting back to the login page...";
+            invalidLoginToken = "Something went wrong, redirecting back to the login page...",
+            notPermitted = "You do not have permission to access this page!";
 
         public static string SQL(SqlException ex)
         {
