@@ -21,11 +21,9 @@ namespace CPIS_Senior_Project.Management
             Account auth = new Account();
             auth.Username = mgmt_Username.Text;
             auth.Password = mgmt_Password.Text;
-            
 
             bool valid = true;  string status = "";
             
-            //Make new table for CC #s in SQL server, link cards to user via private key
             if (theaterRole.Checked)
             {
                 auth.Role = "Theater";
@@ -47,10 +45,11 @@ namespace CPIS_Senior_Project.Management
                 {
                     try
                     {
+                        //Regex re = new Regex("^(0[1-9]|1[0-2])\\/?(([0-9]{4}|[0-9]{2})$)");
                         //TODO:  Put in regex to strip out all characters except numbers and ensure the format is correct
                         auth.CC = new CreditCard();
                         auth.CC.CardNumber = cc_number.Text;
-                        //auth.CC.ExpirationDate = cc_expiration.Text;  //Convert to DateTime
+                        auth.CC.ExpirationDate = cc_expiration.Text;  //Convert to DateTime
                         auth.CC.CVV = cc_cvv.Text;
                     }
                     catch (FormatException)

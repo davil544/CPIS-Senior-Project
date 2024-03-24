@@ -82,6 +82,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
             if (auth.Role.Equals("Customer"))
             {
                 query = "INSERT INTO Users (Username, Password, Role, Name) VALUES (@Uname, @PW, @Role, @Name);";
+                if (auth.CC != null)
+                {
+                    query += "INSERT INTO CreditCards (CardNumber, ExpirationDate, CVV, CardOwner) VALUES (@CardNo, @ExpDate, @CVV, @Uname);";
+                }
             }
             else if (auth.Role.Equals("Theater"))
             {
@@ -98,9 +102,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
             string status = ErrorHandler.failed;
             int rows;
 
-            if (auth.Role.Equals("Customer"))
+            if (auth.Role.Equals("Customer") && auth.CC != null)
             {
-                //insert customer data here
+                cmd.Parameters.AddWithValue("@CardNo", auth.CC.CardNumber);
+                cmd.Parameters.AddWithValue("@ExpDate", auth.CC.ExpirationDate);
+                cmd.Parameters.AddWithValue("@CVV", auth.CC.CVV);
             }
             else
             {
@@ -112,8 +118,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 cmd.Parameters.Add("@Country", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Country;
                 cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
             }
-            
-            //TODO:  Create DB and foreign key setups to make account with necessary info
 
             //Old method of inserting parameters
             cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
