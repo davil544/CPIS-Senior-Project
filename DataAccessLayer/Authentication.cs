@@ -5,7 +5,6 @@ using System.Data;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using CPIS_Senior_Project.DataModels;
-using System.ComponentModel;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -164,7 +163,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public string UpdateAccount(Account auth)
+        public string UpdateAccount(string Username, Account auth)
         {
             // Checks if fields contain data, prevents blank usernames or full names
             if (auth.Username.Equals("") || auth.FullName.Equals(""))
@@ -220,8 +219,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return auth.status;
         }
 
-        //TODO:  Make function to update existing theater profile
-        
         //Will eventually use this for password hashing
         public void Password_Hash()
         {
