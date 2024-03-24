@@ -15,6 +15,15 @@ namespace CPIS_Senior_Project.Management
     {
 
         /// <summary>
+        /// formAddMovie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel formAddMovie;
+
+        /// <summary>
         /// lblMovieTitle control.
         /// </summary>
         /// <remarks>
@@ -184,5 +193,14 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cancel;
+
+        /// <summary>
+        /// lblDebug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDebug;
     }
 }

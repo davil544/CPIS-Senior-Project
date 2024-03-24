@@ -10,12 +10,19 @@ namespace CPIS_Senior_Project.Management
         protected void Page_Load(object sender, EventArgs e)
         {
             //This is to prevent everyone from being able to upload movies to this service
+            Account account = (Account)Session["Account"];
             //TODO:  Add check for Theater role
-            if (Session["Login"] != null && (bool)Session["Login"] == true)
+            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
             {
                 mv = new Movie();
             }
-            else
+            else if(Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Customer")
+            {
+                formAddMovie.Visible = false;
+                lblDebug.Text = ErrorHandler.notPermitted;
+                lblDebug.Visible = true;
+            }
+            else 
             {
                 lblStatus.Text = ErrorHandler.invalidLoginToken;
                 Response.Redirect("~/Management/Login.aspx");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPIS_Senior_Project.DataModels;
+using System;
 using System.Web.UI;
 
 namespace CPIS_Senior_Project
@@ -7,10 +8,14 @@ namespace CPIS_Senior_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Account account = (Account)Session["Account"];
             if (Session["Login"] != null && (bool)Session["login"] == true)
             {
                 loginButton.InnerText = "Logout";
-                LoggedInItems.Text = "<li class=\"nav-item\"><a class=\"nav-link\" runat=\"server\" href=\"/Management\">Movie Management</a></li>";
+                if (account.Role == "Theater")
+                {
+                    LoggedInItems.Text = "<li class=\"nav-item\"><a class=\"nav-link\" runat=\"server\" href=\"/Management\">Movie Management</a></li>";
+                }
             }
         }
     }
