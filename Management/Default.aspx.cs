@@ -64,5 +64,10 @@ namespace CPIS_Senior_Project.Management
             Response.Redirect("~/Management/AddMovie");
         }
         //Might add a delete function, causes issues with Identity key though so may omit this for now
+
+        protected void EditProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Management/EditProfile");
+        }
     }
 }
