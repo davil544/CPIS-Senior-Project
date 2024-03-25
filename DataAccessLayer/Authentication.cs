@@ -174,7 +174,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             if (auth.Role.Equals("Theater"))
             {
                 query = "UPDATE Users " +
-                     "SET Name = @Name, Address1 = @Add1, Address2 = @Add2, City = @City, State = @State, Zip = @Zip, Country = @Country, Hours = @Hours " +
+                     "SET Name = @Name, Address1 = @Add1, Address2 = @Add2, City = @City, State = @State, Zip = @Zip, Country = @Country, Hours = @Hours, TicketPrice = @Price " +
                      "WHERE Username = @Uname;";
             }
             else
@@ -196,7 +196,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             cmd.Parameters.Add("@Zip", SqlDbType.NVarChar, 10).Value = auth.MyTheater.PostalCode;
             cmd.Parameters.Add("@Country", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Country;
             cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
-            
+            cmd.Parameters.Add("@Price", SqlDbType.Float).Value = auth.MyTheater.TicketPrice;
+
 
             try
             {
