@@ -187,7 +187,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             auth.status = ErrorHandler.failed;
             int rows;
 
-            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
+            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = Username;
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = auth.FullName;
             cmd.Parameters.Add("@Add1", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address1;
             cmd.Parameters.Add("@Add2", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address2;
