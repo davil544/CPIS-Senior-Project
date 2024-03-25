@@ -69,15 +69,6 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.TextBox txtState;
 
         /// <summary>
-        /// txtHours control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHours;
-
-        /// <summary>
         /// txtZipCode control.
         /// </summary>
         /// <remarks>
@@ -94,6 +85,24 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCountry;
+
+        /// <summary>
+        /// txtHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHours;
+
+        /// <summary>
+        /// txtTicketPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTicketPrice;
 
         /// <summary>
         /// btnSubchanges control.

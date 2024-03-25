@@ -9,58 +9,54 @@ namespace CPIS_Senior_Project.Management
         Account account;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Login"] != null && Session["Loaded"] == null)
+            account = (Account)Session["Account"];
+            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
             {
+                if (!IsPostBack)
+                {
+                    if (account.MyTheater != null)
+                    {
+
+                        txtTheaterName.Text = account.FullName;
+                        txtAddress1.Text = account.MyTheater.Address1;
+                        txtAddress2.Text = account.MyTheater.Address2;
+                        txtCity.Text = account.MyTheater.City;
+                        txtState.Text = account.MyTheater.State;
+                        txtZipCode.Text = account.MyTheater.PostalCode;
+                        txtCountry.Text = account.MyTheater.Country;
+                        txtHours.Text = account.MyTheater.Hours;
+                        txtTicketPrice.Text = account.MyTheater.TicketPrice.ToString();
+                    }
+                    else
+                    {
+                        //Not sure if this code will ever run, may delete in a future update
+                        account.MyTheater = new Theater();
+                    }
+                }
                 
-                Session["Loaded"] = true;
             }
             else
             {
-                //Response.Redirect("Default.aspx");
+                debug.Text = ErrorHandler.invalidLoginToken;
+                Response.Redirect("~/Management/Login.aspx");
             }
-
-            //This keeps overwriting the input values. why???
-            //Maybe use query strings instead of session variables to load values?
-            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
-            {
-                if (account.MyTheater != null)
-                {
-                    account = (Account)Session["Account"];
-                    txtTheaterName.Text = account.FullName;
-                    txtAddress1.Text = account.MyTheater.Address1;
-                    txtAddress2.Text = account.MyTheater.Address2;
-                    txtCity.Text = account.MyTheater.City;
-                    txtState.Text = account.MyTheater.State;
-                    txtZipCode.Text = account.MyTheater.PostalCode;
-                    txtCountry.Text = account.MyTheater.Country;
-                    txtHours.Text = account.MyTheater.Hours;
-                }
-                else
-                {
-                    account.MyTheater = new Theater();
-                }
-            }
-
         }
 
         protected void mgmt_subchanges_Click(object sender, EventArgs e)
         {
-            /* Incomplete at this time. This function is for submitting */
-            /* the changes made for editing theater information in the  */
-            /* edit theater form.                                       */
-            //firstAccess = false;
             account.FullName = txtTheaterName.Text;
-            account.MyTheater = new Theater();
-            account.MyTheater.Address1 = txtAddress1.Text;
-            account.MyTheater.Address2 = txtAddress2.Text;
-            account.MyTheater.City = txtCity.Text;
-            account.MyTheater.State = txtState.Text;
-            account.MyTheater.PostalCode = txtZipCode.Text;
-            account.MyTheater.Country = txtCountry.Text;
-            account.MyTheater.Hours = txtHours.Text;
-            debug.Text = account.MyTheater.Address1;
+            account.MyTheater = new Theater
+            {
+                Address1 = txtAddress1.Text,
+                Address2 = txtAddress2.Text,
+                City = txtCity.Text,
+                State = txtState.Text,
+                PostalCode = txtZipCode.Text,
+                Country = txtCountry.Text,
+                Hours = txtHours.Text,
+                TicketPrice = float.Parse(txtTicketPrice.Text)
+            };
 
-            //Why isn't this passing on the new changes???
             Authentication loginManager = new Authentication();
             debug.Text = loginManager.UpdateAccount(account);
             //void firstaccess session after updating db

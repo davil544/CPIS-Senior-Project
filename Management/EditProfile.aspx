@@ -9,7 +9,7 @@
            <table>
                <tr>
                    <td>
-                       <asp:Label runat="server">Theater Name: &nbsp</asp:Label>
+                       <asp:Label runat="server">Theater Name:</asp:Label>
                    </td>
                    <td>
                        <asp:TextBox ID="txtTheaterName" runat="server"></asp:TextBox>
@@ -26,7 +26,7 @@
                </tr>
                <tr>
                    <td>
-                       <asp:Label runat="server">City: </asp:Label>
+                       <asp:Label runat="server">City:</asp:Label>
                    </td>
                    <td>
                        <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
@@ -34,7 +34,7 @@
                </tr>
                <tr>
                    <td>
-                       <asp:Label runat="server">State: </asp:Label>
+                       <asp:Label runat="server">State:</asp:Label>
                    </td>
                    <td>
                        <asp:TextBox ID="txtState" runat="server"></asp:TextBox>
@@ -42,15 +42,7 @@
                </tr>
                <tr>
                    <td>
-                       <asp:Label runat="server">Operating Hours: </asp:Label>
-                   </td>
-                   <td>
-                       <asp:TextBox ID="txtHours" runat="server"></asp:TextBox>
-                   </td>
-               </tr>
-               <tr>
-                   <td>
-                       <asp:Label runat="server">Zip Code: </asp:Label>
+                       <asp:Label runat="server">Zip Code:</asp:Label>
                    </td>
                    <td>
                        <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
@@ -58,10 +50,26 @@
                </tr>
                <tr>
                    <td>
-                       <asp:Label runat="server">Country: </asp:Label>
+                       <asp:Label runat="server">Country:</asp:Label>
                    </td>
                    <td>
                        <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <asp:Label runat="server">Operating Hours:</asp:Label>
+                   </td>
+                   <td>
+                       <asp:TextBox ID="txtHours" runat="server"></asp:TextBox>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <asp:Label runat="server">Ticket Price (In USD):&nbsp</asp:Label>
+                   </td>
+                   <td>
+                       <asp:TextBox ID="txtTicketPrice" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
