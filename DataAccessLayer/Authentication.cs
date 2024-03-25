@@ -166,7 +166,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         public string UpdateAccount(string Username, Account auth)
         {
             // Checks if fields contain data, prevents blank usernames or full names
-            if (auth.Username.Equals("") || auth.FullName.Equals(""))
+            if (Username.Equals("") || auth.FullName.Equals(""))
             {
                 return ErrorHandler.empty;
             }
