@@ -163,10 +163,10 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public string UpdateAccount(string Username, Account auth)
+        public string UpdateAccount(Account auth)
         {
             // Checks if fields contain data, prevents blank usernames or full names
-            if (Username.Equals("") || auth.FullName.Equals(""))
+            if (auth.Username.Equals("") || auth.FullName.Equals(""))
             {
                 return ErrorHandler.empty;
             }
@@ -187,7 +187,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             auth.status = ErrorHandler.failed;
             int rows;
 
-            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = Username;
+            cmd.Parameters.Add("@Uname", SqlDbType.NVarChar, 50).Value = auth.Username;
             cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = auth.FullName;
             cmd.Parameters.Add("@Add1", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address1;
             cmd.Parameters.Add("@Add2", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address2;

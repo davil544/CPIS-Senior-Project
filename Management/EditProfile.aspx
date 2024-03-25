@@ -12,7 +12,7 @@
                        <asp:Label runat="server">Theater Name: &nbsp</asp:Label>
                    </td>
                    <td>
-                       <asp:TextBox ID="theaterName" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtTheaterName" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -20,8 +20,8 @@
                        <asp:Label runat="server">Address: </asp:Label>
                    </td>
                    <td>
-                       <asp:TextBox ID="Address1" runat="server"></asp:TextBox>
-                       <asp:TextBox ID="Address2" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtAddress1" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtAddress2" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -29,7 +29,7 @@
                        <asp:Label runat="server">City: </asp:Label>
                    </td>
                    <td>
-                       <asp:TextBox ID="City" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -37,7 +37,7 @@
                        <asp:Label runat="server">State: </asp:Label>
                    </td>
                    <td>
-                       <asp:TextBox ID="State" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtState" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -45,7 +45,7 @@
                        <asp:Label runat="server">Operating Hours: </asp:Label>
                    </td>
                    <td>
-                       <asp:TextBox ID="hours" runat="server"></asp:TextBox>
+                       <asp:TextBox ID="txtHours" runat="server"></asp:TextBox>
                    </td>
                </tr>
                <tr>
@@ -67,13 +67,13 @@
                <tr>
                    <td />
                    <td>
-                       <asp:Button ID="mgmt_subchanges" runat="server" OnClick="mgmt_subchanges_Click" Text="Submit Changes"/>
+                       <asp:Button ID="btnSubchanges" runat="server" OnClick="mgmt_subchanges_Click" Text="Submit Changes"/>
                    </td>
                </tr>
                <tr>
                    <td />
                    <td>
-                       <asp:Button ID="mgmt_cancel" runat="server" OnClick="mgmt_cancel_Click" Text="Cancel"/>
+                       <asp:Button ID="btnCancel" runat="server" OnClick="mgmt_cancel_Click" Text="Cancel"/>
                    </td>
                </tr>
            </table>

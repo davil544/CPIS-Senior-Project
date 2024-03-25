@@ -24,58 +24,58 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Panel edittheater_form;
 
         /// <summary>
-        /// theaterName control.
+        /// txtTheaterName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox theaterName;
+        protected global::System.Web.UI.WebControls.TextBox txtTheaterName;
 
         /// <summary>
-        /// Address1 control.
+        /// txtAddress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address1;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress1;
 
         /// <summary>
-        /// Address2 control.
+        /// txtAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address2;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress2;
 
         /// <summary>
-        /// City control.
+        /// txtCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox City;
+        protected global::System.Web.UI.WebControls.TextBox txtCity;
 
         /// <summary>
-        /// State control.
+        /// txtState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox State;
+        protected global::System.Web.UI.WebControls.TextBox txtState;
 
         /// <summary>
-        /// hours control.
+        /// txtHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hours;
+        protected global::System.Web.UI.WebControls.TextBox txtHours;
 
         /// <summary>
         /// txtZipCode control.
@@ -96,22 +96,22 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.TextBox txtCountry;
 
         /// <summary>
-        /// mgmt_subchanges control.
+        /// btnSubchanges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button mgmt_subchanges;
+        protected global::System.Web.UI.WebControls.Button btnSubchanges;
 
         /// <summary>
-        /// mgmt_cancel control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button mgmt_cancel;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
 
         /// <summary>
         /// debug control.

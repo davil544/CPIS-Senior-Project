@@ -9,19 +9,31 @@ namespace CPIS_Senior_Project.Management
         Account account;
         protected void Page_Load(object sender, EventArgs e)
         {
-            account = (Account)Session["Account"];
+            if (Session["Login"] != null && Session["Loaded"] == null)
+            {
+                
+                Session["Loaded"] = true;
+            }
+            else
+            {
+                //Response.Redirect("Default.aspx");
+            }
+
+            //This keeps overwriting the input values. why???
+            //Maybe use query strings instead of session variables to load values?
             if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
             {
                 if (account.MyTheater != null)
                 {
-                    theaterName.Text = account.FullName;
-                    Address1.Text = account.MyTheater.Address1;
-                    Address2.Text = account.MyTheater.Address2;
-                    City.Text = account.MyTheater.City;
-                    State.Text = account.MyTheater.State;
+                    account = (Account)Session["Account"];
+                    txtTheaterName.Text = account.FullName;
+                    txtAddress1.Text = account.MyTheater.Address1;
+                    txtAddress2.Text = account.MyTheater.Address2;
+                    txtCity.Text = account.MyTheater.City;
+                    txtState.Text = account.MyTheater.State;
                     txtZipCode.Text = account.MyTheater.PostalCode;
                     txtCountry.Text = account.MyTheater.Country;
-                    hours.Text = account.MyTheater.Hours;
+                    txtHours.Text = account.MyTheater.Hours;
                 }
                 else
                 {
@@ -36,19 +48,22 @@ namespace CPIS_Senior_Project.Management
             /* Incomplete at this time. This function is for submitting */
             /* the changes made for editing theater information in the  */
             /* edit theater form.                                       */
-            Account updated = new Account();
-            updated.FullName = theaterName.Text;
-            updated.MyTheater = new Theater();
-            updated.MyTheater.Address1 = Address1.Text;
-            updated.MyTheater.Address2 = Address2.Text;
-            updated.MyTheater.City = City.Text;
-            updated.MyTheater.State = State.Text;
-            updated.MyTheater.PostalCode = txtZipCode.Text;
-            updated.MyTheater.Country = txtCountry.Text;
-            updated.MyTheater.Hours = hours.Text;
+            //firstAccess = false;
+            account.FullName = txtTheaterName.Text;
+            account.MyTheater = new Theater();
+            account.MyTheater.Address1 = txtAddress1.Text;
+            account.MyTheater.Address2 = txtAddress2.Text;
+            account.MyTheater.City = txtCity.Text;
+            account.MyTheater.State = txtState.Text;
+            account.MyTheater.PostalCode = txtZipCode.Text;
+            account.MyTheater.Country = txtCountry.Text;
+            account.MyTheater.Hours = txtHours.Text;
+            debug.Text = account.MyTheater.Address1;
 
+            //Why isn't this passing on the new changes???
             Authentication loginManager = new Authentication();
-            debug.Text = loginManager.UpdateAccount(account.Username, updated);
+            debug.Text = loginManager.UpdateAccount(account);
+            //void firstaccess session after updating db
         }
 
         protected void mgmt_cancel_Click(object sender, EventArgs e)
