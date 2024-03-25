@@ -78,6 +78,24 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.TextBox hours;
 
         /// <summary>
+        /// txtZipCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtZipCode;
+
+        /// <summary>
+        /// txtCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCountry;
+
+        /// <summary>
         /// mgmt_subchanges control.
         /// </summary>
         /// <remarks>
@@ -87,12 +105,21 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Button mgmt_subchanges;
 
         /// <summary>
-        /// mgmt_clear control.
+        /// mgmt_cancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button mgmt_clear;
+        protected global::System.Web.UI.WebControls.Button mgmt_cancel;
+
+        /// <summary>
+        /// debug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label debug;
     }
 }

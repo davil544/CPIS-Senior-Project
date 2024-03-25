@@ -49,6 +49,22 @@
                    </td>
                </tr>
                <tr>
+                   <td>
+                       <asp:Label runat="server">Zip Code: </asp:Label>
+                   </td>
+                   <td>
+                       <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <asp:Label runat="server">Country: </asp:Label>
+                   </td>
+                   <td>
+                       <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
+                   </td>
+               </tr>
+               <tr>
                    <td />
                    <td>
                        <asp:Button ID="mgmt_subchanges" runat="server" OnClick="mgmt_subchanges_Click" Text="Submit Changes"/>
@@ -57,10 +73,11 @@
                <tr>
                    <td />
                    <td>
-                       <asp:Button ID="mgmt_clear" runat="server" OnClick="mgmt_clear_Click" Text="Clear"/>
+                       <asp:Button ID="mgmt_cancel" runat="server" OnClick="mgmt_cancel_Click" Text="Cancel"/>
                    </td>
                </tr>
            </table>
        </asp:Panel>
+       <asp:Label ID="debug" runat="server"></asp:Label>
    </main>
 </asp:Content>
