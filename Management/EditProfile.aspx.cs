@@ -16,7 +16,6 @@ namespace CPIS_Senior_Project.Management
                 {
                     if (account.MyTheater != null)
                     {
-
                         txtTheaterName.Text = account.FullName;
                         txtAddress1.Text = account.MyTheater.Address1;
                         txtAddress2.Text = account.MyTheater.Address2;
@@ -37,6 +36,9 @@ namespace CPIS_Senior_Project.Management
             }
             else
             {
+                //This redirects the user to the login page if they are not yet authenticated
+                //or if they attempt to access this page as a customer.  May show an error
+                //message to customers instead of signing them out in a future update
                 debug.Text = ErrorHandler.invalidLoginToken;
                 Response.Redirect("~/Management/Login.aspx");
             }
@@ -59,7 +61,6 @@ namespace CPIS_Senior_Project.Management
 
             Authentication loginManager = new Authentication();
             debug.Text = loginManager.UpdateAccount(account);
-            //void firstaccess session after updating db
         }
 
         protected void mgmt_cancel_Click(object sender, EventArgs e)

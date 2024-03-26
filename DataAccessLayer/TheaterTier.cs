@@ -248,6 +248,59 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
         }
 
+        public string UpdateMovie (Movie movie)
+        {
+            string status = "Failed!";
+            if (movie.ID.ToString() != "")
+            {
+                query = "UPDATE Movies " +
+                    "SET Title = @Title, Summary = @Desc, ReleaseYear = @Year, Genre = @Genre, MPA_Rating = @Rating";
+                if (movie.Poster != null)
+                {
+                    query += ", Poster = @Poster";
+                }
+                query += " WHERE ID=@movieID;";
+
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@movieID", movie.ID);
+                cmd.Parameters.AddWithValue("@Title", movie.Title);
+                cmd.Parameters.AddWithValue("@Desc", movie.Summary);
+                cmd.Parameters.AddWithValue("@Year", movie.ReleaseYear);
+                cmd.Parameters.AddWithValue("@Genre", movie.Genre);
+                cmd.Parameters.AddWithValue("@Rating", movie.MPA_rating);
+                if (movie.Poster != null) {
+                    cmd.Parameters.Add("@Poster", SqlDbType.Image).Value = movie.Poster;
+                }
+
+                try
+                {
+                    conn.Open();
+                    int rows = cmd.ExecuteNonQuery();
+
+                    if (rows >= 1)
+                    {
+                        status = "Success!";
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    status = ErrorHandler.SQL(ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                return status;
+            }
+            else
+            {
+                return status;
+            }
+        }
+
         //This is necessary for movie posters to load properly
         public int GetMovieCount()
         {
