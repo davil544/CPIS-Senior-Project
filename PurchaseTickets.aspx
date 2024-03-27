@@ -8,34 +8,36 @@
               <br />
              <asp:Label runat="server" ID ="MovieName">Movie Name:</asp:Label>
          </asp:Panel>
-        <tr>
+        
          <asp:Panel runat="server" ID="Creditcard_Info">
-             <td>
-               <asp:Label runat="server">Credit Card #:</asp:Label>
+             <table>
+                 <tr>
+                     <td>
+                         <asp:Label runat="server">Credit Card #:</asp:Label>
+                     </td>
+                     <td>
+                         <asp:TextBox ID="cc_number" runat="server"></asp:TextBox>
+                     </td>
+                 </tr>
+                 <tr>
+                 <td>
+                     <br />
+                     <asp:Label runat="server">CVV:</asp:Label>
                  </td>
-                  <td>
-                <asp:TextBox ID="cc_number" runat="server"></asp:TextBox>
-                </td>
-                </tr>
-         <tr>
-             <td>
-                  <br />
-                <asp:Label runat="server">CVV:</asp:Label>
-                  
-             </td>
-             <td>
-                  <asp:TextBox ID="cc_cvv" runat="server"></asp:TextBox>
+                 <td>
+                     <asp:TextBox ID="cc_cvv" runat="server"></asp:TextBox>
                  </td>
-             </tr>
-          <tr>
-              <td>
-                   <br />
-                <asp:Label runat="server">Expiration Date:</asp:Label>
+                 </tr>
+                     <tr>
+                 <td>
+                     <br />
+                     <asp:Label runat="server">Expiration Date:</asp:Label>
                 </td>
-              <td>
-                 <asp:TextBox ID="cc_expiration" runat="server"></asp:TextBox>
-                  </td>
-              </tr>
-            </asp:Panel>
-         </main>
+                <td>
+                     <asp:TextBox ID="cc_expiration" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+       </asp:Panel>
+    </main>
 </asp:Content>
