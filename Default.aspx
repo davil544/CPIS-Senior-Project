@@ -17,7 +17,7 @@
             <section class="col-md-4" aria-labelledby="OwnersTitle">
                 <h2 id="OwnersTitle">Owners</h2>
                 <p>
-                 Movies.net allows movie owners to view ticket sales. As well as list or delist movies that came out to make sure that popular titles are shown and nonpopular ones are delisted. 
+                 Movies.net allows movie owners to view ticket sales, as well as list or delist movies that came out to make sure that popular titles are shown and unpopular ones are delisted. 
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
@@ -26,7 +26,7 @@
             <section class="col-md-4" aria-labelledby="EmployeesTitle">
                 <h2 id="EmployeesTitle">Employees</h2>
                 <p>
-                   Allows employees to check hours of work and avliable hours to work. So that they can book hours to work at there convience 
+                   Allows employees to check hours of work and available hours to work, so that they can book hours to work at their convience 
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
@@ -35,7 +35,7 @@
             <section class="col-md-4" aria-labelledby="CustimersTitle">
                 <h2 id="CustimersTitle">Customers</h2>
                 <p>
-                    Customers can buy review movies, write reviewsa for movies they watched, and buy tickets for movies they want to watch.
+                    Customers can buy review movies, write reviews for movies they watched, and buy tickets for movies they want to watch.
                 </p>
                 <p>
                     <a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
