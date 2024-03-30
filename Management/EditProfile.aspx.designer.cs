@@ -15,13 +15,13 @@ namespace CPIS_Senior_Project.Management
     {
 
         /// <summary>
-        /// edittheater_form control.
+        /// editTheater_form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel edittheater_form;
+        protected global::System.Web.UI.WebControls.Panel editTheater_form;
 
         /// <summary>
         /// txtTheaterName control.
@@ -103,6 +103,51 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTicketPrice;
+
+        /// <summary>
+        /// editCustomer_form control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel editCustomer_form;
+
+        /// <summary>
+        /// txtCustName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustName;
+
+        /// <summary>
+        /// txtCC_number control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCC_number;
+
+        /// <summary>
+        /// txtExpDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExpDate;
+
+        /// <summary>
+        /// txtCVV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCVV;
 
         /// <summary>
         /// btnSubchanges control.
