@@ -32,8 +32,10 @@ namespace CPIS_Senior_Project.Management
 
                 //This is for debug purposes, shows the number of movies found in the database
                 lblMovieCount.Text = count.ToString();
-                Literal movieText = new Literal();
-                movieText.Text = "<div class=\"row\" style=\"padding-top: 50px;\">";
+                Literal movieText = new Literal
+                {
+                    Text = "<div class=\"row\" style=\"padding-top: 50px;\">"
+                };
                 for (int i = 0; i < count; i++)
                 {
                     int dbCount = i + 1;
