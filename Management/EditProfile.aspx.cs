@@ -40,9 +40,20 @@ namespace CPIS_Senior_Project.Management
                     case "Customer":
                         editTheater_form.Visible = false;
                         editCustomer_form.Visible = true;
-                        debug.Text = "show customer form here";
+                        if (!IsPostBack)
+                        {
+                            txtCustName.Text = account.FullName;
+                            if (account.CC[0] != null)
+                            {
+                            //TODO: Add for loop to pull all available credit cards available for use by customers
+                                txtCC_number.Text = account.CC[0].CardNumber;
+                                txtExpDate.Text = account.CC[0].ExpirationDate;
+                                txtCVV.Text = account.CC[0].CVV;
+                            }
+                        }
                         break;
 
+                    //This runs when the role is configured incorrectly
                     default:
                         debug.Text = ErrorHandler.invalidLoginToken;
                         Response.Redirect("~/Management/Login.aspx");
@@ -84,9 +95,9 @@ namespace CPIS_Senior_Project.Management
                     account.FullName = txtCustName.Text;
                     if (txtCC_number.Text != null && txtExpDate.Text != null && txtCVV.Text != null)  //Maybe check for "" here if null check fails?
                     {
-                        account.CC.CardNumber = txtCC_number.Text;
-                        account.CC.ExpirationDate = txtExpDate.Text;
-                        account.CC.CVV = txtCVV.Text;
+                        account.CC[0].CardNumber = txtCC_number.Text;
+                        account.CC[0].ExpirationDate = txtExpDate.Text;
+                        account.CC[0].CVV = txtCVV.Text;
                     }
                     break;
             }

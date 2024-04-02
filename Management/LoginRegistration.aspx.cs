@@ -55,10 +55,11 @@ namespace CPIS_Senior_Project.Management
                     {
                         //Regex re = new Regex("^(0[1-9]|1[0-2])\\/?(([0-9]{4}|[0-9]{2})$)");
                         //TODO:  Put in regex to strip out all characters except numbers and ensure the format is correct
-                        auth.CC = new CreditCard();
-                        auth.CC.CardNumber = cc_number.Text;
-                        auth.CC.ExpirationDate = cc_expiration.Text;  //Convert to DateTime
-                        auth.CC.CVV = cc_cvv.Text;
+                        //TODO:  Add for loop to pull all available credit cards available for use by customers
+                        auth.CC[0] = new CreditCard();
+                        auth.CC[0].CardNumber = cc_number.Text;
+                        auth.CC[0].ExpirationDate = cc_expiration.Text;  //Convert to DateTime
+                        auth.CC[0].CVV = cc_cvv.Text;
                     }
                     catch (FormatException)
                     {

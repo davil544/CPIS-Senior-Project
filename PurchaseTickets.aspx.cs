@@ -39,11 +39,12 @@ namespace CPIS_Senior_Project
 
             bool valid = true; string status = "";
 
-            if (customerAccount.CC != null)
+            //TODO:  Add for loop to pull all available credit cards available for use by customers
+            if (customerAccount.CC[0] != null)
             {
                 //Code goes here to purchase ticket
-                customerAccount.CC.CardNumber = cc_number.Text;
-                customerAccount.CC.CVV = cc_cvv.Text;
+                customerAccount.CC[0].CardNumber = cc_number.Text;
+                customerAccount.CC[0].CVV = cc_cvv.Text;
                 //customerAccount.CC.ExpirationDate = cc_cvv.Text;
             }
             else

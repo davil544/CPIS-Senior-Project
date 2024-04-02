@@ -74,6 +74,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                         }
                     }
                 }
+                //run function to pull cc info here
             }
             catch (SqlException ex)
             {
@@ -119,11 +120,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
             string status = ErrorHandler.failed;
             int rows;
 
+            //TODO:  Add for loop to pull all available credit cards available for use by customers
             if (auth.Role.Equals("Customer") && auth.CC != null)
             {
-                cmd.Parameters.AddWithValue("@CardNo", auth.CC.CardNumber);
-                cmd.Parameters.AddWithValue("@ExpDate", auth.CC.ExpirationDate);
-                cmd.Parameters.AddWithValue("@CVV", auth.CC.CVV);
+                cmd.Parameters.AddWithValue("@CardNo", auth.CC[0].CardNumber);
+                cmd.Parameters.AddWithValue("@ExpDate", auth.CC[0].ExpirationDate);
+                cmd.Parameters.AddWithValue("@CVV", auth.CC[0].CVV);
             }
             else
             {
@@ -164,7 +166,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         }
 
         public string UpdateAccount(Account auth)
-        {
+        { //TODO:  Update this function to update CC info for customers as well
             // Checks if fields contain data, prevents blank usernames or full names
             if (auth.Username.Equals("") || auth.FullName.Equals(""))
             {
