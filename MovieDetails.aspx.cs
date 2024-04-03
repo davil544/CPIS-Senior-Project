@@ -31,7 +31,7 @@ namespace CPIS_Senior_Project.Management
             }
             else
             {
-                debug.Text = "No Movie Found! <br />";
+                debug.Text = ErrorHandler.noMovie + "<br />";
                 debug.Visible = true;
             }
         }
