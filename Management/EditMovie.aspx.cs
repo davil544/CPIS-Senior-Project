@@ -9,34 +9,43 @@ namespace CPIS_Senior_Project.Management
         private string movieID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO:  Add check for login to ensure customers can't edit movie data
-            movieID = Request.QueryString["ID"];
-            if (movieID != null)
+            Account account = (Account)Session["Account"];
+            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
             {
-                if (!IsPostBack)
+                movieID = Request.QueryString["ID"];
+                if (movieID != null)
                 {
-                    //Load movie from DB here
-                    //Account account = (Account)Session["Account"];
-                    TheaterTier movieManager = new TheaterTier();
-                    Movie mv = movieManager.GetMovie(int.Parse(movieID));
+                    if (!IsPostBack)
+                    {
+                        //Load movie from DB here
+                        TheaterTier movieManager = new TheaterTier();
+                        Movie mv = movieManager.GetMovie(int.Parse(movieID));
 
-                    txtMovieName.Text = mv.Title;
-                    txtMovieDesc.Text = mv.Summary;
-                    txtReleaseYear.Text = mv.ReleaseYear;
-                    txtMovieGenre.Text = mv.Genre;
-                    txtMovieRating.Text = mv.MPA_rating;
+                        txtMovieName.Text = mv.Title;
+                        txtMovieDesc.Text = mv.Summary;
+                        txtReleaseYear.Text = mv.ReleaseYear;
+                        txtMovieGenre.Text = mv.Genre;
+                        txtMovieRating.Text = mv.MPA_rating;
 
-                    //This will work once Showcases SQL table is tied in
-                    txtTimeSlot.Text = mv.TimeSlot;
+                        //This will work once Showcases SQL table is tied in
+                        txtTimeSlot.Text = mv.TimeSlot;
 
-                    //Maybe move this from Theater class to Showcases one
-                    //txtTicketPrice.Text = mv.Price.ToString();
+                        //Maybe move this from Theater class to Showcases one
+                        //txtTicketPrice.Text = mv.Price.ToString();
+                    }
+                }
+                else
+                {
+                    debug.Text = ErrorHandler.noMovie;
+                    debug.Visible = true;
+                    editForm.Visible = false;
                 }
             }
             else
             {
-                debug.Text = ErrorHandler.noMovie + "<br />";
+                debug.Text = ErrorHandler.invalidLoginToken;
                 debug.Visible = true;
+                Response.Redirect("~/Management/Login.aspx");
             }
         }
 
@@ -58,6 +67,7 @@ namespace CPIS_Senior_Project.Management
             if (posterUpload.HasFile)
             {
                 //Add input validation to make sure only images are uploaded here!
+                //Also add error handling for the SQL exception this throws if empty
                 updated.Poster = (byte[])posterUpload.FileBytes;
             }
             debug.Text = theaterManager.UpdateMovie(updated);
