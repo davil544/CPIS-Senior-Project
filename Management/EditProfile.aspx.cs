@@ -44,7 +44,7 @@ namespace CPIS_Senior_Project.Management
                         if (!IsPostBack)
                         {
                             txtCustName.Text = account.FullName;
-                            if (account.CC[0] != null)
+                            if (account.CC.Length != 0)
                             {
                                 //TODO: Add for loop to pull all available credit cards available for use by customers
                                 for (int i = 0; i < account.CC.Length; i++)
@@ -52,6 +52,11 @@ namespace CPIS_Senior_Project.Management
                                     lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, "Card #" + i));
                                 }
                                 debug.Text = "Card Count: " + (lstCreditCards.Items.Count - 1);
+                            }
+                            else
+                            {
+                                lstCreditCards.Items.Insert(0, new ListItem("Add New Card", "newcard"));
+                                debug.Text = "Card Count: 0";
                             }
                         }
                         break;
@@ -127,9 +132,17 @@ namespace CPIS_Senior_Project.Management
             int ccID = lstCreditCards.SelectedIndex;
             if (ccID <= 0)
             {
-                txtCC_number.Text = account.CC[ccID].CardNumber;
-                txtExpDate.Text = account.CC[ccID].ExpirationDate;
-                txtCVV.Text = account.CC[ccID].CVV;
+                try
+                {
+                    txtCC_number.Text = account.CC[ccID].CardNumber;
+                    txtExpDate.Text = account.CC[ccID].ExpirationDate;
+                    txtCVV.Text = account.CC[ccID].CVV;
+                }
+                catch
+                {
+                    //Code throws IndexOutOfRangeException if this
+                    //block is not here and Add New Card is selected
+                }
                 formCCHTML.Visible = true;
             }
             else
