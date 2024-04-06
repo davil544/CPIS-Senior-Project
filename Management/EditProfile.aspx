@@ -3,9 +3,9 @@
     <main aria-labelledby="title">
         <h2 id="title"><%: Title %></h2>
 
-        <h4>Edit your Theater Information here:</h4>
-        <br />
         <asp:Panel runat="server" ID="editTheater_form">
+            <h4>Edit your Theater Information here:</h4>
+            <br />
             <table>
                 <tr>
                     <td>
@@ -76,6 +76,8 @@
         </asp:Panel>
 
         <asp:Panel ID="editCustomer_form" runat="server" Visible="false">
+            <h4>Edit your Customer Profile here:</h4>
+            <br />
             <table>
                 <tr>
                     <td>
@@ -87,15 +89,32 @@
                 </tr>
                 <tr>
                     <td> <!-- TODO:  Add drop down here to select a credit card, in case more than 1 is on file -->
-                        <asp:Label runat="server">Credit Card #:</asp:Label>
+                        <asp:Label Text="Edit Credit Card Info:&nbsp" runat="server"></asp:Label>
+
                     </td>
                     <td>
-                        <asp:TextBox ID="txtCC_number" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="lstCreditCards" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ListCC_Change"  >
+                            <asp:ListItem Selected="True" Text="No Card Selected" ></asp:ListItem>
+                        </asp:DropDownList>
+                        
+                        
                     </td>
                 </tr>
+            </table>
+            <br />
+            <asp:Panel ID="formCCHTML" runat="server" Visible="false">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Label runat="server">Credit Card #:</asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtCC_number" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
                 <tr>
                     <td>
-                        <asp:Label runat="server">Expiration Date:</asp:Label>
+                        <asp:Label runat="server">Expiration Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="txtExpDate" runat="server"></asp:TextBox>
@@ -109,7 +128,8 @@
                         <asp:TextBox ID="txtCVV" runat="server"></asp:TextBox>
                     </td>
                 </tr>
-            </table>
+                </table>
+            </asp:Panel>
         </asp:Panel> <br />
 
         <asp:Button ID="btnSubchanges" runat="server" OnClick="BtnSubmit_Click" Text="Submit Changes"/>

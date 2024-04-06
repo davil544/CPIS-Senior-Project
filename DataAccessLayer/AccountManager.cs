@@ -73,8 +73,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             }
                         }
                     }
+
+                    auth.CC = GetCreditCards(auth);
                 }
-                //run function to pull cc info here
             }
             catch (SqlException ex)
             {
@@ -220,6 +221,88 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             return auth.status;
+        }
+
+        public static CreditCard[] GetCreditCards(Account account)
+        {
+            if (account.Role == "Customer")
+            {
+                string countQuery = "SELECT COUNT(*) FROM CreditCards " +
+                    "where CardOwner = @Uname;";
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(countQuery, conn);
+                cmd.Parameters.AddWithValue("@Uname", account.Username);
+
+                int cardCount;
+                try
+                {
+                    conn.Open();
+                    cardCount = (int)cmd.ExecuteScalar();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                query = "SELECT ID, CardNumber, ExpirationDate, CVV " +
+                "FROM CreditCards where CardOwner = @Uname;";
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Uname", account.Username);
+                CreditCard[] cc = new CreditCard[0];
+
+                try
+                {
+                    conn.Open();
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        int i = 0;
+                        cc = new CreditCard[cardCount];
+                        while (reader.Read())
+                        {
+                            cc[i] = new CreditCard();
+                            if (reader["ID"] != DBNull.Value)
+                            {
+                                cc[i].CardID = (int)reader["ID"];
+                            }
+                            if (reader["CardNumber"] != DBNull.Value)
+                            {
+                                cc[i].CardNumber = (string)reader["CardNumber"];
+                            }
+
+                            if (reader["ExpirationDate"] != DBNull.Value)
+                            {
+                                cc[i].ExpirationDate = reader["ExpirationDate"].ToString();
+                            }
+
+                            if (reader["CVV"] != DBNull.Value)
+                            {
+                                cc[i].CVV = reader["CVV"].ToString();
+                            }
+                            i++;
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+
+                }
+                return cc;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Will eventually use this for password hashing
