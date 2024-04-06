@@ -187,7 +187,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccessLayer\Authentication.cs" />
+    <Compile Include="DataAccessLayer\AccountManager.cs" />
     <Compile Include="DataAccessLayer\ErrorHandler.cs" />
     <Compile Include="DataAccessLayer\TheaterTier.cs" />
     <Compile Include="DataModels\Account.cs" />

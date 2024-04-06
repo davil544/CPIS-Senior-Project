@@ -8,20 +8,20 @@ using CPIS_Senior_Project.DataModels;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
-    public class Authentication
+    public class AccountManager
     {
 
-        private SqlConnection conn; private SqlCommand cmd;
-        private string connectionString, query;
-        private SqlDataReader reader;
+        private static SqlConnection conn; private static SqlCommand cmd;
+        private static string connectionString, query;
+        private static SqlDataReader reader;
 
-        public Authentication()
+        static AccountManager()
         {
             //Instantiate creds here and scrub them for SQL command
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
         
-        public Account Login(Account auth)
+        public static Account Login(Account auth)
         {
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
@@ -89,7 +89,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return auth;
         }
 
-        public string Registration(Account auth)
+        public static string Register(Account auth)
         {
             //Checks if fields contain data, prevents blank usernames or passwords
             if (auth.Username.Equals("") || auth.Password.Equals("") || auth.FullName.Equals(""))
@@ -165,7 +165,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public string UpdateAccount(Account auth)
+        public static string UpdateAccount(Account auth)
         { //TODO:  Update this function to update CC info for customers as well
             // Checks if fields contain data, prevents blank usernames or full names
             if (auth.Username.Equals("") || auth.FullName.Equals(""))

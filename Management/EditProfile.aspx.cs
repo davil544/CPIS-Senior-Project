@@ -102,8 +102,7 @@ namespace CPIS_Senior_Project.Management
                     break;
             }
 
-            Authentication loginManager = new Authentication();
-            debug.Text = loginManager.UpdateAccount(account);
+            debug.Text = AccountManager.UpdateAccount(account);
         }
 
         protected void BtnCancel_Click(object sender, EventArgs e)
