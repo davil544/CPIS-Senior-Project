@@ -99,7 +99,7 @@ namespace CPIS_Senior_Project.Management
 
                 case "Customer":
                     account.FullName = txtCustName.Text;
-                    CreditCard newCard = new CreditCard(); ;
+                    CreditCard newCard = new CreditCard();
                     //get CC ID here if not null, then make function to overwrite that card in the SQL DB
                     if (txtCC_number.Text != null && txtExpDate.Text != null && txtCVV.Text != null)  //Maybe check for "" here if null check fails?
                     {
