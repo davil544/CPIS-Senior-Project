@@ -18,6 +18,7 @@ namespace CPIS_Senior_Project.Management
                 mgmt_status_message.Text = "You have successfully been logged out!";
             }
             Session["Login"] = null; Session["Account"] = null;
+            this.Form.DefaultButton = mgmt_login.UniqueID;
         }
 
         protected void mgmt_Login_Click(object sender, EventArgs e)
