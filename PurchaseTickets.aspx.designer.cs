@@ -42,40 +42,13 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Label MovieName;
 
         /// <summary>
-        /// Creditcard_Info control.
+        /// lstCreditCards control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Creditcard_Info;
-
-        /// <summary>
-        /// cc_number control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_number;
-
-        /// <summary>
-        /// cc_cvv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_cvv;
-
-        /// <summary>
-        /// cc_expiration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_expiration;
+        protected global::System.Web.UI.WebControls.DropDownList lstCreditCards;
 
         /// <summary>
         /// lblTheaterSelection control.
