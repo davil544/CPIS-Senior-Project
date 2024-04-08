@@ -78,93 +78,93 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.TextBox cc_expiration;
 
         /// <summary>
-        /// TheaterSelection control.
+        /// lblTheaterSelection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TheaterSelection;
+        protected global::System.Web.UI.WebControls.Label lblTheaterSelection;
 
         /// <summary>
-        /// TheaterSelection control.
+        /// lstTheaterSelection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDown TheaterSelection;
+        protected global::System.Web.UI.WebControls.DropDownList lstTheaterSelection;
 
         /// <summary>
-        /// Price control.
+        /// lblPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Price;
+        protected global::System.Web.UI.WebControls.Label lblPrice;
 
         /// <summary>
-        /// Price control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Price;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// CreditCard_Selection control.
+        /// lblCreditCard_Selection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CreditCard_Selection;
+        protected global::System.Web.UI.WebControls.Label lblCreditCard_Selection;
 
         /// <summary>
-        /// CreditCard_Selection control.
+        /// lstCreditCard_Selection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDown CreditCard_Selection;
+        protected global::System.Web.UI.WebControls.DropDownList lstCreditCard_Selection;
 
         /// <summary>
-        /// PurchaseButton control.
+        /// lblPurchaseButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PurchaseButton;
+        protected global::System.Web.UI.WebControls.Label lblPurchaseButton;
 
         /// <summary>
-        /// PurchaseButton control.
+        /// btnPurchaseButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton PurchaseButton;
+        protected global::System.Web.UI.WebControls.RadioButton btnPurchaseButton;
 
         /// <summary>
-        /// CancelButton control.
+        /// lblCancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CancelButton;
+        protected global::System.Web.UI.WebControls.Label lblCancelButton;
 
         /// <summary>
-        /// CancelButton control.
+        /// btnCancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton CancelButton;
+        protected global::System.Web.UI.WebControls.RadioButton btnCancelButton;
     }
 }

@@ -1,15 +1,11 @@
-﻿
-using CPIS_Senior_Project.DataAccessLayer;
+﻿using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
 using System;
-
-
 
 namespace CPIS_Senior_Project
 {
     public partial class PurchaseTickets : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null)
@@ -31,12 +27,10 @@ namespace CPIS_Senior_Project
 
 
 
-        protected void btnRegister_Click(object sender, EventArgs e)
+        protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-
             Account customerAccount = new Account();
             
-
             bool valid = true; string status = "";
 
             //TODO:  Add for loop to pull all available credit cards available for use by customers
@@ -70,6 +64,11 @@ namespace CPIS_Senior_Project
                     catch { }
                }*/
             }
+        }
+
+        protected void BtnCancel_Click (object sender, EventArgs e)
+        {
+
         }
     }
 }

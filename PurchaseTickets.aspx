@@ -36,19 +36,19 @@
                 <td>
                      <asp:TextBox ID="cc_expiration" runat="server"></asp:TextBox>
                     
-                    <asp:Label runat="server" ID ="TheaterSelection">Theater Selection:</asp:Label>
-                     <asp:DropDown ID="TheaterSelection" runat="server"></asp:DropDown>
+                    <asp:Label runat="server" ID ="lblTheaterSelection">Theater Selection:</asp:Label>
+                     <asp:DropDownList ID="lstTheaterSelection" runat="server"></asp:DropDownList>
 
-                    <asp:Label runat="server" ID ="Price">Price:</asp:Label>
-                      <asp:TextBox ID="Price" runat="server"></asp:TextBox>
+                    <asp:Label runat="server" ID ="lblPrice">Price:</asp:Label>
+                      <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
                       
-                    <asp:Label runat="server" ID ="CreditCard_Selection">Credit Card Selection:</asp:Label>
-                        <asp:DropDown ID="CreditCard_Selection" runat="server"></asp:DropDown>
+                    <asp:Label runat="server" ID ="lblCreditCard_Selection">Credit Card Selection:</asp:Label>
+                        <asp:DropDownList ID="lstCreditCard_Selection" runat="server"></asp:DropDownList>
 
-                     <asp:Label runat="server" ID ="PurchaseButton">Purchase Button:</asp:Label>
-                    <asp:RadioButton ID="PurchaseButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="PurchaseRole" AutoPostBack="true" OnCheckedChanged="btnRole_Click" Checked="true"/>
-                     <asp:Label runat="server" ID ="CancelButton">Cancel Button:</asp:Label>
-                        <asp:RadioButton ID="CancelButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="CancelRole" AutoPostBack="true" OnCheckedChanged="btnRole_Click" Checked="true"/>
+                     <asp:Label runat="server" ID ="lblPurchaseButton">Purchase Button:</asp:Label>
+                    <asp:RadioButton ID="btnPurchaseButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="PurchaseRole" AutoPostBack="true" OnCheckedChanged="BtnPurchase_Click" Checked="true"/>
+                     <asp:Label runat="server" ID ="lblCancelButton">Cancel Button:</asp:Label>
+                        <asp:RadioButton ID="btnCancelButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="CancelRole" AutoPostBack="true" OnCheckedChanged="BtnCancel_Click" Checked="true"/>
                 </td>
             </tr>
         </table>
