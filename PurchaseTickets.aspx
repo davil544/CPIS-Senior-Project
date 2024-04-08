@@ -35,6 +35,20 @@
                 </td>
                 <td>
                      <asp:TextBox ID="cc_expiration" runat="server"></asp:TextBox>
+                    
+                    <asp:Label runat="server" ID ="TheaterSelection">Theater Selection:</asp:Label>
+                     <asp:DropDown ID="TheaterSelection" runat="server"></asp:DropDown>
+
+                    <asp:Label runat="server" ID ="Price">Price:</asp:Label>
+                      <asp:TextBox ID="Price" runat="server"></asp:TextBox>
+                      
+                    <asp:Label runat="server" ID ="CreditCard_Selection">Credit Card Selection:</asp:Label>
+                        <asp:DropDown ID="CreditCard_Selection" runat="server"></asp:DropDown>
+
+                     <asp:Label runat="server" ID ="PurchaseButton">Purchase Button:</asp:Label>
+                    <asp:RadioButton ID="PurchaseButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="PurchaseRole" AutoPostBack="true" OnCheckedChanged="btnRole_Click" Checked="true"/>
+                     <asp:Label runat="server" ID ="CancelButton">Cancel Button:</asp:Label>
+                        <asp:RadioButton ID="CancelButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="CancelRole" AutoPostBack="true" OnCheckedChanged="btnRole_Click" Checked="true"/>
                 </td>
             </tr>
         </table>
