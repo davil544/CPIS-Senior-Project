@@ -18,10 +18,16 @@ namespace CPIS_Senior_Project.Management
                 Account account = (Account)Session["Account"];
                 Movie mv = movieManager.GetMovie(int.Parse(movieID));
 
-                moviePoster.Src = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
-                movieTitle.Text = mv.Title;
-                movieSummary.Text = mv.Summary;
-                ticketPrice.Text = mv.Price.ToString();
+                //Shows movie info if it exists in DB
+                if (mv.Title != "")
+                {
+                    pnlMovieInfo.Visible = true;
+                    debug.Visible = false;
+                    moviePoster.Src = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
+                    movieTitle.Text = mv.Title;
+                    movieSummary.Text = mv.Summary;
+                    ticketPrice.Text = mv.Price.ToString();
+                }
 
                 //Shows management tools if logged in as theater employee
                 if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
@@ -29,16 +35,23 @@ namespace CPIS_Senior_Project.Management
                     mgmt_Edit.Visible = true;
                 }
             }
-            else
+            /* else
             {
+                pnlMovieInfo.Visible = false;
                 debug.Text = ErrorHandler.noMovie + "<br />";
                 debug.Visible = true;
-            }
+            } */
         }
 
         protected void EditMovie_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Management/EditMovie.aspx?ID=" + movieID);
+        }
+
+        protected void ChooseTheater_Change(object sender, EventArgs e)
+        {
+            //Check if theater has been selected here, pull relevant
+            //ticket price and enable the Purchase button when complete
         }
     }
 }
