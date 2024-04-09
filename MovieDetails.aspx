@@ -12,7 +12,7 @@
                 <h1> <asp:Label ID="movieTitle" runat="server">Movie Name Here</asp:Label> </h1>
                 <h4> <asp:Label ID="movieSummary" runat="server">Movie Summary Here</asp:Label> </h4>
                 <p> <br /> Select a theater to view ticket price:&nbsp
-                    <asp:DropDownList ID="lstCreditCards" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ChooseTheater_Change">
+                    <asp:DropDownList ID="lstMovieTheaters" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ChooseTheater_Change">
                         <asp:ListItem Selected="True" Text="No theater selected" ></asp:ListItem>
                     </asp:DropDownList>
                 </p> <br />
