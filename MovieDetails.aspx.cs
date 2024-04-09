@@ -18,7 +18,7 @@ namespace CPIS_Senior_Project.Management
                 Account account = (Account)Session["Account"];
                 Movie mv = movieManager.GetMovie(int.Parse(movieID));
 
-                moviePoster.ImageUrl = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
+                moviePoster.Src = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
                 movieTitle.Text = mv.Title;
                 movieSummary.Text = mv.Summary;
                 ticketPrice.Text = mv.Price.ToString();
