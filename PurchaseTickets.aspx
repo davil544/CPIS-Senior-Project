@@ -23,10 +23,10 @@
                         <asp:DropDownList ID="lstCreditCard_Selection" runat="server"></asp:DropDownList>
 
                      <asp:Label runat="server" ID ="lblPurchaseButton">Purchase Button:</asp:Label>
-                    <asp:RadioButton ID="btnPurchaseButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="PurchaseRole" AutoPostBack="true" OnCheckedChanged="BtnPurchase_Click" Checked="true"/>
+                     <asp:Button ID="btnPurchaseButton" runat="server" OnClick="BtnPurchase_Click" Text="Purchase Tickets" />
                      <asp:Label runat="server" ID ="lblCancelButton">Cancel Button:</asp:Label>
-                        <asp:RadioButton ID="btnCancelButton" runat="server" Text="Customer&nbsp&nbsp&nbsp" GroupName="CancelRole" AutoPostBack="true" OnCheckedChanged="BtnCancel_Click" Checked="true"/>
-              
+                      <asp:Button ID="btnCancelButton" runat="server" OnClick="BtnCancel_Click" Text="Cancel Order"/>
+                        
          
 
 

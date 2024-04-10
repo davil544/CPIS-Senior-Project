@@ -120,7 +120,7 @@ namespace CPIS_Senior_Project
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton btnPurchaseButton;
+        protected global::System.Web.UI.WebControls.Button btnPurchaseButton;
 
         /// <summary>
         /// lblCancelButton control.
@@ -138,6 +138,6 @@ namespace CPIS_Senior_Project
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton btnCancelButton;
+        protected global::System.Web.UI.WebControls.Button btnCancelButton;
     }
 }
