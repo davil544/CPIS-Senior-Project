@@ -16,7 +16,7 @@
                         <asp:ListItem Selected="True" Text="No theater selected" ></asp:ListItem>
                     </asp:DropDownList>
                 </p> <br />
-                <h4> $<asp:Label ID="ticketPrice" runat="server">0</asp:Label> </h4>
+                <h4> $<asp:Label ID="lblTicketPrice" runat="server">0</asp:Label> </h4>
 
                 <!-- This is to be enabled once a theater is selected -->
                 <br />Number of Tickets:&nbsp&nbsp<asp:TextBox ID="txtTicketCount" runat="server" Width="40px" type="number" min="1" value="1"></asp:TextBox>
@@ -26,7 +26,7 @@
                     ValidationExpression="\d+">
                 </asp:RegularExpressionValidator>
 
-                <br /><br /><asp:Button ID="btnPurchase" runat="server" Text="Purchase" Enabled="false" />
+                <br /><br /><asp:Button ID="btnPurchase" runat="server" Text="Purchase" Enabled="false" OnClick="BtnPurchase_Click" />
             </td>
         </tr>
     </table>
