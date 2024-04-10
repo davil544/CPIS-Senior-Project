@@ -26,7 +26,10 @@ namespace CPIS_Senior_Project.Handlers
                 theImage = movie.GetPoster(-1);
             }
 
-            context.Response.BinaryWrite(theImage);
+            if (theImage != null)
+            {
+                context.Response.BinaryWrite(theImage);
+            }
         }
 
         public bool IsReusable
