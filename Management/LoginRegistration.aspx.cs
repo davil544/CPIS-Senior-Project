@@ -14,9 +14,6 @@ namespace CPIS_Senior_Project.Management
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            //This creates the object used to connect to the SQL server for authentication
-            Authentication loginManager = new Authentication();
-
             //This creates the object that stores the login credentials
             Account auth = new Account();
             auth.Username = mgmt_Username.Text;
@@ -72,7 +69,7 @@ namespace CPIS_Senior_Project.Management
 
             if (valid)
             {
-                status = loginManager.Registration(auth);
+                status = AccountManager.Register(auth);
             }
 
             if (status == "success") {

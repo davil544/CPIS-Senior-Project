@@ -18,18 +18,16 @@ namespace CPIS_Senior_Project.Management
                 mgmt_status_message.Text = "You have successfully been logged out!";
             }
             Session["Login"] = null; Session["Account"] = null;
+            this.Form.DefaultButton = mgmt_login.UniqueID;
         }
 
         protected void mgmt_Login_Click(object sender, EventArgs e)
         {
-            //This creates the object used to connect to the SQL server for authentication
-            Authentication loginManager = new Authentication();
-
             //This creates the object that stores the login credentials
             Account auth = new Account();
             auth.Username = mgmt_Username.Text; auth.Password = mgmt_Password.Text;
 
-            auth = loginManager.Login(auth);
+            auth = AccountManager.Login(auth);
 
             if (auth.status.Equals("valid"))
             {

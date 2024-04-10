@@ -42,39 +42,102 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Label MovieName;
 
         /// <summary>
-        /// Creditcard_Info control.
+        /// lstCreditCards control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Creditcard_Info;
+        protected global::System.Web.UI.WebControls.DropDownList lstCreditCards;
 
         /// <summary>
-        /// cc_number control.
+        /// lblTheaterSelection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_number;
+        protected global::System.Web.UI.WebControls.Label lblTheaterSelection;
 
         /// <summary>
-        /// cc_cvv control.
+        /// lstTheaterSelection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_cvv;
+        protected global::System.Web.UI.WebControls.DropDownList lstTheaterSelection;
 
         /// <summary>
-        /// cc_expiration control.
+        /// lblPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cc_expiration;
+        protected global::System.Web.UI.WebControls.Label lblPrice;
+
+        /// <summary>
+        /// txtPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
+
+        /// <summary>
+        /// lblCreditCard_Selection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreditCard_Selection;
+
+        /// <summary>
+        /// lstCreditCard_Selection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList lstCreditCard_Selection;
+
+        /// <summary>
+        /// lblPurchaseButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPurchaseButton;
+
+        /// <summary>
+        /// btnPurchaseButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPurchaseButton;
+
+        /// <summary>
+        /// lblCancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCancelButton;
+
+        /// <summary>
+        /// btnCancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelButton;
     }
 }

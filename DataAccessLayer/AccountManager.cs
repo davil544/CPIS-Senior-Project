@@ -8,20 +8,20 @@ using CPIS_Senior_Project.DataModels;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
-    public class Authentication
+    public class AccountManager
     {
 
-        private SqlConnection conn; private SqlCommand cmd;
-        private string connectionString, query;
-        private SqlDataReader reader;
+        private static SqlConnection conn; private static SqlCommand cmd;
+        private static string connectionString, query;
+        private static SqlDataReader reader;
 
-        public Authentication()
+        static AccountManager()
         {
             //Instantiate creds here and scrub them for SQL command
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
         
-        public Account Login(Account auth)
+        public static Account Login(Account auth)
         {
             if (auth.Username.Equals("") || auth.Password.Equals(""))
             {
@@ -73,8 +73,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             }
                         }
                     }
+
+                    auth.CC = GetCreditCards(auth);
                 }
-                //run function to pull cc info here
             }
             catch (SqlException ex)
             {
@@ -89,7 +90,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return auth;
         }
 
-        public string Registration(Account auth)
+        public static string Register(Account auth)
         {
             //Checks if fields contain data, prevents blank usernames or passwords
             if (auth.Username.Equals("") || auth.Password.Equals("") || auth.FullName.Equals(""))
@@ -165,7 +166,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return status;
         }
 
-        public string UpdateAccount(Account auth)
+        public static string UpdateAccount(Account auth)
         { //TODO:  Update this function to update CC info for customers as well
             // Checks if fields contain data, prevents blank usernames or full names
             if (auth.Username.Equals("") || auth.FullName.Equals(""))
@@ -220,6 +221,88 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             return auth.status;
+        }
+
+        public static CreditCard[] GetCreditCards(Account account)
+        {
+            if (account.Role == "Customer")
+            {
+                string countQuery = "SELECT COUNT(*) FROM CreditCards " +
+                    "where CardOwner = @Uname;";
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(countQuery, conn);
+                cmd.Parameters.AddWithValue("@Uname", account.Username);
+
+                int cardCount;
+                try
+                {
+                    conn.Open();
+                    cardCount = (int)cmd.ExecuteScalar();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                query = "SELECT ID, CardNumber, ExpirationDate, CVV " +
+                "FROM CreditCards where CardOwner = @Uname;";
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Uname", account.Username);
+                CreditCard[] cc = new CreditCard[0];
+
+                try
+                {
+                    conn.Open();
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        int i = 0;
+                        cc = new CreditCard[cardCount];
+                        while (reader.Read())
+                        {
+                            cc[i] = new CreditCard();
+                            if (reader["ID"] != DBNull.Value)
+                            {
+                                cc[i].CardID = (int)reader["ID"];
+                            }
+                            if (reader["CardNumber"] != DBNull.Value)
+                            {
+                                cc[i].CardNumber = (string)reader["CardNumber"];
+                            }
+
+                            if (reader["ExpirationDate"] != DBNull.Value)
+                            {
+                                cc[i].ExpirationDate = reader["ExpirationDate"].ToString();
+                            }
+
+                            if (reader["CVV"] != DBNull.Value)
+                            {
+                                cc[i].CVV = reader["CVV"].ToString();
+                            }
+                            i++;
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+
+                }
+                return cc;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //Will eventually use this for password hashing

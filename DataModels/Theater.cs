@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CPIS_Senior_Project.DataModels
+﻿namespace CPIS_Senior_Project.DataModels
 {
     public class Theater
     {

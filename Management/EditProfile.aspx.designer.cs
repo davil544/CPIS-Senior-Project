@@ -123,6 +123,24 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.TextBox txtCustName;
 
         /// <summary>
+        /// lstCreditCards control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList lstCreditCards;
+
+        /// <summary>
+        /// formCCHTML control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel formCCHTML;
+
+        /// <summary>
         /// txtCC_number control.
         /// </summary>
         /// <remarks>

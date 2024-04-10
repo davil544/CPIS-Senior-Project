@@ -92,17 +92,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             movies[i].MPA_rating = "Unrated";
                         }
                         i++;
-
-                        //TODO:  Figure out way to set ticket price and pull from Users table
-
-                        //movieList.Add(movie);
                     }
                 }
             }
             catch (SqlException ex)
             {
                 movies[0].Title = ErrorHandler.SQL(ex);
-                //movieList.Add(movie);
             }
             finally
             {
@@ -182,17 +177,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
                         {
                             movie.MPA_rating = "Unrated";
                         }
-
-                        //TODO:  Figure out way to set ticket price and pull from Users table
-
-                        //movieList.Add(movie);
                     }
                 }
             }
             catch (SqlException ex)
             {
                 movie.Title = ErrorHandler.SQL(ex);
-                //movieList.Add(movie);
             }
             finally
             {
@@ -201,7 +191,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return movie;
         }
 
-        public string AddMovie (Movie movie)
+        public string AddMovie(Movie movie)
         {
             string status = "Failed!";
             if (movie.Title != "")
@@ -248,7 +238,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
         }
 
-        public string UpdateMovie (Movie movie)
+        public string UpdateMovie(Movie movie)
         {
             string status = "Failed!";
             if (movie.ID.ToString() != "")
@@ -325,7 +315,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return count;
         }
 
-        public byte[] GetPoster (int movieID)
+        public byte[] GetPoster(int movieID)
         {
             byte[] theImage = null;
 
@@ -381,6 +371,106 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
 
             return theImage;
+        }
+
+        public Theater[] GetTheaters()
+        {
+            //Gets number of theaters to properly size array
+            query = "SELECT COUNT(*) FROM Users WHERE Role = 'Theater';";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            int count;
+
+            try
+            {
+                conn.Open();
+                count = (int)cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            Theater[] theater = null;
+            query = "SELECT * FROM Users WHERE Role = 'Theater';";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    int i = 0;
+                    theater = new Theater[count];
+                    while (reader.Read())
+                    {
+                        theater[i] = new Theater();
+                        if (reader["Name"] != DBNull.Value)
+                        {
+                            theater[i].ID = reader["Name"].ToString();
+                        }
+
+                        if (reader["Address1"] != DBNull.Value)
+                        {
+                            theater[i].Address1 = reader["Address1"].ToString();
+                        }
+
+                        if (reader["Address2"] != DBNull.Value)
+                        {
+                            theater[i].Address2 = reader["Address2"].ToString();
+                        }
+
+                        if (reader["City"] != DBNull.Value)
+                        {
+                            theater[i].City = reader["City"].ToString();
+                        }
+                        
+                        if (reader["State"] != DBNull.Value)
+                        {
+                            theater[i].State = reader["State"].ToString();
+                        }
+
+                        if (reader["Zip"] != DBNull.Value)
+                        {
+                            theater[i].PostalCode = reader["Zip"].ToString();
+                        }
+
+                        if (reader["Hours"] != DBNull.Value)
+                        {
+                            theater[i].Hours = reader["Hours"].ToString();
+                        }
+
+                        if (reader["TicketPrice"] != DBNull.Value)
+                        {
+                            try
+                            {
+                                theater[i].TicketPrice = float.Parse(reader["TicketPrice"].ToString());
+                            }
+                            catch
+                            {
+                                theater[i].TicketPrice = 0;
+                            }
+                        }
+
+                        i++;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                theater[0].ID = ErrorHandler.SQL(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return theater;
         }
 
         public string TruncateString(string str, int maxlength)

@@ -18,5 +18,10 @@ namespace CPIS_Senior_Project
                 }
             }
         }
+
+        protected void BtnSearch_Click (object sender, EventArgs e)
+        {
+            //TODO:  Implement search function here, allow searching for movies?  Theaters?  Both?
+        }
     }
 }

@@ -12,7 +12,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             numbersOnly = "Please only use numbers when filling out credit card info!",
             acctIssue = "There is an issue with your account, contact sitemaster for assistance!",
             invalidLoginToken = "Something went wrong, redirecting back to the login page...",
-            notPermitted = "You do not have permission to access this page!";
+            notPermitted = "You do not have permission to access this page!",
+            noMovie = "No Movie Found!", noTheater = "Theater not found!";
 
         public static string SQL(SqlException ex)
         {

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Edit Movie Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditMovie.aspx.cs" Inherits="CPIS_Senior_Project.Management.EditMovie" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="debug" runat="server"></asp:Label> <br /><br />
+    <asp:Panel ID="editForm" runat="server">
     <table>
         <tr>
             <td> <asp:Label ID="lblMovieName" runat="server">Movie Name:</asp:Label> </td>
@@ -40,5 +41,5 @@
 
     <asp:Button ID="btnSave" runat="server" Text="Save Information" OnClick="BtnSave_Click" />
     <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="BtnCancel_Click" />
-
+    </asp:Panel>
 </asp:Content>
