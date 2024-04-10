@@ -11,104 +11,141 @@
             <abbr title="Phone">P:</abbr>
             800.592.3565
         </address>
-        <form id ="form1">
-        <div style="font-family:Arial">
-            <fieldset style="width:350px">
-                
-                <table>
-                    <tr>
-                        <td>
-                            <b>Name:</b>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtName" Width="200px" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
-                                runat="server" 
-                                ErrorMessage="Name Is Required"
-                                ControlToValidate ="txtName"
-                                Text="*"
-                                ForeColor="DarkRed"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-    <td>
-        <b>Email:</b>
-    </td>
-    <td>
-        <asp:TextBox ID="txtEmail" Width="200px" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
-    </td>
-    <td>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
-            runat="server" 
-            ErrorMessage="Email Is Required"
-            ControlToValidate ="txtEmail"
-            Display ="Dynamic"
-            Text="*"
-            ForeColor="DarkRed"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-            ErrorMessage="Please enter a valid email"
-            ForeColor="Red"
-            ControlToValidate="txtEmail"></asp:RegularExpressionValidator>
-    </td>
-</tr>
-                     <tr>
-     <td>
-         <b>Subject:</b>
-     </td>
-     <td>
-         <asp:TextBox ID="txtSubject" Width="200px" runat="server" OnTextChanged="txtName_TextChanged"></asp:TextBox>
-     </td>
-     <td>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
-             runat="server" 
-             ErrorMessage="Subject Is Required"
-             ControlToValidate ="txtSubject"
-             Text="*"
-             ForeColor="DarkRed"></asp:RequiredFieldValidator>
-     </td>
- </tr>
-                                        <tr>
-    <td style ="vertical-align:top">
-        <b>Comments:</b>
-    </td>
-    <td style ="vertical-align:top">
-        <asp:TextBox ID="txtComments" Width="200px" runat="server" OnTextChanged="txtName_TextChanged" TextMode="MultiLine" Rows="5"></asp:TextBox>
-    </td>
-    <td style ="vertical-align:top">
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" 
-            runat="server" 
-            ErrorMessage="Comments Are Required"
-            ControlToValidate ="txtComments"
-            Text="*"
-            ForeColor="DarkRed"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator runat="server" ForeColor="Red" ControlToValidate="txtComments"></asp:RegularExpressionValidator>
-    </td>
-</tr>
-                    <tr>
-                        <td colspan ="3">
-                            <asp:ValidationSummary HeaderText ="Please Fix The Following Errors" ForeColor ="Red" ID="ValidationSummary1" runat="server" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan ="3">
-                            <asp:Label ID="Label1" runat="server" Font-Bold ="true" ></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan ="3">
-                            <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Button1_Click" />
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
+       <div class="panel panel-primary" style="margin: 20px;"> 
+
+        <div class="panel-heading"> 
 
 
+            <h3 class="panel-title">Comment Form</h3> 
 
 
-        </div>
-        </form>
-        
+        </div> 
+
+
+        <div class="panel-body"> 
+
+
+ 
+
+
+            <div class="col-md-6 col-sm-6"> 
+
+
+                <div class="form-group col-md-6 col-sm-6"> 
+
+
+                    <label for="name">Name*     </label> 
+
+
+                    <asp:TextBox ID="name" runat="server" CssClass="form-control  input-sm"></asp:TextBox> 
+
+
+                   
+
+
+                </div> 
+
+
+                <div class="form-group col-md-6 col-sm-6"> 
+
+
+                    <label for="email">Email*</label> 
+
+
+                     <asp:TextBox ID="email" runat="server" CssClass="form-control  input-sm"></asp:TextBox> 
+
+
+                    
+
+
+                </div> 
+
+
+ 
+
+
+                <div class="form-group col-md-6 col-sm-6"> 
+
+
+                    <label for="mobile">Comment*</label> 
+
+
+                   
+
+
+                    <textarea class="form-control  input-sm" id="comment" placeholder="" cols="3" rows="3" runat="server" style="margin-right: 198px"> 
+
+
+                </textarea> 
+
+
+ 
+
+
+                </div> 
+
+
+                <div class="form-group col-md-6 col-sm-6"> 
+
+
+                    <br /> 
+
+
+                    <br /> 
+
+
+                    <asp:Button ID="Button1" runat="server" Text="Post" CssClass="btn  btn-success" OnClick="Button1_Click" /> 
+
+
+                </div> 
+
+
+ 
+
+
+            </div> 
+
+
+            <div class="col-md-6 col-sm-6"> 
+
+
+                <asp:Repeater ID="Repeater1" runat="server"> 
+
+
+                    <ItemTemplate> 
+
+
+                        <div class="commentbox"> 
+
+
+                            <b> 
+
+
+                                <asp:Label ID="Label1" runat="server" Text='<%#Eval("Name") %>'>'></asp:Label></b>&nbsp;(<asp:Label ID="Label2" runat="server" Text='<%#Eval("Email") %>'>'></asp:Label>):<br /> 
+
+
+                            <asp:Label ID="Label3" runat="server" Text='<%#Eval("Comment") %>'></asp:Label><br /> 
+
+
+                        </div> 
+
+
+                    </ItemTemplate> 
+
+
+                </asp:Repeater> 
+
+
+ 
+
+
+ 
+
+
+            </div> 
+
+
+        </div> 
     </main>
+    </div>
 </asp:Content>
