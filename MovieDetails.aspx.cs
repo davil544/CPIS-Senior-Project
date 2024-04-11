@@ -88,7 +88,14 @@ namespace CPIS_Senior_Project.Management
         {
             //Checks for 0s at beginning of ticket quantity (Throws exception if not stripped out),
             //then multiplies it by the ticket price set by theaters and shows it to the customer
-            lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
+            try
+            {
+                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
+            }
+            catch
+            {
+                lblTicketPrice.Text = "0 - No Theater Selected!";
+            }
         }
     }
 }
