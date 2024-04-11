@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Theater Owner Management Portal - Login" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CPIS_Senior_Project.Management.Login" %>
+﻿<%@ Page Title="Login to Website" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CPIS_Senior_Project.Management.Login" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
@@ -9,7 +9,7 @@
         <table>
             <tr>
                 <td>
-                    <asp:Label runat="server">User Name:</asp:Label>
+                    <asp:Label runat="server">Username:&nbsp</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="mgmt_Username" runat="server"></asp:TextBox>
