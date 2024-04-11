@@ -74,7 +74,7 @@ namespace CPIS_Senior_Project.Management
             //ticket price and enable the Purchase button when selected
             if (lstMovieTheaters.SelectedValue != "No theater selected")
             {
-                lblTicketPrice.Text = lstMovieTheaters.SelectedValue;
+                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text) + "";
                 btnPurchase.Enabled = true;
             }
             else
@@ -82,6 +82,13 @@ namespace CPIS_Senior_Project.Management
                 lblTicketPrice.Text = "0";
                 btnPurchase.Enabled = false;
             }
+        }
+
+        protected void UpdatePrice_Change(object sender, EventArgs e)
+        {
+            //Checks for 0s at beginning of ticket quantity (Throws exception if not stripped out),
+            //then multiplies it by the ticket price set by theaters and shows it to the customer
+            lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
         }
     }
 }
