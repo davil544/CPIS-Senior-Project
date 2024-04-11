@@ -564,6 +564,83 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return theater;
         }
 
+        public Theater GetTheater(string theaterID)
+        {
+            Theater theater = new Theater();
+            query = "SELECT * FROM Users WHERE Role = 'Theater' AND Name = @Name;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Name", theaterID);
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        theater = new Theater();
+                        if (reader["Name"] != DBNull.Value)
+                        {
+                            theater.ID = reader["Name"].ToString();
+                        }
+
+                        if (reader["Address1"] != DBNull.Value)
+                        {
+                            theater.Address1 = reader["Address1"].ToString();
+                        }
+
+                        if (reader["Address2"] != DBNull.Value)
+                        {
+                            theater.Address2 = reader["Address2"].ToString();
+                        }
+
+                        if (reader["City"] != DBNull.Value)
+                        {
+                            theater.City = reader["City"].ToString();
+                        }
+
+                        if (reader["State"] != DBNull.Value)
+                        {
+                            theater.State = reader["State"].ToString();
+                        }
+
+                        if (reader["Zip"] != DBNull.Value)
+                        {
+                            theater.PostalCode = reader["Zip"].ToString();
+                        }
+
+                        if (reader["Hours"] != DBNull.Value)
+                        {
+                            theater.Hours = reader["Hours"].ToString();
+                        }
+
+                        if (reader["TicketPrice"] != DBNull.Value)
+                        {
+                            try
+                            {
+                                theater.TicketPrice = float.Parse(reader["TicketPrice"].ToString());
+                            }
+                            catch
+                            {
+                                theater.TicketPrice = 0;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                theater.ID = ErrorHandler.SQL(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return theater;
+        }
+
         public string TruncateString(string str, int maxlength)
         {
             return str.Substring(0, Math.Min(str.Length, maxlength)) + "...";
