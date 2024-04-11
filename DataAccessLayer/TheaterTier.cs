@@ -106,6 +106,74 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return movies;
         }
 
+        public Movie[] GetMovies(string searchQuery)
+        {
+            Movie[] movies = null;
+
+            query = "SELECT * FROM Movies WHERE Title LIKE @Title;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Title", "%" + searchQuery + "%");
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    int i = 0;
+                    movies = new Movie[GetMovieCount(searchQuery)];
+                    while (reader.Read())
+                    {
+                        movies[i] = new Movie();
+                        if (reader["ID"] != DBNull.Value)
+                        {
+                            movies[i].ID = (int)reader["ID"];
+                        }
+
+                        if (reader["Title"] != DBNull.Value)
+                        {
+                            movies[i].Title = reader["Title"].ToString();
+                        }
+
+                        if (reader["Summary"] != DBNull.Value)
+                        {
+                            movies[i].Summary = reader["Summary"].ToString();
+                        }
+
+                        if (reader["ReleaseYear"] != DBNull.Value)
+                        {
+                            movies[i].ReleaseYear = reader["ReleaseYear"].ToString();
+                        }
+
+                        if (reader["Genre"] != DBNull.Value)
+                        {
+                            movies[i].Genre = reader["Genre"].ToString();
+                        }
+
+                        if (reader["MPA_Rating"] != DBNull.Value)
+                        {
+                            movies[i].MPA_rating = reader["MPA_Rating"].ToString();
+                        }
+                        else
+                        {
+                            movies[i].MPA_rating = "Unrated";
+                        }
+                        i++;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                movies[0].Title = ErrorHandler.SQL(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return movies;
+        }
+
         public Movie GetMovie(int movieID)
         {
             query = "SELECT * FROM Movies WHERE ID=" + movieID + ";";
@@ -291,12 +359,35 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
         }
 
-        //This is necessary for movie posters to load properly
         public int GetMovieCount()
         {
             query = "SELECT COUNT(*) FROM Movies;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
+            int count;
+
+            try
+            {
+                conn.Open();
+                count = (int)cmd.ExecuteScalar();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return count;
+        }
+
+        public int GetMovieCount(string searchQuery)
+        {
+            query = "SELECT COUNT(*) FROM Movies WHERE Title LIKE @Title;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Title", "%" + searchQuery + "%");
             int count;
 
             try
