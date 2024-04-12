@@ -14,7 +14,13 @@ namespace CPIS_Senior_Project
             {
                 //Populate theater information here
                 TheaterTier theaterManager = new TheaterTier();
-                Theater theater = theaterManager.GetTheater("test");
+                Theater theater = theaterManager.GetTheater(theaterID);
+
+                lblThtrName.Text = theater.ID;
+                lblThtrLoc.Text = theater.Address1 + "<br />" + theater.Address2 + "<br />" + theater.City + ",&nbsp" + theater.State + ",&nbsp" + theater.PostalCode + ",&nbsp" + theater.Country;
+                lblThtrOH.Text = theater.Hours;
+
+
 
             }
             else
