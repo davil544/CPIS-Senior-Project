@@ -11,7 +11,7 @@ namespace CPIS_Senior_Project
         {
             theaterID = Request.QueryString["ID"];
             Account account = (Account)Session["Account"];
-            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater")
+            if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Theater" && theaterID == null)
             {
                 btnEdit.Visible = true;
                 lblThtrName.Text = account.FullName;
