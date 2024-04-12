@@ -11,7 +11,8 @@ namespace CPIS_Senior_Project
             Account account = (Account)Session["Account"];
             if (Session["Login"] != null && (bool)Session["login"] == true)
             {
-                loginButton.InnerText = "Logout";
+                loginButton.Visible = false;
+                pnlDropdown.Visible = true;
                 if (account.Role == "Theater")
                 {
                     LoggedInItems.Text = "<li class=\"nav-item\"><a class=\"nav-link\" runat=\"server\" href=\"/Management\">Movie Management</a></li>";
