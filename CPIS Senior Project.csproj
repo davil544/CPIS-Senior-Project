@@ -195,9 +195,11 @@
     </Compile>
     <Compile Include="DataAccessLayer\AccountManager.cs" />
     <Compile Include="DataAccessLayer\ErrorHandler.cs" />
+    <Compile Include="DataAccessLayer\Messenger.cs" />
     <Compile Include="DataAccessLayer\TheaterTier.cs" />
     <Compile Include="DataModels\Account.cs" />
     <Compile Include="DataModels\CreditCard.cs" />
+    <Compile Include="DataModels\Message.cs" />
     <Compile Include="DataModels\Movie.cs" />
     <Compile Include="DataModels\Theater.cs" />
     <Compile Include="Default.aspx.cs">
