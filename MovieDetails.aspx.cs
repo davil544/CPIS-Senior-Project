@@ -1,6 +1,7 @@
 ﻿using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
 using System;
+using System.Web.UI.WebControls;
 
 namespace CPIS_Senior_Project.Management
 {
@@ -26,7 +27,19 @@ namespace CPIS_Senior_Project.Management
                     moviePoster.Src = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
                     movieTitle.Text = mv.Title;
                     movieSummary.Text = mv.Summary;
-                    ticketPrice.Text = mv.Price.ToString();
+                    lblTicketPrice.Text = mv.Price.ToString();
+
+                    if (!IsPostBack)
+                    {
+                        Theater[] theater = movieManager.GetTheaters();
+                        if (theater.Length != 0)
+                        {
+                            for (int i = 0; i < theater.Length; i++)
+                            {
+                                lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].ID, theater[i].TicketPrice.ToString()));
+                            }
+                        }
+                    }
                 }
 
                 //Shows management tools if logged in as theater employee
@@ -48,10 +61,41 @@ namespace CPIS_Senior_Project.Management
             Response.Redirect("/Management/EditMovie.aspx?ID=" + movieID);
         }
 
+        protected void BtnPurchase_Click(object sender, EventArgs e)
+        {
+            //Store session information here such as amount of tickets, movie IDs, etc.
+            //Possibly instead of using query strings, may be more secure this way too
+            Response.Redirect("~/PurchaseTickets.aspx?ID=" + movieID);
+        }
+
         protected void ChooseTheater_Change(object sender, EventArgs e)
         {
-            //Check if theater has been selected here, pull relevant
-            //ticket price and enable the Purchase button when complete
+            //Checks if theater has been selected here, pulls relevant
+            //ticket price and enable the Purchase button when selected
+            if (lstMovieTheaters.SelectedValue != "No theater selected")
+            {
+                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text) + "";
+                btnPurchase.Enabled = true;
+            }
+            else
+            {
+                lblTicketPrice.Text = "0";
+                btnPurchase.Enabled = false;
+            }
+        }
+
+        protected void UpdatePrice_Change(object sender, EventArgs e)
+        {
+            //Checks for 0s at beginning of ticket quantity (Throws exception if not stripped out),
+            //then multiplies it by the ticket price set by theaters and shows it to the customer
+            try
+            {
+                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
+            }
+            catch
+            {
+                lblTicketPrice.Text = "0 - No Theater Selected!";
+            }
         }
     }
 }

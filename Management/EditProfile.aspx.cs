@@ -117,13 +117,18 @@ namespace CPIS_Senior_Project.Management
                     }
                     break;
             }
-
-            //debug.Text = AccountManager.UpdateCreditCard(account);
         }
 
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Management");
+            if (account.Role == "Theater")
+            {
+                Response.Redirect("/Management");
+            }
+            else
+            {
+                Response.Redirect("/");
+            }
         }
 
         protected void ListCC_Change(object sender, EventArgs e)

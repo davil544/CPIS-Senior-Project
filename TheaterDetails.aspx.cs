@@ -1,4 +1,5 @@
 ﻿using CPIS_Senior_Project.DataAccessLayer;
+using CPIS_Senior_Project.DataModels;
 using System;
 
 namespace CPIS_Senior_Project
@@ -12,12 +13,21 @@ namespace CPIS_Senior_Project
             if (theaterID != null)
             {
                 //Populate theater information here
+                TheaterTier theaterManager = new TheaterTier();
+                Theater theater = theaterManager.GetTheater("test");
+
             }
             else
             {
                 debug.Text = ErrorHandler.noTheater;
                 debug.Visible = true;
             }
+        }
+
+        protected void EditTheater_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Management/EditProfile");
+
         }
     }
 }
