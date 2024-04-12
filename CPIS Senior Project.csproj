@@ -172,6 +172,7 @@
     <Content Include="Site.Master" />
     <Content Include="TheaterDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="ViewTickets.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -306,6 +307,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTickets.aspx.cs">
+      <DependentUpon>ViewTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewTickets.aspx.designer.cs">
+      <DependentUpon>ViewTickets.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
