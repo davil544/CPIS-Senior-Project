@@ -99,6 +99,7 @@
                     <tr>
                         <td colspan ="3">
                             <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Button1_Click" />
+                             <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Green"></asp:Label>
                         </td>
                     </tr>
                 </table>

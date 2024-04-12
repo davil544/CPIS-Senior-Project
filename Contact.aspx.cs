@@ -42,7 +42,7 @@ namespace CPIS_Senior_Project
                 txtEmail.Enabled = false;
                 txtComments.Enabled = false;
                 txtSubject.Enabled = false;
-                Button1.Enabled = false;
+      
             }
             catch(Exception ex) 
             {
