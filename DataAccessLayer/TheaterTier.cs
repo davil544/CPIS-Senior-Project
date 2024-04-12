@@ -567,7 +567,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         public Theater GetTheater(string theaterID)
         {
             Theater theater = new Theater();
-            query = "SELECT * FROM Users WHERE Role = 'Theater' AND Name = @Name;";
+            query = "SELECT * FROM Users WHERE Role = 'Theater' AND Username = @Name;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Name", theaterID);
