@@ -57,7 +57,7 @@
                         </div>
                         </asp:Panel>
 
-                        <ul class ="navbar-nav flex-grow-1"><li class="nav-item "><a class="nav-link" id="loginButton" runat="server" href="~/Management/Login">Login</a></li></ul>
+                        <ul class ="navbar-nav flex-grow-1"><li class="nav-item"><a class="nav-link" id="loginButton" runat="server" href="~/Management/Login">Login</a></li></ul>
 
                     </div>
                 </div>
