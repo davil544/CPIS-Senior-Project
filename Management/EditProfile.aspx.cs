@@ -48,13 +48,12 @@ namespace CPIS_Senior_Project.Management
                             {
                                 for (int i = 0; i < account.CC.Length; i++)
                                 {
-                                    lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, "Card #" + i));
+                                    lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, account.CC[i].CardID.ToString()));
                                 }
-                                debug.Text = "Card Count: " + (lstCreditCards.Items.Count - 1);
+                                debug.Text = "Card Count: " + (lstCreditCards.Items.Count - 2);
                             }
                             else
                             {
-                                lstCreditCards.Items.Insert(0, new ListItem("Add New Card", "newcard"));
                                 debug.Text = "Card Count: 0";
                             }
                         }
@@ -107,8 +106,9 @@ namespace CPIS_Senior_Project.Management
                         newCard.ExpirationDate = txtExpDate.Text;
                         newCard.CVV = txtCVV.Text;
                     }
-                    if (newCard != new CreditCard())
+                    if (lstCreditCards.SelectedValue == "newcard")
                     {
+                        debug.Text = "newcard";
                         //add cc info to function here, maybe overload it to support 2 inputs
                     }
                     else
@@ -134,7 +134,11 @@ namespace CPIS_Senior_Project.Management
         protected void ListCC_Change(object sender, EventArgs e)
         {
             int ccID = lstCreditCards.SelectedIndex;
-            if (ccID <= 0)
+            if (lstCreditCards.SelectedValue == "newcard")
+            {
+                formCCHTML.Visible = true;
+            }
+            else if (ccID <= 0)
             {
                 try
                 {
@@ -149,6 +153,7 @@ namespace CPIS_Senior_Project.Management
                 }
                 formCCHTML.Visible = true;
             }
+            
             else
             {
                 formCCHTML.Visible = false;

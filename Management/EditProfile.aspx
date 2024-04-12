@@ -94,6 +94,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="lstCreditCards" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ListCC_Change"  >
+                            <asp:ListItem Text="Add New Card" Value="newcard" ></asp:ListItem>
                             <asp:ListItem Selected="True" Text="No Card Selected" ></asp:ListItem>
                         </asp:DropDownList>
                         
