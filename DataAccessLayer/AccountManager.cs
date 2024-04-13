@@ -121,7 +121,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
             string status = ErrorHandler.failed;
             int rows;
 
-            //TODO:  Add for loop to pull all available credit cards available for use by customers
             if (auth.Role.Equals("Customer") && auth.CC != null)
             {
                 cmd.Parameters.AddWithValue("@CardNo", auth.CC[0].CardNumber);
@@ -167,7 +166,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         }
 
         public static string UpdateAccount(Account auth)
-        { //TODO:  Update this function to update CC info for customers as well
+        {
             // Checks if fields contain data, prevents blank usernames or full names
             if (auth.Username.Equals("") || auth.FullName.Equals(""))
             {
@@ -179,6 +178,23 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 query = "UPDATE Users " +
                      "SET Name = @Name, Address1 = @Add1, Address2 = @Add2, City = @City, State = @State, Zip = @Zip, Country = @Country, Hours = @Hours, TicketPrice = @Price " +
                      "WHERE Username = @Uname;";
+            }
+            else if (auth.Role.Equals("Customer"))
+            {
+                query = "UPDATE Users SET Name = @Name WHERE Username = @Uname; ";
+                if (auth.CC != null)
+                {
+                    if (auth.CC[0].CardID != -1)
+                    {
+                        query += "UPDATE CreditCards SET CardNumber = @CardNo, ExpirationDate = @ExpDate, CVV = @CVV " +
+                        "WHERE ID = @ccID;";
+                    }
+                    else
+                    {
+                        query += "INSERT INTO CreditCards (CardNumber, ExpirationDate, CVV, CardOwner) " +
+                            "VALUES (@CardNo, @ExpDate, @CVV, @Uname);";
+                    }
+                }
             }
             else
             {
@@ -200,6 +216,17 @@ namespace CPIS_Senior_Project.DataAccessLayer
             cmd.Parameters.Add("@Country", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Country;
             cmd.Parameters.Add("@Hours", SqlDbType.NVarChar, 17).Value = auth.MyTheater.Hours;
             cmd.Parameters.Add("@Price", SqlDbType.Float).Value = auth.MyTheater.TicketPrice;
+            if (auth.CC != null )
+            {
+                if (auth.CC[0].CardID != -1)
+                {
+                    cmd.Parameters.AddWithValue("@ccID", auth.CC[0].CardID);
+                }
+                
+                cmd.Parameters.AddWithValue("@CardNo", auth.CC[0].CardNumber);
+                cmd.Parameters.AddWithValue("@ExpDate", auth.CC[0].ExpirationDate);
+                cmd.Parameters.AddWithValue("@CVV", auth.CC[0].CVV);
+            }
 
 
             try

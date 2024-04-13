@@ -93,30 +93,27 @@ namespace CPIS_Senior_Project.Management
                         Hours = txtHours.Text,
                         TicketPrice = float.Parse(txtTicketPrice.Text)
                     };
-                    debug.Text = AccountManager.UpdateAccount(account);
                     break;
 
                 case "Customer":
                     account.FullName = txtCustName.Text;
-                    CreditCard newCard = new CreditCard();
-                    //get CC ID here if not null, then make function to overwrite that card in the SQL DB
-                    if (txtCC_number.Text != null && txtExpDate.Text != null && txtCVV.Text != null)  //Maybe check for "" here if null check fails?
+                    if (txtCC_number.Text != "" && txtExpDate.Text != "" && txtCVV.Text != "")
                     {
-                        newCard.CardNumber = txtCC_number.Text;
-                        newCard.ExpirationDate = txtExpDate.Text;
-                        newCard.CVV = txtCVV.Text;
-                    }
-                    if (lstCreditCards.SelectedValue == "newcard")
-                    {
-                        debug.Text = "newcard";
-                        //add cc info to function here, maybe overload it to support 2 inputs
-                    }
-                    else
-                    {
-                        //just change name here
+                        //This works but doesn't reflect in the EditProfile page until the project is restarted, why?
+                        //Maybe move this to a separate function or something like that?
+                        if (lstCreditCards.SelectedValue == "newcard")
+                        {
+                            account.CC[0] = new CreditCard();
+                        }
+                        account.CC[0].CardNumber = txtCC_number.Text;
+                        account.CC[0].ExpirationDate = txtExpDate.Text;
+                        account.CC[0].CVV = txtCVV.Text;
                     }
                     break;
             }
+            debug.Text = AccountManager.UpdateAccount(account);
+            //Response.Redirect("/Management/EditProfile");
+
         }
 
         protected void BtnCancel_Click(object sender, EventArgs e)
