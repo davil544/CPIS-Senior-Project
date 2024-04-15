@@ -133,9 +133,11 @@
     <Content Include="Management\AddMovie.aspx" />
     <Content Include="Management\EditMovie.aspx" />
     <Content Include="Management\EditProfile.aspx" />
+    <Content Include="Management\Inbox.aspx" />
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
+    <Content Include="Management\ViewMessage.aspx" />
     <Content Include="MovieDetails.aspx" />
     <Content Include="PurchaseTickets.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -244,6 +246,13 @@
     <Compile Include="Management\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\Inbox.aspx.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\Inbox.aspx.designer.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\LoginRegistration.aspx.cs">
       <DependentUpon>LoginRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,6 +273,13 @@
     </Compile>
     <Compile Include="Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ViewMessage.aspx.cs">
+      <DependentUpon>ViewMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ViewMessage.aspx.designer.cs">
+      <DependentUpon>ViewMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MovieDetails.aspx.cs">
       <DependentUpon>MovieDetails.aspx</DependentUpon>

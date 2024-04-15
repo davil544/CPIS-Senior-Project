@@ -17,10 +17,20 @@ namespace CPIS_Senior_Project.DataAccessLayer
             connectionString = ConfigurationManager.ConnectionStrings["SiteData"].ToString();
         }
 
-        public static Message[] GetMessages(string Username)
+        public static Message[] GetMessages(string Username, string sendRecieve)
         {
             //Gets number of messages to properly size array
-            query = "SELECT COUNT(*) FROM Messages where Recipient = @Uname;";
+            if (sendRecieve == "recieve") {
+                query = "SELECT COUNT(*) FROM Messages where Recipient = @Uname;";
+            }
+            else if (sendRecieve == "send") {
+                query = "SELECT COUNT(*) FROM Messages where Sender = @Uname;";
+            }
+            else
+            {
+                return null;
+            }
+            
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Uname", Username);
@@ -40,16 +50,21 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn.Close();
             }
 
-            query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+            if (sendRecieve == "recieve")
+            {
+                query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
                 "FROM Messages where Recipient = @Uname;";
+            }
+            else if (sendRecieve == "send")
+            {
+                query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+                "FROM Messages where Sender = @Uname;";
+            }
+            
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Uname", Username);
-
             Message[] msgs = null;
-            query = "SELECT * FROM Users WHERE Role = 'Theater';";
-            conn = new SqlConnection(connectionString);
-            cmd = new SqlCommand(query, conn);
 
             try
             {
@@ -112,7 +127,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn = new SqlConnection(connectionString);
                 cmd = new SqlCommand(query, conn);
 
-
+                //TODO:  Add Subject line here and in DB
                 cmd.Parameters.AddWithValue("@Sender", msg.Sender);
                 cmd.Parameters.AddWithValue("@Recipient", msg.Recipient);
                 cmd.Parameters.AddWithValue("@Msg", msg.MessageContents);
