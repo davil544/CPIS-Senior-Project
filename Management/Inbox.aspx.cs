@@ -39,7 +39,7 @@ namespace CPIS_Senior_Project.Management
             }
             else
             {
-                litMessages.Text = "<tr><td /><td>" + ErrorHandler.emptyInbox + "<td><tr>";
+                litMessages.Text = "<tr><td class=\"tblNone\" /><td class=\"tblNone\">" + ErrorHandler.emptyInbox + "</td></tr>";
             }
         }
 

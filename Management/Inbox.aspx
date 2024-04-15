@@ -8,6 +8,10 @@
             border: 1px solid grey;
             border-bottom: 1px solid black;
         }
+        .tblNone {
+            border-left: none;
+            border-right: none;
+        }
     </style>
 
 </asp:Content>
