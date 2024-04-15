@@ -13,7 +13,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             acctIssue = "There is an issue with your account, contact sitemaster for assistance!",
             invalidLoginToken = "Something went wrong, redirecting back to the login page...",
             notPermitted = "You do not have permission to access this page!",
-            noMovie = "No Movie Found!", noTheater = "Theater not found!";
+            noMovie = "No Movie Found!", noTheater = "Theater not found!",
+            emptyInbox = "No Messages Found!";
 
         public static string SQL(SqlException ex)
         {
