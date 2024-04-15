@@ -21,7 +21,7 @@
         <h1>My Messages:</h1><br />
         <asp:Button ID="BtnCompose" runat="server" Text="Compose New Message" />
         <asp:Button ID="BtnInOut" runat="server" Text="View Sent Messages" OnClick="BtnInOutbox_Click" /> <br /><br />
-        &nbsp<asp:Label ID="lblInOut" runat="server" Text="Inbox:" CssClass="bottom"></asp:Label><h6></h6>
+        &nbsp<asp:Label ID="lblInOut" runat="server" Text="Inbox:"></asp:Label><h6></h6>
         <table cellpadding = "10px">
             <tr class="tblHeader">
                 <td class="tblHeader">
