@@ -171,6 +171,7 @@
     <Content Include="Scripts\InputValidation.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="SearchResults.aspx" />
     <Content Include="Site.Master" />
     <Content Include="TheaterDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -295,6 +296,13 @@
     </Compile>
     <Compile Include="PurchaseTickets.aspx.designer.cs">
       <DependentUpon>PurchaseTickets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResults.aspx.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResults.aspx.designer.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
