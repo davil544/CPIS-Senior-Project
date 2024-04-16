@@ -19,7 +19,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies()
         {
-            Movie[] movies = null;
+            Movie[] movies = new Movie[0];
 
             query = "SELECT * FROM Movies;";
             conn = new SqlConnection(connectionString);
@@ -108,7 +108,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies(string searchQuery)
         {
-            Movie[] movies = null;
+            Movie[] movies = new Movie[0];
 
             query = "SELECT * FROM Movies WHERE Title LIKE @Title;";
             conn = new SqlConnection(connectionString);
