@@ -54,6 +54,7 @@ namespace CPIS_Senior_Project.Management
                 Response.Redirect("~/Management/Login.aspx");
             }
         }
+        //TODO:  Add function that allows showtimes to be set on a per theater basis
         protected void AddMovie_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Management/AddMovie");
