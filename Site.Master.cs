@@ -8,9 +8,9 @@ namespace CPIS_Senior_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account account = (Account)Session["Account"];
             if (Session["Login"] != null && (bool)Session["login"] == true)
             {
+                Account account = (Account)Session["Account"];
                 loginButton.Visible = false;
                 pnlDropdown.Visible = true;
                 if (account.Role == "Theater")
@@ -22,7 +22,8 @@ namespace CPIS_Senior_Project
 
         protected void BtnSearch_Click (object sender, EventArgs e)
         {
-            //TODO:  Implement search function here, allow searching for movies?  Theaters?  Both?
+            Session["query"] = txtSearch.Text;
+            Response.Redirect("/SearchResults.aspx");
         }
     }
 }

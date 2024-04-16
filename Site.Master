@@ -37,7 +37,7 @@
                         <asp:Label ID="LoggedInItems" runat="server"></asp:Label>
                     </ul>
                     <div class="d-flex justify-content-end">
-                        <asp:TextBox CssClass="form-control mr-sm-2" placeholder="Search for Movies" ID="txtSearch" runat="server"></asp:TextBox>
+                        <asp:TextBox CssClass="form-control mr-sm-2" placeholder="Search for Movies by title" ID="txtSearch" runat="server"></asp:TextBox>
                         &nbsp;&nbsp;<asp:Button CssClass="btn btn-outline-success my-2 my-sm-0" Text="Search" runat="server" ID="btnSearch" OnClick="BtnSearch_Click" CausesValidation="false" /> &nbsp;&nbsp;&nbsp;&nbsp;
 
                         <asp:Panel ID="pnlDropdown" runat="server" Visible="false">
@@ -48,7 +48,7 @@
                                         My Account
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" id="loginDropdownButton" runat="server" href="~/Management/Login">Logout</a></li>
+                                        <li><a class="dropdown-item" href="/Management/Login">Logout</a></li>
                                         <li><a class="dropdown-item" href="/Management/Inbox">My Messages</a></li>
                                         <li><a class="dropdown-item" href="/Management/EditProfile">Account Settings</a></li>
                                     </ul>
