@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.UI;
-using System.Net.Mail;
+using CPIS_Senior_Project.DataAccessLayer;
+using CPIS_Senior_Project.DataModels;
+
 
 namespace CPIS_Senior_Project
 {
@@ -18,40 +20,18 @@ namespace CPIS_Senior_Project
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress("blacknationanimation@gmail.com");
-                mailMessage.To.Add("blacknationanimation@gmail.com");
-                mailMessage.Subject = txtSubject.Text;
-                mailMessage.Body = "<b>Sender Name : </b>" + txtName.Text + "<br/>"
-                    + "<b>Sender Email : </b>" + txtEmail.Text + "<br/>"
-                    + "<b>Comments : </b>" + txtComments.Text;
-                mailMessage.IsBodyHtml = true;
+           // Get form data
+            Message msg = new Message();
+            msg.Sender = txtName.Text;
+            msg.Recipient = "Admin";
+            msg.MessageContents = "Subject:"+txtSubject.Text+ "<br />"+
+                "Message:"+txtComments.Text;
+            
+            
+            lblMessage.Text = Messenger.SendMessage(msg);
 
 
-                SmtpClient smtpClient = new SmtpClient("smtpClient.gmail.com", 587);
-                smtpClient.EnableSsl = true;
-                smtpClient.Credentials = new System.Net.NetworkCredential();
-                smtpClient.Send(mailMessage);
 
-                Label1.ForeColor = System.Drawing.Color.Blue;
-                Label1.Text = "Thank You For The Feedback";
-
-                txtName.Enabled = false;
-                txtEmail.Enabled = false;
-                txtComments.Enabled = false;
-                txtSubject.Enabled = false;
-      
-            }
-            catch(Exception ex) 
-            {
-            //Log - Event View or Table
-
-                Label1.ForeColor = System.Drawing.Color.Blue;
-                 Label1.ForeColor = System.Drawing.Color.DarkRed;
-                Label1.Text = "Unfortunatly there was an error on our end, Try again later";
-            }
         }
     }
 }
