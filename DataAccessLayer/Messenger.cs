@@ -116,6 +116,63 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return msgs;
         }
 
+        public static Message GetMessage(string Username, int messageID)
+        {
+            query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+                "FROM Messages where Recipient = @Uname AND MessageID = @msgID;";
+
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Uname", Username);
+            cmd.Parameters.AddWithValue("@msgID", messageID);
+            Message msg = new Message();
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["MessageID"] != DBNull.Value)
+                        {
+                            msg.ID = int.Parse(reader["MessageID"].ToString());
+                        }
+
+                        if (reader["Sender"] != DBNull.Value)
+                        {
+                            msg.Sender = reader["Sender"].ToString();
+                        }
+
+                        if (reader["Recipient"] != DBNull.Value)
+                        {
+                            msg.Recipient = reader["Recipient"].ToString();
+                        }
+
+                        if (reader["Message"] != DBNull.Value)
+                        {
+                            msg.MessageContents = reader["Message"].ToString();
+                        }
+
+                        if (reader["TimeStamp"] != DBNull.Value)
+                        {
+                            msg.TimeStamp = (DateTime)reader["TimeStamp"];
+                        }
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                //Do nothing here if there is no messages
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return msg;
+        }
+
         public static string SendMessage(Message msg)
         {
             string status = "Failed!";
