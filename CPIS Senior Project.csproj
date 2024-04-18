@@ -131,6 +131,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Management\AddMovie.aspx" />
+    <Content Include="Management\ComposeMessage.aspx" />
     <Content Include="Management\EditMovie.aspx" />
     <Content Include="Management\EditProfile.aspx" />
     <Content Include="Management\Inbox.aspx" />
@@ -232,6 +233,13 @@
     </Compile>
     <Compile Include="Management\AddMovie.aspx.designer.cs">
       <DependentUpon>AddMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ComposeMessage.aspx.cs">
+      <DependentUpon>ComposeMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ComposeMessage.aspx.designer.cs">
+      <DependentUpon>ComposeMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\EditMovie.aspx.cs">
       <DependentUpon>EditMovie.aspx</DependentUpon>
