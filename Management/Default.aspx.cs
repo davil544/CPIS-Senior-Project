@@ -9,14 +9,11 @@ namespace CPIS_Senior_Project.Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //This is to prevent everyone from being able to upload movies to this service
-            //TODO:  Add check for Theater role
-            if (Session["Login"] != null && (bool)Session["Login"] == true) {
-                Account user = (Account)Session["Account"];
+            //This is to prevent customers from being able to manage movies on this service
+            Account user = (Account)Session["Account"]; ;
+            if (Session["Login"] != null && (bool)Session["Login"] == true && user.Role == "Theater") {
                 greeting.Text = "Welcome, " + user.FullName + "!";
 
-                //Finish the for loop that populates the movies from the database
-                //after page design is complete, store statically until then
                 TheaterTier theaterInfo = new TheaterTier();
                 Movie[] movies = theaterInfo.GetMovies();
 
@@ -57,6 +54,7 @@ namespace CPIS_Senior_Project.Management
                 Response.Redirect("~/Management/Login.aspx");
             }
         }
+        //TODO:  Add function that allows showtimes to be set on a per theater basis
         protected void AddMovie_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Management/AddMovie");

@@ -19,7 +19,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies()
         {
-            Movie[] movies = null;
+            Movie[] movies = new Movie[0];
 
             query = "SELECT * FROM Movies;";
             conn = new SqlConnection(connectionString);
@@ -108,7 +108,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies(string searchQuery)
         {
-            Movie[] movies = null;
+            Movie[] movies = new Movie[0];
 
             query = "SELECT * FROM Movies WHERE Title LIKE @Title;";
             conn = new SqlConnection(connectionString);
@@ -567,7 +567,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
         public Theater GetTheater(string theaterID)
         {
             Theater theater = new Theater();
-            query = "SELECT * FROM Users WHERE Role = 'Theater' AND Name = @Name;";
+            query = "SELECT * FROM Users WHERE Role = 'Theater' AND Username = @Name;";
             conn = new SqlConnection(connectionString);
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Name", theaterID);

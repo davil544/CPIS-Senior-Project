@@ -48,13 +48,12 @@ namespace CPIS_Senior_Project.Management
                             {
                                 for (int i = 0; i < account.CC.Length; i++)
                                 {
-                                    lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, "Card #" + i));
+                                    lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, account.CC[i].CardID.ToString()));
                                 }
-                                debug.Text = "Card Count: " + (lstCreditCards.Items.Count - 1);
+                                debug.Text = "Card Count: " + (lstCreditCards.Items.Count - 2);
                             }
                             else
                             {
-                                lstCreditCards.Items.Insert(0, new ListItem("Add New Card", "newcard"));
                                 debug.Text = "Card Count: 0";
                             }
                         }
@@ -94,42 +93,49 @@ namespace CPIS_Senior_Project.Management
                         Hours = txtHours.Text,
                         TicketPrice = float.Parse(txtTicketPrice.Text)
                     };
-                    debug.Text = AccountManager.UpdateAccount(account);
                     break;
 
                 case "Customer":
                     account.FullName = txtCustName.Text;
-                    CreditCard newCard = new CreditCard();
-                    //get CC ID here if not null, then make function to overwrite that card in the SQL DB
-                    if (txtCC_number.Text != null && txtExpDate.Text != null && txtCVV.Text != null)  //Maybe check for "" here if null check fails?
+                    if (txtCC_number.Text != "" && txtExpDate.Text != "" && txtCVV.Text != "")
                     {
-                        newCard.CardNumber = txtCC_number.Text;
-                        newCard.ExpirationDate = txtExpDate.Text;
-                        newCard.CVV = txtCVV.Text;
-                    }
-                    if (newCard != new CreditCard())
-                    {
-                        //add cc info to function here, maybe overload it to support 2 inputs
-                    }
-                    else
-                    {
-                        //just change name here
+                        //This works but doesn't reflect in the EditProfile page until the project is restarted, why?
+                        //Maybe move this to a separate function or something like that?
+                        if (lstCreditCards.SelectedValue == "newcard")
+                        {
+                            account.CC[0] = new CreditCard();
+                        }
+                        account.CC[0].CardNumber = txtCC_number.Text;
+                        account.CC[0].ExpirationDate = txtExpDate.Text;
+                        account.CC[0].CVV = txtCVV.Text;
                     }
                     break;
             }
+            debug.Text = AccountManager.UpdateAccount(account);
+            //Response.Redirect("/Management/EditProfile");
 
-            //debug.Text = AccountManager.UpdateCreditCard(account);
         }
 
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Management");
+            if (account.Role == "Theater")
+            {
+                Response.Redirect("/Management");
+            }
+            else
+            {
+                Response.Redirect("/");
+            }
         }
 
         protected void ListCC_Change(object sender, EventArgs e)
         {
             int ccID = lstCreditCards.SelectedIndex;
-            if (ccID <= 0)
+            if (lstCreditCards.SelectedValue == "newcard")
+            {
+                formCCHTML.Visible = true;
+            }
+            else if (ccID <= 0)
             {
                 try
                 {
@@ -144,6 +150,7 @@ namespace CPIS_Senior_Project.Management
                 }
                 formCCHTML.Visible = true;
             }
+            
             else
             {
                 formCCHTML.Visible = false;

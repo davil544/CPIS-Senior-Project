@@ -9,7 +9,7 @@ namespace CPIS_Senior_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null)
+            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack)
             {
                 string movieID = Request.QueryString["ID"];
                 Account account = (Account)Session["Account"];
@@ -29,15 +29,13 @@ namespace CPIS_Senior_Project
                     MovieName.Text = "Movie Name: " + mv.Title;
                 }
             }
-
-
         }
 
 
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-            Account customerAccount = new Account();
+            /*Account customerAccount = new Account();
             
             bool valid = true; string status = "";
 
@@ -54,7 +52,7 @@ namespace CPIS_Senior_Project
                 //Creditcard_Info.Visible = true;
                 //cc.Role = "Credit ccv";
 
-               /* if (ccv.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
+                if (ccv.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
                 {
                     status = ErrorHandler.empty;
                     valid = false;
@@ -70,9 +68,9 @@ namespace CPIS_Senior_Project
                         //auth.CC.CVV = cc_cvv.Text;
                     }
                     catch { }
-               }*/
-            }
-        }
+               }
+        }*/
+    }
 
 
         protected void BtnCancel_Click (object sender, EventArgs e)

@@ -131,11 +131,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Management\AddMovie.aspx" />
+    <Content Include="Management\ComposeMessage.aspx" />
     <Content Include="Management\EditMovie.aspx" />
     <Content Include="Management\EditProfile.aspx" />
+    <Content Include="Management\Inbox.aspx" />
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
+    <Content Include="Management\ViewMessage.aspx" />
     <Content Include="MovieDetails.aspx" />
     <Content Include="PurchaseTickets.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -168,9 +171,12 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Scripts\InputValidation.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="SearchResults.aspx" />
     <Content Include="Site.Master" />
     <Content Include="TheaterDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="ViewTickets.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -194,9 +200,11 @@
     </Compile>
     <Compile Include="DataAccessLayer\AccountManager.cs" />
     <Compile Include="DataAccessLayer\ErrorHandler.cs" />
+    <Compile Include="DataAccessLayer\Messenger.cs" />
     <Compile Include="DataAccessLayer\TheaterTier.cs" />
     <Compile Include="DataModels\Account.cs" />
     <Compile Include="DataModels\CreditCard.cs" />
+    <Compile Include="DataModels\Message.cs" />
     <Compile Include="DataModels\Movie.cs" />
     <Compile Include="DataModels\Theater.cs" />
     <Compile Include="Default.aspx.cs">
@@ -226,6 +234,13 @@
     <Compile Include="Management\AddMovie.aspx.designer.cs">
       <DependentUpon>AddMovie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\ComposeMessage.aspx.cs">
+      <DependentUpon>ComposeMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ComposeMessage.aspx.designer.cs">
+      <DependentUpon>ComposeMessage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\EditMovie.aspx.cs">
       <DependentUpon>EditMovie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +254,13 @@
     </Compile>
     <Compile Include="Management\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Inbox.aspx.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\Inbox.aspx.designer.cs">
+      <DependentUpon>Inbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\LoginRegistration.aspx.cs">
       <DependentUpon>LoginRegistration.aspx</DependentUpon>
@@ -261,6 +283,13 @@
     <Compile Include="Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\ViewMessage.aspx.cs">
+      <DependentUpon>ViewMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ViewMessage.aspx.designer.cs">
+      <DependentUpon>ViewMessage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MovieDetails.aspx.cs">
       <DependentUpon>MovieDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -275,6 +304,13 @@
     </Compile>
     <Compile Include="PurchaseTickets.aspx.designer.cs">
       <DependentUpon>PurchaseTickets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResults.aspx.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResults.aspx.designer.cs">
+      <DependentUpon>SearchResults.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -303,6 +339,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTickets.aspx.cs">
+      <DependentUpon>ViewTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewTickets.aspx.designer.cs">
+      <DependentUpon>ViewTickets.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

@@ -7,74 +7,65 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CPIS_Senior_Project
+namespace CPIS_Senior_Project.Management
 {
 
 
-    public partial class SiteMaster
+    public partial class Inbox
     {
 
         /// <summary>
-        /// HeaderContent control.
+        /// debug control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderContent;
+        protected global::System.Web.UI.WebControls.Label debug;
 
         /// <summary>
-        /// LoggedInItems control.
+        /// pnlMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoggedInItems;
+        protected global::System.Web.UI.WebControls.Panel pnlMessages;
 
         /// <summary>
-        /// txtSearch control.
+        /// BtnCompose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.Button BtnCompose;
 
         /// <summary>
-        /// btnSearch control.
+        /// BtnInOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Button BtnInOut;
 
         /// <summary>
-        /// pnlDropdown control.
+        /// lblInOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDropdown;
+        protected global::System.Web.UI.WebControls.Label lblInOut;
 
         /// <summary>
-        /// loginButton control.
+        /// litMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginButton;
-
-        /// <summary>
-        /// MainContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Literal litMessages;
     }
 }
