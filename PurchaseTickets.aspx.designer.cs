@@ -114,13 +114,13 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Label lblPurchaseButton;
 
         /// <summary>
-        /// btnPurchaseButton control.
+        /// BtnPurchaseButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPurchaseButton;
+        protected global::System.Web.UI.WebControls.Button BtnPurchaseButton;
 
         /// <summary>
         /// lblCancelButton control.
@@ -132,12 +132,12 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Label lblCancelButton;
 
         /// <summary>
-        /// btnCancelButton control.
+        /// BtnCancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelButton;
+        protected global::System.Web.UI.WebControls.Button BtnCancelButton;
     }
 }

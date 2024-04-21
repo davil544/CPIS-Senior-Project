@@ -23,9 +23,9 @@
                         <asp:DropDownList ID="lstCreditCard_Selection" runat="server"></asp:DropDownList>
 
                      <asp:Label runat="server" ID ="lblPurchaseButton">Purchase Button:</asp:Label>
-                     <asp:Button ID="btnPurchaseButton" runat="server" OnClick="BtnPurchase_Click" Text="Purchase Tickets" />
+                     <asp:Button ID="BtnPurchaseButton" runat="server" OnClick="BtnPurchase_Click" Text="Purchase Tickets" />
                      <asp:Label runat="server" ID ="lblCancelButton">Cancel Button:</asp:Label>
-                      <asp:Button ID="btnCancelButton" runat="server" OnClick="BtnCancel_Click" Text="Cancel Order"/>
+                      <asp:Button ID="BtnCancelButton" runat="server" OnClick="BtnCancel_Click" Text="Cancel Order"/>
                         
          
 
