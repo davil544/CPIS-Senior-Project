@@ -7,7 +7,7 @@ namespace CPIS_Senior_Project.Management
 {
     public partial class MovieDetails : System.Web.UI.Page
     {
-        private string movieID;
+        private string movieID; private Movie mv;
         protected void Page_Load(object sender, EventArgs e)
         {
             movieID = Request.QueryString["ID"];
@@ -17,7 +17,7 @@ namespace CPIS_Senior_Project.Management
                 //Load movie from DB here
                 TheaterTier movieManager = new TheaterTier();
                 Account account = (Account)Session["Account"];
-                Movie mv = movieManager.GetMovie(int.Parse(movieID));
+                mv = movieManager.GetMovie(int.Parse(movieID));
 
                 //Shows movie info if it exists in DB
                 if (mv.Title != "")
@@ -65,7 +65,13 @@ namespace CPIS_Senior_Project.Management
         {
             //Store session information here such as amount of tickets, movie IDs, etc.
             //Possibly instead of using query strings, may be more secure this way too
-            Response.Redirect("~/PurchaseTickets.aspx?ID=" + movieID);
+            //Pass Movie object, selected theater, and price
+
+            //TODO:  Add login check to purchase button
+            Session["PurchasedMovie"] = mv;
+            Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
+            Session["TicketPrice"] = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text);
+            Response.Redirect("~/PurchaseTickets.aspx");
         }
 
         protected void ChooseTheater_Change(object sender, EventArgs e)

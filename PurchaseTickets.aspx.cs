@@ -11,7 +11,7 @@ namespace CPIS_Senior_Project
         {
             if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack)
             {
-                string movieID = Request.QueryString["ID"];
+                Movie mv = (Movie)Session["PurchasedMovie"];
                 Account account = (Account)Session["Account"];
                 if (account.CC.Length != 0)
                 {
@@ -21,13 +21,9 @@ namespace CPIS_Senior_Project
                     }
                 }
                 CustomerName.Text = "Name: " + account.FullName;
-                if (movieID != null)
-                {
-                    TheaterTier movieManager = new TheaterTier();
-                    
-                    Movie mv = movieManager.GetMovie(int.Parse(movieID));
-                    MovieName.Text = "Movie Name: " + mv.Title;
-                }
+                MovieName.Text = "Movie Name: " + mv.Title;
+                lblPrice.Text = "Price: $" + Session["TicketPrice"];
+                lblTheaterSelection.Text = "Theater Selection:&nbsp" + Session["Theater"];
             }
         }
 
