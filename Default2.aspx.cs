@@ -1,4 +1,4 @@
-﻿using CPIS_Senior_Project.DataAccessLayer;
+using CPIS_Senior_Project.DataAccessLayer;
 using CPIS_Senior_Project.DataModels;
 using System;
 using System.Web.UI.HtmlControls;
@@ -35,14 +35,15 @@ namespace CPIS_Senior_Project
                         img.Attributes["alt"] = "Movie Poster";
                         img.Attributes["style"] = "max-height: 240px; width: auto;"; // Adjust size here
 
-                        //Maybe replace these with a href buttons with bootstrap themes?
-                        //This will allow you to link them to the movie status pages respectively
-                        HtmlGenericControl button = new HtmlGenericControl("button");
-                        button.Attributes["class"] = "btn btn-primary btn-movie-title";
-                        button.InnerText = movies[j].Title;
+                    
+                        HtmlGenericControl link = new HtmlGenericControl("a");
+                        link.Attributes["class"] = "btn btn-primary btn-movie-title";
+                        link.Attributes["href"] = $"/MovieDetails.aspx?ID={j + 1}";
+                        link.InnerText = movies[j].Title;
+
 
                         imgDiv.Controls.Add(img);
-                        imgDiv.Controls.Add(button);
+                        imgDiv.Controls.Add(link);
                         imgContainer.Controls.Add(imgDiv);
                     }
 
