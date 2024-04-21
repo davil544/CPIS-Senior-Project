@@ -33,30 +33,57 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.Panel pnlTickets;
 
         /// <summary>
-        /// movName control.
+        /// lblThtrName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label movName;
+        protected global::System.Web.UI.WebControls.Label lblThtrName;
 
         /// <summary>
-        /// txtAmt control.
+        /// lblMovName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAmt;
+        protected global::System.Web.UI.WebControls.Label lblMovName;
 
         /// <summary>
-        /// cusName control.
+        /// lblTxtAmt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cusName;
+        protected global::System.Web.UI.WebControls.Label lblTxtAmt;
+
+        /// <summary>
+        /// lblTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// lblCusName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCusName;
+
+        /// <summary>
+        /// lblDoP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDoP;
     }
 }
