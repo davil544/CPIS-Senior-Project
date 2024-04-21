@@ -23,7 +23,7 @@ namespace CPIS_Senior_Project
                 CustomerName.Text = "Name: " + account.FullName;
                 MovieName.Text = "Movie Name: " + mv.Title;
                 lblPrice.Text = "Price: $" + Session["TicketPrice"];
-                lblTheaterSelection.Text = "Theater Selection:&nbsp" + Session["Theater"];
+                lblTheaterSelection.Text = "Theater Selection:&nbsp" + Session["Theater"];//Add null check here before making next commit
             }
         }
 
@@ -31,6 +31,7 @@ namespace CPIS_Senior_Project
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/ViewTickets");
             /*Account customerAccount = new Account();
             
             bool valid = true; string status = "";
