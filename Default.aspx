@@ -1,15 +1,27 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CPIS_Senior_Project._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
     <main>
         <section class="row" aria-labelledby="MoviesTitle">
             <div class="p-4 mb-4 bg-light rounded-3">
-                <div class="container-fluid py-5">
-                    <h1 id="aspnetTitle" class="display-5 fw-bold">Movie Ticket Sales Site</h1>
-                    <p class="col-md-8 fs-4">This Movie Ticket Website is a service that allows movie theater customers, employees, and owners to achive everthing they need within the movie theater</p>
-                    <a href="http://www.asp.net" class="btn btn-primary btn-md" type="button">Learn More &raquo;</a>
-                </div>
+                <h1>Welcome to the best place to buy movie tickets!</h1>
+                <div style="text-align: center;"><asp:Label ID="debug" runat="server" Visible="false"></asp:Label></div>
+                <asp:Panel ID="pnlMovies" runat="server">
+                    <h4>&nbsp&nbsp Movies currently being shown:</h4>
+                    <div class="container-fluid py-5">
+                        <div id="movieCarouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" runat="server" id="carouselItems"></div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#movieCarouselControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#movieCarouselControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </asp:Panel>
            </div>
         </section>
 

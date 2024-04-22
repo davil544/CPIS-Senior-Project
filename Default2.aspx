@@ -22,7 +22,7 @@
         }
     </style>
 
-    <!-- Will eventually move these within the project, web hosted for testing purposes -->
+    <!-- Do not use this page anymore!  Code tweaked and merged with main homepage! -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

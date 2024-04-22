@@ -17,8 +17,8 @@
     <script src="/Scripts/popper.min.js"></script>
 
     <asp:ContentPlaceHolder ID="HeaderContent" runat="server"></asp:ContentPlaceHolder>
-
 </head>
+
 <body>
     <form runat="server">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Default2">New Home (Testing)</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" runat="server" href="~/Default2">New Home (Testing)</a></li> -->
                         <asp:Label ID="LoggedInItems" runat="server"></asp:Label>
                     </ul>
                     <div class="d-flex justify-content-end">
