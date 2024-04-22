@@ -60,5 +60,9 @@ namespace CPIS_Senior_Project.Management
                 lblInOut.Text = "Inbox:";
             }
         }
+        protected void BtnCompose_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Management/ComposeMessage.aspx");
+        }
     }
 }

@@ -19,7 +19,7 @@
     <asp:Label ID="debug" runat="server" Visible="false"></asp:Label>
     <asp:Panel ID="pnlMessages" runat="server">
         <h1>My Messages:</h1><br />
-        <asp:Button ID="BtnCompose" runat="server" Text="Compose New Message" />
+        <asp:Button ID="BtnCompose" runat="server" Text="Compose New Message" OnClick="BtnCompose_Click" />
         <asp:Button ID="BtnInOut" runat="server" Text="View Sent Messages" OnClick="BtnInOutbox_Click" /> <br /><br />
         &nbsp<asp:Label ID="lblInOut" runat="server" Text="Inbox:"></asp:Label><h6></h6>
         <table cellpadding = "10px">
