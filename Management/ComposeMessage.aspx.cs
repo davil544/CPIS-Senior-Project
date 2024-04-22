@@ -14,7 +14,13 @@ namespace CPIS_Senior_Project.Management
                 account = (Account)Session["Account"];
                 if (Session["reply"] != null)
                 {
-                    //Populate reply email info here
+                    msg = (Message)Session["Reply"];
+                    //txtSender.Text = msg.Recipient;
+                    txtRecipient.Text = msg.Sender;
+                    txtMessage.Text = "\r\n_____________________________________" +
+                        "\r\nPrevious Message Contents:\r\nTo: " + msg.Recipient +
+                        "\r\nFrom: " + msg.Sender + "\r\nTime: " + msg.TimeStamp.ToString() +
+                        "\r\nMessage: " + msg.MessageContents;
                 }
             }
             else
@@ -30,6 +36,12 @@ namespace CPIS_Senior_Project.Management
         {
             //Do necessary checks here then send the message!
             //debug.Text = Messenger.SendMessage(msg);
+        }
+
+        protected void BtnCancel_Click(object sender, EventArgs e)
+        {
+            Session["reply"] = null;
+            Response.Redirect("/Management/Inbox");
         }
     }
 }

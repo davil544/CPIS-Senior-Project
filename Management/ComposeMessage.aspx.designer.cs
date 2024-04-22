@@ -33,15 +33,6 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Panel pnlMessage;
 
         /// <summary>
-        /// txtSender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSender;
-
-        /// <summary>
         /// txtRecipient control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRecipient;
+
+        /// <summary>
+        /// txtSubject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSubject;
 
         /// <summary>
         /// txtMessage control.
@@ -67,5 +67,14 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSend;
+
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }
