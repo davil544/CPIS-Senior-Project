@@ -19,7 +19,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies()
         {
-            Movie[] movies = new Movie[0];
+            Movie[] movies = new Movie[1];
 
             query = "SELECT * FROM Movies;";
             conn = new SqlConnection(connectionString);
@@ -97,7 +97,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                movies[0].Title = ErrorHandler.SQL(ex);
+                movies[0] = new Movie { Title = ErrorHandler.SQL(ex) };
             }
             finally
             {
@@ -108,7 +108,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public Movie[] GetMovies(string searchQuery)
         {
-            Movie[] movies = new Movie[0];
+            Movie[] movies = new Movie[1];
 
             query = "SELECT * FROM Movies WHERE Title LIKE @Title;";
             conn = new SqlConnection(connectionString);
@@ -165,7 +165,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                movies[0].Title = ErrorHandler.SQL(ex);
+                movies[0] = new Movie { Title = ErrorHandler.SQL(ex) };
             }
             finally
             {
@@ -371,9 +371,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 conn.Open();
                 count = (int)cmd.ExecuteScalar();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw new Exception(ex.Message);
+                count = 0;
             }
             finally
             {
