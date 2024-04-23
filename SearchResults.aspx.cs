@@ -13,7 +13,7 @@ namespace CPIS_Senior_Project
                 litSearchQuery.Text = Session["query"].ToString();
                 litResults.Text = "<br />";
                 TheaterTier theaterManager = new TheaterTier();
-                Movie[] movies = theaterManager.GetMovies((string)Session["query"] );
+                Movie[] movies = theaterManager.GetMovies((string)Session["query"]);
                 foreach (Movie movie in movies) {
                     litResults.Text += "<a href=\"MovieDetails.aspx?ID=" + movie.ID + "\">" + movie.Title + "</a><br />";
                 }

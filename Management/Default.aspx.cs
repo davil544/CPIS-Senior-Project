@@ -10,7 +10,7 @@ namespace CPIS_Senior_Project.Management
         protected void Page_Load(object sender, EventArgs e)
         {
             //This is to prevent customers from being able to manage movies on this service
-            Account user = (Account)Session["Account"]; ;
+            Account user = (Account)Session["Account"];
             if (Session["Login"] != null && (bool)Session["Login"] == true && user.Role == "Theater") {
                 greeting.Text = "Welcome, " + user.FullName + "!";
 
