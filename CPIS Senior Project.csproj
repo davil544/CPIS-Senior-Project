@@ -138,6 +138,7 @@
     <Content Include="Management\LoginRegistration.aspx" />
     <Content Include="Management\Login.aspx" />
     <Content Include="Management\Default.aspx" />
+    <Content Include="Management\OrderHistory.aspx" />
     <Content Include="Management\ViewMessage.aspx" />
     <Content Include="MovieDetails.aspx" />
     <Content Include="PurchaseTickets.aspx" />
@@ -207,6 +208,7 @@
     <Compile Include="DataModels\Message.cs" />
     <Compile Include="DataModels\Movie.cs" />
     <Compile Include="DataModels\Theater.cs" />
+    <Compile Include="DataModels\Ticket.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,6 +284,13 @@
     </Compile>
     <Compile Include="Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\OrderHistory.aspx.designer.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\ViewMessage.aspx.cs">
       <DependentUpon>ViewMessage.aspx</DependentUpon>

@@ -641,6 +641,121 @@ namespace CPIS_Senior_Project.DataAccessLayer
             return theater;
         }
 
+        public Ticket[] GetTickets(string Username)
+        {
+            query = "SELECT COUNT(*) FROM Tickets WHERE Purchaser = @Uname";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Uname", Username);
+            int totalCount;
+
+            try
+            {
+                conn.Open();
+                totalCount = (int)cmd.ExecuteScalar();
+            }
+            catch (SqlException)
+            {
+                totalCount = 0;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            Ticket[] tickets = new Ticket[1];
+
+            query = "SELECT * FROM Tickets WHERE Purchaser = @Uname;";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Uname", Username);
+
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    int i = 0;
+                    tickets = new Ticket[totalCount];
+                    while (reader.Read())
+                    {
+                        tickets[i] = new Ticket();
+                        if (reader["ID"] != DBNull.Value)
+                        {
+                            tickets[i].ID = (int)reader["ID"];
+                        }
+
+                        if (reader["Purchaser"] != DBNull.Value)
+                        {
+                            tickets[i].PurchaserUsername = reader["Purchaser"].ToString();
+                        }
+
+                        if (reader["Quantity"] != DBNull.Value)
+                        {
+                            tickets[i].TicketCount = int.Parse(reader["Quantity"].ToString());
+                        }
+
+                        if (reader["TheaterID"] != DBNull.Value)
+                        {
+                            tickets[i].TheaterID = reader["TheaterID"].ToString();
+                        }
+
+                        if (reader["MovieID"] != DBNull.Value)
+                        {
+                            tickets[i].MovieID = int.Parse(reader["MovieID"].ToString());
+                        }
+                        i++;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                tickets[0] = new Ticket { TheaterID = ErrorHandler.SQL(ex) };
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tickets;
+        }
+
+        public string BuyTickets(Ticket ticketInfo)
+        {
+            query = "INSERT INTO Tickets (Purchaser, Quantity, TheaterID, MovieID) " +
+                "VALUES (@Uname, @Count, @TheaterID, @MovieID)";
+            conn = new SqlConnection(connectionString);
+            cmd = new SqlCommand(query, conn);
+            string status = "Failed!";
+
+            cmd.Parameters.AddWithValue("@Uname", ticketInfo.PurchaserUsername);
+            cmd.Parameters.AddWithValue("@Count", ticketInfo.TicketCount);
+            cmd.Parameters.AddWithValue("@TheaterID", ticketInfo.TheaterID);
+            cmd.Parameters.AddWithValue("@MovieID", ticketInfo.MovieID.ToString());
+
+            try
+            {
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows >= 1)
+                {
+                    status = "Success!";
+                }
+            }
+            catch (SqlException ex)
+            {
+                status = ErrorHandler.SQL(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return status;
+        }
+
+
         public string TruncateString(string str, int maxlength)
         {
             return str.Substring(0, Math.Min(str.Length, maxlength)) + "...";

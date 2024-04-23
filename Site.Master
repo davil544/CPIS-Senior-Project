@@ -51,6 +51,7 @@
                                         <li><a class="dropdown-item" href="/Management/Login">Logout</a></li>
                                         <li><a class="dropdown-item" href="/Management/Inbox">My Messages</a></li>
                                         <li><a class="dropdown-item" href="/Management/EditProfile">Account Settings</a></li>
+                                        <asp:Label ID="lblPurchases" runat="server"><li><a class="dropdown-item" href="/Management/OrderHistory">Purchases</a></li></asp:Label>
                                     </ul>
                                 </li>
                             </ul>

@@ -16,6 +16,7 @@ namespace CPIS_Senior_Project
                 if (account.Role == "Theater")
                 {
                     LoggedInItems.Text = "<li class=\"nav-item\"><a class=\"nav-link\" runat=\"server\" href=\"/Management\">Movie Management</a></li>";
+                    lblPurchases.Visible = false;
                 }
             }
         }
