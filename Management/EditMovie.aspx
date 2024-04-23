@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="Edit Movie Details" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditMovie.aspx.cs" Inherits="CPIS_Senior_Project.Management.EditMovie" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Label ID="debug" runat="server"></asp:Label> <br /><br />
+    <asp:Label ID="debug" runat="server">Warning!  These changes will affect movies for all other theaters using this service!</asp:Label> <br /><br />
     <asp:Panel ID="editForm" runat="server">
     <table>
         <tr>
-            <td> <asp:Label ID="lblMovieName" runat="server">Movie Name:</asp:Label> </td>
+            <td> <asp:Label ID="lblMovieName" runat="server">Movie Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</asp:Label> </td>
             <td> <asp:TextBox ID="txtMovieName" runat="server"></asp:TextBox> </td>
         </tr>
         <tr>
@@ -23,11 +23,11 @@
             <td> <asp:Label ID="lblRating" runat="server">MPA Rating:</asp:Label> </td>
             <td> <asp:TextBox ID="txtMovieRating" runat="server"></asp:TextBox> </td>
         </tr>
-        <tr>
+        <!--<tr>
             <td> <asp:Label ID="lblTimeSlot" runat="server">Times Movie is Playing:</asp:Label> </td>
             <td> <asp:TextBox ID="txtTimeSlot" runat="server"></asp:TextBox> </td>
         </tr>
-        <!--<tr>
+        <tr>
             <td> <asp:Label ID="lblPrice" runat="server">Ticket Price:</asp:Label> </td>
             <td> <asp:TextBox ID="txtTicketPrice" runat="server"></asp:TextBox> </td>
         </tr> This is implemented on a per theater basis atm, may change in the future -->

@@ -28,7 +28,7 @@ namespace CPIS_Senior_Project.Management
                         txtMovieRating.Text = mv.MPA_rating;
 
                         //This will work once Showcases SQL table is tied in
-                        txtTimeSlot.Text = mv.TimeSlot;
+                        //txtTimeSlot.Text = mv.TimeSlot;
 
                         //Maybe move this from Theater class to Showcases one
                         //txtTicketPrice.Text = mv.Price.ToString();
@@ -37,14 +37,14 @@ namespace CPIS_Senior_Project.Management
                 else
                 {
                     debug.Text = ErrorHandler.noMovie;
-                    debug.Visible = true;
+                    //debug.Visible = true;
                     editForm.Visible = false;
                 }
             }
             else
             {
                 debug.Text = ErrorHandler.invalidLoginToken;
-                debug.Visible = true;
+                //debug.Visible = true;
                 Response.Redirect("~/Management/Login.aspx");
             }
         }
