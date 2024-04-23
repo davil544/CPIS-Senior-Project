@@ -14,7 +14,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             invalidLoginToken = "Something went wrong, redirecting back to the login page...",
             notPermitted = "You do not have permission to access this page!",
             noMovie = "No Movie Found!", noTheater = "Theater not found!",
-            emptyInbox = "No Messages Found!";
+            emptyInbox = "No Messages Found!", noOrders = "No orders found!";
 
         public static string SQL(SqlException ex)
         {
