@@ -46,7 +46,7 @@ namespace CPIS_Senior_Project.Management
         protected void BtnInOutbox_Click(object sender, EventArgs e)
         {
             if ((sender as Button).Text == "View Sent Messages")
-            {
+            {   //Figure out why this is only showing the most recently sent message!
                 msgs = Messenger.GetMessages(account.Username, "send");
                 LoadMessages(msgs);
                 BtnInOut.Text = "View Recieved Messages";
