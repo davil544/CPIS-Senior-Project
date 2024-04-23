@@ -10,7 +10,15 @@ namespace CPIS_Senior_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Login"] != null && (bool)Session["Login"] == true)
+            {
+                Account user = (Account)Session["Account"];
+                txtName.Text = user.Username;
+                txtName.Enabled = false;
+                txtEmail.Text = "N/A";
+                txtEmail.Enabled = false;
+                RegularExpressionValidator1.Enabled = false;
+            }
         }
 
         protected void txtName_TextChanged(object sender, EventArgs e)
@@ -24,8 +32,12 @@ namespace CPIS_Senior_Project
             Message msg = new Message();
             msg.Sender = txtName.Text;
             msg.Recipient = "Admin";
-            msg.MessageContents = "Subject:"+txtSubject.Text+ "<br />"+
-                "Message:"+txtComments.Text;
+            if (Session["Login"] == null)
+            {
+                msg.MessageContents = "Email:&nbsp;" + txtEmail.Text + "<br />";
+            }
+            msg.MessageContents += "Subject:&nbsp;"+txtSubject.Text+ "<br />"+
+                "Message:&nbsp;"+txtComments.Text;
             
             
             lblMessage.Text = Messenger.SendMessage(msg);
