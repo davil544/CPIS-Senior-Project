@@ -13,8 +13,9 @@ namespace CPIS_Senior_Project
             if (!IsPostBack)
             {
                 TheaterTier theaterInfo = new TheaterTier();
+                int count = theaterInfo.GetMovieCount();
                 Movie[] movies = theaterInfo.GetMovies();
-                int count = movies != null ? theaterInfo.GetMovieCount() : 0;
+                //int count = movies != null ? theaterInfo.GetMovieCount() : 0;
 
                 if (count != 0)
                 {
