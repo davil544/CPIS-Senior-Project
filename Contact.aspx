@@ -11,112 +11,102 @@
             <abbr title="Phone">P:</abbr>
             800.592.3565
         </address>
-        <form id ="form1">
         <div style="font-family:Arial">
             <fieldset style="width:350px">
-                
                 <table>
-    <tr>
-        <td>
-            <b>Name:</b>
-        </td>
-        <td>
-            <asp:TextBox ID="txtName" Width="200px" runat="server"></asp:TextBox>
-        </td>
-        <td>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
-                runat="server" 
-                ErrorMessage="Name Is Required"
-                ControlToValidate="txtName"
-                Text="*"
-                ForeColor="DarkRed"></asp:RequiredFieldValidator>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <b>Email:</b>
-        </td>
-        <td>
-            <asp:TextBox ID="txtEmail" Width="200px" runat="server"></asp:TextBox>
-        </td>
-        <td>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
-                runat="server" 
-                ErrorMessage="Email Is Required"
-                ControlToValidate="txtEmail"
-                Display="Dynamic"
-                Text="*"
-                ForeColor="DarkRed"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                ErrorMessage="Please enter a valid email"
-                ForeColor="Red"
-                ControlToValidate="txtEmail"
-                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <b>Subject:</b>
-        </td>
-        <td>
-            <asp:TextBox ID="txtSubject" Width="200px" runat="server"></asp:TextBox>
-        </td>
-        <td>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
-                runat="server" 
-                ErrorMessage="Subject Is Required"
-                ControlToValidate="txtSubject"
-                Text="*"
-                ForeColor="DarkRed"></asp:RequiredFieldValidator>
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align:top">
-            <b>Comments:</b>
-        </td>
-        <td style="vertical-align:top">
-            <asp:TextBox ID="txtComments" Width="200px" runat="server" TextMode="MultiLine" Rows="5"></asp:TextBox>
-        </td>
-        <td style="vertical-align:top">
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" 
-                runat="server" 
-                ErrorMessage="Comments Are Required"
-                ControlToValidate="txtComments"
-                Text="*"
-                ForeColor="DarkRed"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                ErrorMessage="Please enter a valid comment"
-                ForeColor="Red"
-                ControlToValidate="txtComments"
-                ValidationExpression="^[a-zA-Z0-9\s\r\n.,:;!?()\-]+$"></asp:RegularExpressionValidator>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <asp:ValidationSummary HeaderText="Please Fix The Following Errors" ForeColor="Red" ID="ValidationSummary1" runat="server" />
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Button1_Click" />
-            <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Green"></asp:Label>
-        </td>
-    </tr>
-</table>
+                    <tr>
+                        <td>
+                            <b>Name:</b>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtName" Width="200px" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+                                runat="server" 
+                                ErrorMessage="Name Is Required"
+                                ControlToValidate="txtName"
+                                Text="*"
+                                ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Email:</b>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtEmail" Width="200px" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
+                                runat="server" 
+                                ErrorMessage="Email Is Required"
+                                ControlToValidate="txtEmail"
+                                Display="Dynamic"
+                                Text="*"
+                                ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                ErrorMessage="Please enter a valid email"
+                                ForeColor="Red"
+                                ControlToValidate="txtEmail"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Subject:</b>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtSubject" Width="200px" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
+                                runat="server" 
+                                ErrorMessage="Subject Is Required"
+                                ControlToValidate="txtSubject"
+                                Text="*"
+                                ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top">
+                            <b>Comments:</b>
+                        </td>
+                        <td style="vertical-align:top">
+                            <asp:TextBox ID="txtComments" Width="200px" runat="server" TextMode="MultiLine" Rows="5"></asp:TextBox>
+                        </td>
+                        <td style="vertical-align:top">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" 
+                                runat="server" 
+                                ErrorMessage="Comments Are Required"
+                                ControlToValidate="txtComments"
+                                Text="*"
+                                ForeColor="DarkRed"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                ErrorMessage="Please enter a valid comment"
+                                ForeColor="Red"
+                                ControlToValidate="txtComments"
+                                ValidationExpression="^[a-zA-Z0-9\s\r\n.,:;!?()\-]+$"></asp:RegularExpressionValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:ValidationSummary HeaderText="Please Fix The Following Errors" ForeColor="Red" ID="ValidationSummary1" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Button1_Click" />
+                            <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Green"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
             </fieldset>
-
- 
-
-
-            </div> 
-
-
         </div> 
     </main>
-    </div>
 </asp:Content>
