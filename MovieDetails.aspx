@@ -23,7 +23,6 @@
                 <!-- This is to be enabled once a theater is selected -->
                 <br />Number of Tickets:&nbsp&nbsp<asp:TextBox ID="txtTicketCount" runat="server" Width="40px" type="number" min="1" value="1" onkeypress="return onlyNumberKey(event)" OnTextChanged="UpdatePrice_Change" AutoPostBack="true" ></asp:TextBox>
 
-
                 <br /><br /><asp:Button ID="btnPurchase" runat="server" Text="Purchase" Enabled="false" OnClick="BtnPurchase_Click" />
             </td>
         </tr>

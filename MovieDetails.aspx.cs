@@ -73,15 +73,22 @@ namespace CPIS_Senior_Project.Management
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-            //Store session information here such as amount of tickets, movie IDs, etc.
-            //Possibly instead of using query strings, may be more secure this way too
-            //Pass Movie object, selected theater, and price
+            //Stores session information here such as amount of tickets, movie IDs, etc.
+            //then passes the information to the Purchase Tickets page
+            if (Session["Login"] != null && (bool)Session["login"] == true)
+            {
+                Session["PurchasedMovie"] = mv;
+                Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
+                Session["TicketPrice"] = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text);
+                Response.Redirect("~/PurchaseTickets.aspx");
+            }
+            else
+            {
+                debug.Text = "<div style=\"text-align: center\">You must login before you can purchase movie tickets!</div>";
+                debug.Visible = true;
+            }
 
-            //TODO:  Add login check to purchase button
-            Session["PurchasedMovie"] = mv;
-            Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
-            Session["TicketPrice"] = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text);
-            Response.Redirect("~/PurchaseTickets.aspx");
+            
         }
 
         protected void ChooseTheater_Change(object sender, EventArgs e)
