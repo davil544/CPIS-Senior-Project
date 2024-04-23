@@ -7,7 +7,7 @@ namespace CPIS_Senior_Project.Management
 {
     public partial class MovieDetails : System.Web.UI.Page
     {
-        private string movieID; private Movie mv;
+        private string movieID; private Movie mv; private bool customer;
         protected void Page_Load(object sender, EventArgs e)
         {
             movieID = Request.QueryString["ID"];
@@ -31,12 +31,21 @@ namespace CPIS_Senior_Project.Management
 
                     if (!IsPostBack)
                     {
-                        Theater[] theater = movieManager.GetTheaters();
-                        if (theater.Length != 0)
+                        if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
                         {
-                            for (int i = 0; i < theater.Length; i++)
+                            lstMovieTheaters.SelectedItem.Text = "Please note that theater accounts are unable to purchase tickets!";
+                            lstMovieTheaters.SelectedItem.Value = account.MyTheater.TicketPrice.ToString();
+                            lblTicketPrice.Text = lstMovieTheaters.SelectedItem.Value;
+                        }
+                        else
+                        {
+                            Theater[] theater = movieManager.GetTheaters();
+                            if (theater.Length != 0)
                             {
-                                lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].ID, theater[i].TicketPrice.ToString()));
+                                for (int i = 0; i < theater.Length; i++)
+                                {
+                                    lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].ID, theater[i].TicketPrice.ToString()));
+                                }
                             }
                         }
                     }
@@ -45,15 +54,16 @@ namespace CPIS_Senior_Project.Management
                 //Shows management tools if logged in as theater employee
                 if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
                 {
-                    mgmt_Edit.Visible = true;
+                    customer = false;
+                    if (mv.Title != "")
+                    {
+                        mgmt_Edit.Visible = true;
+                    }
+                }
+                else { 
+                    customer = true;
                 }
             }
-            /* else
-            {
-                pnlMovieInfo.Visible = false;
-                debug.Text = ErrorHandler.noMovie + "<br />";
-                debug.Visible = true;
-            } */
         }
 
         protected void EditMovie_Click(object sender, EventArgs e)
@@ -81,7 +91,10 @@ namespace CPIS_Senior_Project.Management
             if (lstMovieTheaters.SelectedValue != "No theater selected")
             {
                 lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text) + "";
-                btnPurchase.Enabled = true;
+                if (customer)
+                {
+                    btnPurchase.Enabled = true;
+                }
             }
             else
             {

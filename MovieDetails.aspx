@@ -2,8 +2,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="Scripts/InputValidation.js"></script>
     <asp:Label ID="debug" runat="server">No Movie Found!</asp:Label> 
-    <asp:Button ID="mgmt_Edit" runat="server" Text="Edit Movie Info" OnClick="EditMovie_Click" Visible="false"></asp:Button><br />
+    <asp:Button ID="mgmt_Edit" runat="server" Text="Edit Movie Info" OnClick="EditMovie_Click" Visible="false"></asp:Button>
     <asp:Panel ID="pnlMovieInfo" runat="server" Visible="false">
+    <br />
     <table>
         <tr>
             <td>
@@ -27,5 +28,6 @@
             </td>
         </tr>
     </table>
+    <br />
     </asp:Panel>
 </asp:Content>
