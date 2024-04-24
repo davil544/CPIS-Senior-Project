@@ -8,25 +8,32 @@
               <br />
              <asp:Label runat="server" ID ="MovieName">Movie Name:</asp:Label>
              <br />
+             <asp:Label runat="server" ID="CreditNum">Credit Card Number:</asp:Label>
             <asp:DropDownList ID="lstCreditCards" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ListCC_Change"  >
                 <asp:ListItem Selected="True" Text="No Card Selected" ></asp:ListItem>
+       
             </asp:DropDownList>
+             
          </asp:Panel>
-                               
+                   <br />            
                     <asp:Label runat="server" ID ="lblTheaterSelection">Theater Selection:</asp:Label>
                      <asp:DropDownList ID="lstTheaterSelection" runat="server"></asp:DropDownList>
-
+                     <br />
+                    <br />
                     <asp:Label runat="server" ID ="lblPrice">Price:</asp:Label>
                       <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
-                      
+                    <br />
+                    
+                    <br />
                     <asp:Label runat="server" ID ="lblCreditCard_Selection">Credit Card Selection:</asp:Label>
                         <asp:DropDownList ID="lstCreditCard_Selection" runat="server"></asp:DropDownList>
-
+                     <br /> 
+                      <br />
                      <asp:Label runat="server" ID ="lblPurchaseButton">Purchase Button:</asp:Label>
                      <asp:Button ID="BtnPurchaseButton" runat="server" OnClick="BtnPurchase_Click" Text="Purchase Tickets" />
                      <asp:Label runat="server" ID ="lblCancelButton">Cancel Button:</asp:Label>
                       <asp:Button ID="BtnCancelButton" runat="server" OnClick="BtnCancel_Click" Text="Cancel Order"/>
-                        
+                       <br />
          
 
 
