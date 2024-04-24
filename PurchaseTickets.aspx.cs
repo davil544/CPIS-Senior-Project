@@ -7,23 +7,24 @@ namespace CPIS_Senior_Project
 {
     public partial class PurchaseTickets : System.Web.UI.Page
     {
+        Account account; Ticket t;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack)
+            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack && Session["Ticket"] != null)
             {
-                Movie mv = (Movie)Session["PurchasedMovie"];
-                Account account = (Account)Session["Account"];
+                t = (Ticket)Session["Ticket"];
+                account = (Account)Session["Account"];
                 if (account.CC.Length != 0)
                 {
                     for (int i = 0; i < account.CC.Length; i++)
                     {
-                        lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, "Card #" + i));
+                        lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, account.CC[i].CardID.ToString()));
                     }
                 }
                 CustomerName.Text = "Name: " + account.FullName;
-                MovieName.Text = "Movie Name: " + mv.Title;
+                MovieName.Text = "Movie Name: " + t.movie.Title;
                 lblPrice.Text = "Price: $" + Session["TicketPrice"];
-                lblTheaterSelection.Text = "Theater Selection:&nbsp" + Session["Theater"];//Add null check here before making next commit
+                lblTheaterSelection.Text = "Theater Selection:&nbsp" + t.theater.Name;//Add null check here before making next commit
             }
         }
 
@@ -31,7 +32,22 @@ namespace CPIS_Senior_Project
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ViewTickets");
+            //Pass CC Info Here as well!
+            t = (Ticket)Session["Ticket"];
+            t.ccID = int.Parse(lstCreditCards.SelectedValue);
+            Session["Ticket"] = t;
+            TheaterTier manager = new TheaterTier();
+            string status = manager.BuyTickets(t);
+
+            if (status == "Success!")
+            {
+                Response.Redirect("/ViewTickets");
+            }
+            else
+            {
+                //display status string to user here
+            }
+            
             /*Account customerAccount = new Account();
             
             bool valid = true; string status = "";

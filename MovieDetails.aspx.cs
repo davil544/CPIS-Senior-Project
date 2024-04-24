@@ -7,7 +7,7 @@ namespace CPIS_Senior_Project.Management
 {
     public partial class MovieDetails : System.Web.UI.Page
     {
-        private string movieID; private Movie mv; private bool customer;
+        private string movieID; private bool customer; private Theater t; private Movie mv; TheaterTier movieManager = new TheaterTier();
         protected void Page_Load(object sender, EventArgs e)
         {
             movieID = Request.QueryString["ID"];
@@ -15,7 +15,6 @@ namespace CPIS_Senior_Project.Management
             if (movieID != null)
             {
                 //Load movie from DB here
-                TheaterTier movieManager = new TheaterTier();
                 Account account = (Account)Session["Account"];
                 mv = movieManager.GetMovie(int.Parse(movieID));
 
@@ -27,10 +26,10 @@ namespace CPIS_Senior_Project.Management
                     moviePoster.Src = "~/Handlers/MoviePoster.ashx?ID=" + movieID;
                     movieTitle.Text = mv.Title;
                     movieSummary.Text = mv.Summary;
-                    lblTicketPrice.Text = mv.Price.ToString();
 
                     if (!IsPostBack)
                     {
+                        //lblTicketPrice.Text = mv.Price.ToString();
                         if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
                         {
                             lstMovieTheaters.SelectedItem.Text = "Please note that theater accounts are unable to purchase tickets!";
@@ -44,7 +43,7 @@ namespace CPIS_Senior_Project.Management
                             {
                                 for (int i = 0; i < theater.Length; i++)
                                 {
-                                    lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].ID, theater[i].TicketPrice.ToString()));
+                                    lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].Name, theater[i].ID));
                                 }
                             }
                         }
@@ -77,9 +76,19 @@ namespace CPIS_Senior_Project.Management
             //then passes the information to the Purchase Tickets page
             if (Session["Login"] != null && (bool)Session["login"] == true)
             {
-                Session["PurchasedMovie"] = mv;
-                Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
-                Session["TicketPrice"] = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text);
+                Account account = (Account)Session["Account"];
+                Ticket t = new Ticket
+                {
+                    PurchaserUsername = account.Username,
+                    movie = mv,
+                    TicketCount = int.Parse(txtTicketCount.Text),
+                    theater = movieManager.GetTheater(lstMovieTheaters.SelectedValue)
+                };
+                //t.TicketCount = int.Parse(lblTicketPrice.Text.ToString());
+
+                //Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
+                Session["Ticket"] = t;
+                Session["TicketPrice"] = int.Parse(lblTicketPrice.Text);
                 Response.Redirect("~/PurchaseTickets.aspx");
             }
             else
@@ -97,7 +106,8 @@ namespace CPIS_Senior_Project.Management
             //ticket price and enable the Purchase button when selected
             if (lstMovieTheaters.SelectedValue != "No theater selected")
             {
-                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * int.Parse(txtTicketCount.Text) + "";
+                t = movieManager.GetTheater(lstMovieTheaters.SelectedValue); //theater[i].TicketPrice.ToString()
+                lblTicketPrice.Text = t.TicketPrice * int.Parse(txtTicketCount.Text) + "";
                 if (customer)
                 {
                     btnPurchase.Enabled = true;
@@ -115,8 +125,9 @@ namespace CPIS_Senior_Project.Management
             //Checks for 0s at beginning of ticket quantity (Throws exception if not stripped out),
             //then multiplies it by the ticket price set by theaters and shows it to the customer
             try
-            {
-                lblTicketPrice.Text = int.Parse(lstMovieTheaters.SelectedValue) * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
+            {   //TODO:  Clean this code up!  It's Messy!!!
+                t = movieManager.GetTheater(lstMovieTheaters.SelectedValue);
+                lblTicketPrice.Text = t.TicketPrice * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
             }
             catch
             {

@@ -31,11 +31,11 @@ namespace CPIS_Senior_Project.Management
                                         "</tr>" +
                                         "<tr>" +
                                             "<td>Theater:</td>" +
-                                            "<td>" + theaterManager.GetTheater(ticket.TheaterID).ID + "</td>" +
+                                            "<td>" + theaterManager.GetTheater(ticket.theater.ID).Name + "</td>" +
                                         "</tr>" +
                                         "<tr>" +
                                             "<td>Movie:</td>" +
-                                            "<td>" + theaterManager.GetMovie(ticket.MovieID).Title + "</td>" +
+                                            "<td>" + theaterManager.GetMovie(ticket.movie.ID).Title + "</td>" +
                                         "</tr>" +
                                         "<tr>" +
                                             "<td>Admit Count:</td>" +
