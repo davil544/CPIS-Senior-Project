@@ -60,24 +60,6 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.DropDownList lstCreditCards;
 
         /// <summary>
-        /// lblTheaterSelection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTheaterSelection;
-
-        /// <summary>
-        /// lstTheaterSelection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstTheaterSelection;
-
-        /// <summary>
         /// lblPrice control.
         /// </summary>
         /// <remarks>
@@ -96,33 +78,6 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// lblCreditCard_Selection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreditCard_Selection;
-
-        /// <summary>
-        /// lstCreditCard_Selection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstCreditCard_Selection;
-
-        /// <summary>
-        /// lblPurchaseButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPurchaseButton;
-
-        /// <summary>
         /// BtnPurchaseButton control.
         /// </summary>
         /// <remarks>
@@ -130,15 +85,6 @@ namespace CPIS_Senior_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnPurchaseButton;
-
-        /// <summary>
-        /// lblCancelButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCancelButton;
 
         /// <summary>
         /// BtnCancelButton control.
