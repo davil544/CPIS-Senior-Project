@@ -60,6 +60,15 @@ namespace CPIS_Senior_Project
         protected global::System.Web.UI.WebControls.DropDownList lstCreditCards;
 
         /// <summary>
+        /// lblTheaterSelection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTheaterSelection;
+
+        /// <summary>
         /// lblPrice control.
         /// </summary>
         /// <remarks>
@@ -67,15 +76,6 @@ namespace CPIS_Senior_Project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPrice;
-
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
         /// BtnPurchaseButton control.
