@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Messaging;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -502,9 +503,14 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     while (reader.Read())
                     {
                         theater[i] = new Theater();
+                        if (reader["Username"] != DBNull.Value)
+                        {
+                            theater[i].ID = reader["Username"].ToString();
+                        }
+
                         if (reader["Name"] != DBNull.Value)
                         {
-                            theater[i].ID = reader["Name"].ToString();
+                            theater[i].Name = reader["Name"].ToString();
                         }
 
                         if (reader["Address1"] != DBNull.Value)
@@ -581,9 +587,14 @@ namespace CPIS_Senior_Project.DataAccessLayer
                     while (reader.Read())
                     {
                         theater = new Theater();
+                        if (reader["Username"] != DBNull.Value)
+                        {
+                            theater.ID = reader["Username"].ToString();
+                        }
+
                         if (reader["Name"] != DBNull.Value)
                         {
-                            theater.ID = reader["Name"].ToString();
+                            theater.Name = reader["Name"].ToString();
                         }
 
                         if (reader["Address1"] != DBNull.Value)
@@ -698,12 +709,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                         if (reader["TheaterID"] != DBNull.Value)
                         {
-                            tickets[i].TheaterID = reader["TheaterID"].ToString();
+                            tickets[i].theater.ID = reader["TheaterID"].ToString();
                         }
 
                         if (reader["MovieID"] != DBNull.Value)
                         {
-                            tickets[i].MovieID = int.Parse(reader["MovieID"].ToString());
+                            tickets[i].movie.ID = int.Parse(reader["MovieID"].ToString());
                         }
                         i++;
                     }
@@ -711,7 +722,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             }
             catch (SqlException ex)
             {
-                tickets[0] = new Ticket { TheaterID = ErrorHandler.SQL(ex) };
+                tickets[0] = new Ticket();
+                tickets[0].theater.ID = ErrorHandler.SQL(ex);
             }
             finally
             {
@@ -730,8 +742,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
             cmd.Parameters.AddWithValue("@Uname", ticketInfo.PurchaserUsername);
             cmd.Parameters.AddWithValue("@Count", ticketInfo.TicketCount);
-            cmd.Parameters.AddWithValue("@TheaterID", ticketInfo.TheaterID);
-            cmd.Parameters.AddWithValue("@MovieID", ticketInfo.MovieID.ToString());
+            cmd.Parameters.AddWithValue("@TheaterID", ticketInfo.theater.ID);
+            cmd.Parameters.AddWithValue("@MovieID", ticketInfo.movie.ID.ToString());
 
             try
             {

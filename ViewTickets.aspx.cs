@@ -12,14 +12,15 @@ namespace CPIS_Senior_Project
             if (Session["Login"] != null && (bool)Session["Login"] == true && account.Role == "Customer")
             {
                 //Populate movie ticket info here
-                if (Session["PurchasedMovie"] != null)
+                if (Session["Ticket"] != null)
                 {
-                    Movie mv = (Movie)Session["PurchasedMovie"];
+                    Ticket t = (Ticket)Session["Ticket"];
 
-                    lblCusName.Text = "Name: " + account.FullName;
-                    lblMovName.Text = "Movie Name: " + mv.Title;
-                    lblTotal.Text = "Price: $" + Session["TicketPrice"];
-                    lblThtrName.Text = "Theater Selection:&nbsp" + Session["Theater"];
+                    lblCusName.Text = t.PurchaserUsername;
+                    lblMovName.Text = t.movie.Title;
+                    lblTotal.Text = "$" + Session["TicketPrice"];
+                    lblThtrName.Text = t.theater.Name;
+                    lblDoP.Text = DateTime.Now.ToString();
                 }
                 else {
                     debug.Text = "An error has occured! Please try again...";

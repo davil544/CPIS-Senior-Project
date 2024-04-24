@@ -7,23 +7,24 @@ namespace CPIS_Senior_Project
 {
     public partial class PurchaseTickets : System.Web.UI.Page
     {
+        Account account; Ticket t;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack)
+            if (Session["Login"] != null && (bool)Session["Login"] == true && Session["Account"] != null && !IsPostBack && Session["Ticket"] != null)
             {
-                Movie mv = (Movie)Session["PurchasedMovie"];
-                Account account = (Account)Session["Account"];
+                t = (Ticket)Session["Ticket"];
+                account = (Account)Session["Account"];
                 if (account.CC.Length != 0)
                 {
                     for (int i = 0; i < account.CC.Length; i++)
                     {
-                        lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, "Card #" + i));
+                        lstCreditCards.Items.Insert(i, new ListItem(account.CC[i].CardNumber, account.CC[i].CardID.ToString()));
                     }
                 }
                 CustomerName.Text = "Name: " + account.FullName;
-                MovieName.Text = "Movie Name: " + mv.Title;
+                MovieName.Text = "Movie Name: " + t.movie.Title;
                 lblPrice.Text = "Price: $" + Session["TicketPrice"];
-                lblTheaterSelection.Text = "Theater Selection:&nbsp" + Session["Theater"];//Add null check here before making next commit
+                lblTheaterSelection.Text = "Theater Selection:&nbsp" + t.theater.Name; //Add null check here before making next commit
             }
         }
 
@@ -31,43 +32,29 @@ namespace CPIS_Senior_Project
 
         protected void BtnPurchase_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ViewTickets");
-            /*Account customerAccount = new Account();
-            
-            bool valid = true; string status = "";
-
-            //TODO:  Add for loop to pull all available credit cards available for use by customers
-            if (customerAccount.CC[0] != null)
+            t = (Ticket)Session["Ticket"];
+            if (lstCreditCards.SelectedItem.Text != "No Card Selected")
             {
-                //Code goes here to purchase ticket
-                //customerAccount.CC[0].CardNumber = cc_number.Text;
-                //customerAccount.CC[0].CVV = cc_cvv.Text;
-                //customerAccount.CC.ExpirationDate = cc_cvv.Text;
+                t.ccID = int.Parse(lstCreditCards.SelectedValue);
             }
             else
             {
-                //Creditcard_Info.Visible = true;
-                //cc.Role = "Credit ccv";
+                //Stop process here and tell the user to add a card in the settings
+            }
+            
+            Session["Ticket"] = t;
+            TheaterTier manager = new TheaterTier();
+            string status = manager.BuyTickets(t);
 
-                if (ccv.Text.Equals("") || cc_number.Text.Equals("") || cc_expiration.Text.Equals("") || cc_cvv.Text.Equals(""))
-                {
-                    status = ErrorHandler.empty;
-                    valid = false;
-
-                } 
-
-                else
-                {
-                    try
-                    {
-                        //auth.CC = new CreditCard();
-                        //auth.CC.CardNumber = cc_number.Text;
-                        //auth.CC.CVV = cc_cvv.Text;
-                    }
-                    catch { }
-               }
-        }*/
-    }
+            if (status == "Success!")
+            {
+                Response.Redirect("/ViewTickets");
+            }
+            else
+            {
+                //display status string to user here
+            }
+        }
 
 
         protected void BtnCancel_Click (object sender, EventArgs e)
