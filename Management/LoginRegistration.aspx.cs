@@ -10,6 +10,7 @@ namespace CPIS_Senior_Project.Management
         {
             Session["Login"] = null;
             txtState.Attributes.Add("maxlength", "2");
+            this.Form.DefaultButton = btnRegister.UniqueID;
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace CPIS_Senior_Project.Management
                         //Regex re = new Regex("^(0[1-9]|1[0-2])\\/?(([0-9]{4}|[0-9]{2})$)");
                         //TODO:  Put in regex to strip out all characters except numbers and ensure the format is correct
                         //TODO:  Add for loop to pull all available credit cards available for use by customers
+                        auth.CC = new CreditCard[1];
                         auth.CC[0] = new CreditCard();
                         auth.CC[0].CardNumber = cc_number.Text;
                         auth.CC[0].ExpirationDate = cc_expiration.Text;  //Convert to DateTime

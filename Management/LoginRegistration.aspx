@@ -10,7 +10,7 @@
         <table>
             <tr>
                 <td>
-                    <asp:Label runat="server">User Name:</asp:Label>
+                    <asp:Label runat="server">Username:</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="mgmt_Username" runat="server"></asp:TextBox>
@@ -145,7 +145,7 @@
         
         <!-- TODO:  Maybe make panes to combine theater and customer registration into 1 form -->
         <br />
-        <asp:Button ID="mgmt_login" runat="server" OnClick="btnRegister_Click" Text="Sign Up"/>
+        <asp:Button ID="btnRegister" runat="server" OnClick="btnRegister_Click" Text="Sign Up"/>
         <br /> <br />
         <asp:Label ID="mgmt_status_message" runat="server"></asp:Label>
         <br />
