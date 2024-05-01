@@ -360,6 +360,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Handlers\MoviePoster.ashx" />
+    <Content Include="Content\img\Example-QR-code.webp" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
