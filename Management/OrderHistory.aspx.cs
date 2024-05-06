@@ -44,7 +44,7 @@ namespace CPIS_Senior_Project.Management
                                     "</table>" +
                                     "<hr class=\"msgBreak\" /><br />" +
                                 "</td>" + //Maybe turn bottom border black instead of using dotted hr tag?
-                                "<td align=\"right\" width=\"50%\"> Bar code goes here </td>" +
+                                "<td align=\"right\" width=\"50%\"><img src=\"/Content/img/movieTicketQRcode.png\" /></td>" +
                             "</tr>";
 
                         //"<a href=\"MovieDetails.aspx?ID=" + movie.ID + "\">" + movie.Title + "</a><br />";
