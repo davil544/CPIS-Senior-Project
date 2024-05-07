@@ -29,12 +29,12 @@ namespace CPIS_Senior_Project.Management
 
                     if (!IsPostBack)
                     {
-                        //lblTicketPrice.Text = mv.Price.ToString();
                         if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
                         {
                             lstMovieTheaters.SelectedItem.Text = "Please note that theater accounts are unable to purchase tickets!";
                             lstMovieTheaters.SelectedItem.Value = account.MyTheater.TicketPrice.ToString();
                             lblTicketPrice.Text = lstMovieTheaters.SelectedItem.Value;
+                            btnTheaterInfo.Visible = true;
                         }
                         else
                         {
@@ -84,9 +84,7 @@ namespace CPIS_Senior_Project.Management
                     TicketCount = int.Parse(txtTicketCount.Text),
                     theater = movieManager.GetTheater(lstMovieTheaters.SelectedValue)
                 };
-                //t.TicketCount = int.Parse(lblTicketPrice.Text.ToString());
 
-                //Session["Theater"] = lstMovieTheaters.SelectedItem.Text;
                 Session["Ticket"] = t;
                 Session["TicketPrice"] = int.Parse(lblTicketPrice.Text);
                 Response.Redirect("~/PurchaseTickets.aspx");
@@ -96,8 +94,19 @@ namespace CPIS_Senior_Project.Management
                 debug.Text = "<div style=\"text-align: center\">You must login before you can purchase movie tickets!</div>";
                 debug.Visible = true;
             }
+        }
 
-            
+        protected void BtnThtrInfo_Click(object sender, EventArgs e)
+        {
+            Account account = (Account)Session["Account"];
+            if (Session["Login"] != null && (bool)Session["login"] == true && account.Role == "Theater")
+            {
+                Response.Redirect("/TheaterDetails.aspx?ID=" + account.Username);
+            }
+            else
+            {
+                Response.Redirect("/TheaterDetails.aspx?ID=" + lstMovieTheaters.SelectedValue);
+            }
         }
 
         protected void ChooseTheater_Change(object sender, EventArgs e)
@@ -106,8 +115,9 @@ namespace CPIS_Senior_Project.Management
             //ticket price and enable the Purchase button when selected
             if (lstMovieTheaters.SelectedValue != "No theater selected")
             {
-                t = movieManager.GetTheater(lstMovieTheaters.SelectedValue); //theater[i].TicketPrice.ToString()
+                t = movieManager.GetTheater(lstMovieTheaters.SelectedValue);
                 lblTicketPrice.Text = t.TicketPrice * int.Parse(txtTicketCount.Text) + "";
+                btnTheaterInfo.Visible = true;
                 if (customer)
                 {
                     btnPurchase.Enabled = true;
@@ -125,8 +135,7 @@ namespace CPIS_Senior_Project.Management
             //Checks for 0s at beginning of ticket quantity (Throws exception if not stripped out),
             //then multiplies it by the ticket price set by theaters and shows it to the customer
             try
-            {   //TODO:  Clean this code up!  It's Messy!!!
-                t = movieManager.GetTheater(lstMovieTheaters.SelectedValue);
+            {   t = movieManager.GetTheater(lstMovieTheaters.SelectedValue);
                 lblTicketPrice.Text = t.TicketPrice * float.Parse(txtTicketCount.Text.TrimStart(new Char[] { '0' })) + "";
             }
             catch

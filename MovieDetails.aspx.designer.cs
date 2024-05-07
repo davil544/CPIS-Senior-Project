@@ -103,5 +103,14 @@ namespace CPIS_Senior_Project.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPurchase;
+
+        /// <summary>
+        /// btnTheaterInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTheaterInfo;
     }
 }

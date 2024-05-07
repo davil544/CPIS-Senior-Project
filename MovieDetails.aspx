@@ -24,6 +24,7 @@
                 <br />Number of Tickets:&nbsp&nbsp<asp:TextBox ID="txtTicketCount" runat="server" Width="40px" type="number" min="1" value="1" onkeypress="return onlyNumberKey(event)" OnTextChanged="UpdatePrice_Change" AutoPostBack="true" ></asp:TextBox>
 
                 <br /><br /><asp:Button ID="btnPurchase" runat="server" Text="Purchase" Enabled="false" OnClick="BtnPurchase_Click" />
+                <asp:Button ID="btnTheaterInfo" runat="server" Text="View Theater Info" Visible="false" OnClick="BtnThtrInfo_Click" />
             </td>
         </tr>
     </table>
