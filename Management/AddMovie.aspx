@@ -29,10 +29,10 @@
                 <td> <asp:Label ID="lblTimeSlot" runat="server">Times Movie is Playing:</asp:Label> </td>
                 <td> <asp:TextBox ID="timeSlot" runat="server">10:00am - 11:45am</asp:TextBox> </td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td> <asp:Label ID="lblPrice" runat="server">Ticket Price:</asp:Label> </td>
                 <td> <asp:TextBox ID="ticketPrice" runat="server"></asp:TextBox> </td>
-            </tr>
+            </tr>-->
             <tr>
                 <td> <asp:Label ID="lblPoster" runat="server">Upload a Poster:</asp:Label> </td>
                 <td> <asp:FileUpload ID="posterUpload" runat="server" /> Please keep poster sizes under 1MB to avoid DB fees </td>
