@@ -4,6 +4,9 @@
         .msgBreak{
             border: 1px dotted black;
         }
+        img {
+            max-height: 80px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Body" ContentPlaceHolderID="MainContent" runat="server">

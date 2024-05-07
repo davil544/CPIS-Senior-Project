@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\movieTicketQRcode.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Ty.css" />
     <Content Include="Default.aspx" />
@@ -360,7 +361,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Handlers\MoviePoster.ashx" />
-    <Content Include="Content\img\Example-QR-code.webp" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
