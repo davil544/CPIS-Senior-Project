@@ -14,12 +14,18 @@ namespace CPIS_Senior_Project
                 litResults.Text = "<br />";
                 TheaterTier theaterManager = new TheaterTier();
                 Movie[] movies = theaterManager.GetMovies((string)Session["query"]);
-                foreach (Movie movie in movies) {
+                if (movies[0] == null)
+                {
+                    //This runs when a query returns 0 movies
+                    litResults.Text = "<br />" + ErrorHandler.noMovie;
+                }
+                else foreach (Movie movie in movies) {
                     litResults.Text += "<a href=\"MovieDetails.aspx?ID=" + movie.ID + "\">" + movie.Title + "</a><br />";
                 }
             }
             else
             {
+                //This runs when the page is loaded directly, without a search query
                 heading2.Attributes["hidden"] = "hidden";
                 litResults.Text = ErrorHandler.noMovie;
             }
