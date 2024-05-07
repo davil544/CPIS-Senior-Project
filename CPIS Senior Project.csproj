@@ -125,6 +125,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\Movie-Poster-Template-Dark-with-Image.jpg" />
     <Content Include="Content\img\movieTicketQRcode.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Ty.css" />

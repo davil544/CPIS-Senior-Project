@@ -3,7 +3,8 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Messaging;
+using System.Drawing;
+using System.IO;
 
 namespace CPIS_Senior_Project.DataAccessLayer
 {
@@ -279,7 +280,20 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 cmd.Parameters.AddWithValue("@Year", movie.ReleaseYear);
                 cmd.Parameters.AddWithValue("@Genre", movie.Genre);
                 cmd.Parameters.AddWithValue("@Rating", movie.MPA_rating);
-                cmd.Parameters.Add("@Poster", SqlDbType.Image).Value = movie.Poster;
+                if (movie.Poster != null)
+                {
+                    cmd.Parameters.Add("@Poster", SqlDbType.Image).Value = movie.Poster;
+                }
+                else
+                {
+                    //This runs when a movie poster is not supplied, as a placeholder
+                    Image defaultPoster = Image.FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/img/Movie-Poster-Template-Dark-with-Image.jpg"));
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        defaultPoster.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        cmd.Parameters.Add("@Poster", SqlDbType.Image).Value = ms.ToArray();
+                    }
+                }
 
                 try
                 {
