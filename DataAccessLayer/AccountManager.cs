@@ -10,7 +10,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
 {
     public class AccountManager
     {
-
         private static SqlConnection conn; private static SqlCommand cmd;
         private static string connectionString, query;
         private static SqlDataReader reader;
@@ -101,10 +100,6 @@ namespace CPIS_Senior_Project.DataAccessLayer
             if (auth.Role.Equals("Customer"))
             {
                 query = "INSERT INTO Users (Username, Password, Role, Name) VALUES (@Uname, @PW, @Role, @Name);";
-                if (auth.CC != null)
-                {
-                    query += "INSERT INTO CreditCards (CardNumber, ExpirationDate, CVV, CardOwner) VALUES (@CardNo, @ExpDate, @CVV, @Uname);";
-                }
             }
             else if (auth.Role.Equals("Theater"))
             {
@@ -121,13 +116,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
             string status = ErrorHandler.failed;
             int rows;
 
-            if (auth.Role.Equals("Customer") && auth.CC != null)
-            {
-                cmd.Parameters.AddWithValue("@CardNo", auth.CC[0].CardNumber);
-                cmd.Parameters.AddWithValue("@ExpDate", auth.CC[0].ExpirationDate);
-                cmd.Parameters.AddWithValue("@CVV", auth.CC[0].CVV);
-            }
-            else
+            if (auth.Role.Equals("Theater"))
             {
                 cmd.Parameters.Add("@Add1", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address1;
                 cmd.Parameters.Add("@Add2", SqlDbType.NVarChar, 50).Value = auth.MyTheater.Address2;
@@ -160,6 +149,39 @@ namespace CPIS_Senior_Project.DataAccessLayer
             finally
             {
                 conn.Close();
+            }
+
+            if (status == "success" && auth.Role == ("Customer"))
+            {
+                query = "INSERT INTO CreditCards (CardNumber, ExpirationDate, CVV, CardOwner) VALUES (@CardNo, @ExpDate, @CVV, @Uname);";
+                conn = new SqlConnection(connectionString);
+                cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@Uname", auth.Username);
+                cmd.Parameters.AddWithValue("@CardNo", auth.CC[0].CardNumber);
+                cmd.Parameters.AddWithValue("@ExpDate", auth.CC[0].ExpirationDate);
+                cmd.Parameters.AddWithValue("@CVV", auth.CC[0].CVV);
+
+                status = "Successfully created account, " + ErrorHandler.failed;
+                rows = 0;
+
+                try
+                {
+                    conn.Open();
+                    rows = cmd.ExecuteNonQuery();
+                    if (rows > 0)
+                    {
+                        status = "success";
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    status = ErrorHandler.SQL(ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
 
             return status;
