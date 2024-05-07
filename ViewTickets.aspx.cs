@@ -20,6 +20,7 @@ namespace CPIS_Senior_Project
                     lblMovName.Text = t.movie.Title;
                     lblTotal.Text = "$" + Session["TicketPrice"];
                     lblThtrName.Text = t.theater.Name;
+                    lblTxtAmt.Text = t.TicketCount.ToString();
                     lblDoP.Text = DateTime.Now.ToString();
                 }
                 else {
