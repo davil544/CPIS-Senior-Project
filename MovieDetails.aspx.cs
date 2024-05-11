@@ -43,7 +43,10 @@ namespace CPIS_Senior_Project.Management
                             {
                                 for (int i = 0; i < theater.Length; i++)
                                 {
-                                    lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].Name, theater[i].ID));
+                                    if (theater[i].ID != "admin")
+                                    {
+                                        lstMovieTheaters.Items.Insert(i, new ListItem(theater[i].Name, theater[i].ID));
+                                    }
                                 }
                             }
                         }
