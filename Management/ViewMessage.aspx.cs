@@ -57,5 +57,11 @@ namespace CPIS_Senior_Project.Management
             Session["reply"] = msg;
             Response.Redirect("/Management/ComposeMessage");
         }
+
+        protected void BtnReturn_Click(object sender, EventArgs e)
+        {
+            Session["reply"] = null;
+            Response.Redirect("/Management/Inbox");
+        }
     }
 }

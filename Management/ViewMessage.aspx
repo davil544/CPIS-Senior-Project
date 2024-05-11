@@ -52,7 +52,8 @@
        <br /> <br />
         
         <!-- Text in reply function is still a bit buggy when displaying -->
-        <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="BtnReply_Click" />
+        <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="BtnReply_Click" />&nbsp;
+        <asp:Button ID="btnReturn" runat="server" Text="Return to Inbox" OnClick="BtnReturn_Click" />
         
         <br /> <br />
     </asp:Panel>
