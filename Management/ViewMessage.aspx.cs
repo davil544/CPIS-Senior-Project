@@ -22,6 +22,7 @@ namespace CPIS_Senior_Project.Management
                     {
                         lblSender.Text = msg.Sender;
                         lblRecipient.Text = msg.Recipient;
+                        lblSubject.Text = msg.Subject;
                         lblTime.Text = msg.TimeStamp.ToString();
                         litMessage.Text = msg.MessageContents;
                     }

@@ -51,6 +51,15 @@ namespace CPIS_Senior_Project.Management
         protected global::System.Web.UI.WebControls.Label lblRecipient;
 
         /// <summary>
+        /// lblSubject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubject;
+
+        /// <summary>
         /// lblTime control.
         /// </summary>
         /// <remarks>

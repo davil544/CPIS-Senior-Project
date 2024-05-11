@@ -24,6 +24,14 @@
             </tr>
             <tr>
                 <td>
+                     Subject:
+                </td>
+                <td>
+                    <asp:Label ID="lblSubject" runat="server"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Time:
                 </td>
                 <td>
@@ -43,6 +51,7 @@
 
        <br /> <br />
         
+        <!-- Text in reply function is still a bit buggy when displaying -->
         <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="BtnReply_Click" />
         
         <br /> <br />

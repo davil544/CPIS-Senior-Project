@@ -52,12 +52,12 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
             if (sendRecieve == "recieve")
             {
-                query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+                query = "SELECT MessageID, Sender, Recipient, Subject, Message, TimeStamp " +
                 "FROM Messages where Recipient = @Uname;";
             }
             else if (sendRecieve == "send")
             {
-                query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+                query = "SELECT MessageID, Sender, Recipient, Subject, Message, TimeStamp " +
                 "FROM Messages where Sender = @Uname;";
             }
             
@@ -92,6 +92,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             msgs[i].Recipient = reader["Recipient"].ToString();
                         }
 
+                        if (reader["Subject"] != DBNull.Value)
+                        {
+                            msgs[i].Subject = reader["Subject"].ToString();
+                        }
+
                         if (reader["Message"] != DBNull.Value)
                         {
                             msgs[i].MessageContents = reader["Message"].ToString();
@@ -118,7 +123,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
         public static Message GetMessage(string Username, int messageID)
         {
-            query = "SELECT MessageID, Sender, Recipient, Message, TimeStamp " +
+            query = "SELECT MessageID, Sender, Recipient, Subject, Message, TimeStamp " +
                 "FROM Messages where Recipient = @Uname AND MessageID = @msgID;";
 
             conn = new SqlConnection(connectionString);
@@ -150,6 +155,11 @@ namespace CPIS_Senior_Project.DataAccessLayer
                             msg.Recipient = reader["Recipient"].ToString();
                         }
 
+                        if (reader["Subject"] != DBNull.Value)
+                        {
+                            msg.Subject = reader["Subject"].ToString();
+                        }
+
                         if (reader["Message"] != DBNull.Value)
                         {
                             msg.MessageContents = reader["Message"].ToString();
@@ -178,8 +188,8 @@ namespace CPIS_Senior_Project.DataAccessLayer
             string status = "Failed!";
             if (msg.Sender != "" && msg.Recipient != "")
             {
-                query = "INSERT INTO Messages (Sender, Recipient, Message, TimeStamp) " +
-                    "VALUES (@Sender, @Recipient, @Msg, @Time)";
+                query = "INSERT INTO Messages (Sender, Recipient, Subject, Message, TimeStamp) " +
+                    "VALUES (@Sender, @Recipient, @Subject, @Msg, @Time)";
 
                 conn = new SqlConnection(connectionString);
                 cmd = new SqlCommand(query, conn);
@@ -187,6 +197,7 @@ namespace CPIS_Senior_Project.DataAccessLayer
                 //TODO:  Add Subject line here and in DB
                 cmd.Parameters.AddWithValue("@Sender", msg.Sender);
                 cmd.Parameters.AddWithValue("@Recipient", msg.Recipient);
+                cmd.Parameters.AddWithValue("@Subject", msg.Subject);
                 cmd.Parameters.AddWithValue("@Msg", msg.MessageContents);
                 cmd.Parameters.AddWithValue("@Time", DateTime.Now);
 
