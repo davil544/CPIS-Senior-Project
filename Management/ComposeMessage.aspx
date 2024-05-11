@@ -2,7 +2,6 @@
 <asp:Content ID="Head" ContentPlaceHolderID="HeaderContent" runat="server">
 </asp:Content>
 <asp:Content ID="Body" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Label ID="debug" runat="server"></asp:Label>
     <asp:Panel ID="pnlMessage" runat="server">
         <h2>Compose Message:</h2><hr style="border-top: 1px dashed" /><br />
         <table>
@@ -40,4 +39,5 @@
         
         <br /> <br />
         </asp:Panel>
+    <asp:Label ID="debug" runat="server"></asp:Label>
 </asp:Content>
