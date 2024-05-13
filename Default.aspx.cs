@@ -59,6 +59,10 @@ namespace CPIS_Senior_Project
                 }
                 else
                 {
+                    if (movies[0] == null)
+                    {
+                        movies[0] = new Movie();
+                    }
                     debug.Text = "<br />" + movies[0].Title;
                     debug.Visible = true;
                     pnlMovies.Visible = false;
