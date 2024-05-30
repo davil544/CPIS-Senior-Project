@@ -31,6 +31,9 @@ namespace CPIS_Senior_Project.DataAccessLayer
 
                 case 40615:
                     return "You do not have permission to access the database!  Contact the DB admin for assistance!";
+
+                case 18456:
+                    return "The database connection has failed!  This site will not function properly until this is resolved! <br /> Check SQL credentials in Web.config and try again!";
             }
             
             //This runs if a new code is found that has not been handled yet
