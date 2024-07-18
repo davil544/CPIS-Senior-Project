@@ -1,3 +1,5 @@
+#### This project is a website for movie theater ticket sales that allows theater owners to sell tickets, as well as allowing customers to buy tickets for these same movies.  This web application was written primarily in C# and ASP.net and was designed to work with Microsoft's SQL Server 2022.
+
 When cloning this project, you will very likely get the folloing error when attempting to run it for the first time:
 
 Could not find a part of the path '~\CPIS-Senior-Project\roslyn\csc.exe'.
